@@ -1,5 +1,5 @@
 <template>
-  <v-card min-height="750">
+  <v-card min-height="800">
     <v-carousel
       cycle
       height="250"
@@ -88,12 +88,6 @@
 
     <v-dialog v-model="isImageZoomed" width="1100">
       <v-card>
-        <v-card-title>
-          <div class="flex-grow-1"></div>
-          <v-btn icon class="white--text" @click="isImageZoomed = false">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </v-card-title>
         <v-carousel
           height="100%"
           hide-delimiter-background
@@ -107,6 +101,12 @@
           >
           </v-carousel-item>
         </v-carousel>
+        <v-card-actions>
+          <div class="flex-grow-1"></div>
+          <v-btn text class="text-capitalize" @click="isImageZoomed = false">
+            Close
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-dialog>
   </v-card>
