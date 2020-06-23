@@ -1,0 +1,40 @@
+{
+  "name": "Sebastian Lavarias",
+
+  "socials": [
+    {
+      "text": "YouTube",
+      "icon": "mdi-youtube",
+      "url": "https://www.youtube.com/channel/UCpBQkRsDXJZNm-wPoyXHBDg"
+    },
+
+    {
+      "text": "GitHub",
+      "icon": "mdi-github",
+      "url": "https://github.com/bastilavarias"
+    },
+
+    {
+      "text": "Facebook",
+      "icon": "mdi-facebook",
+      "url": "https://www.facebook.com/BastiLavar21"
+    }
+  ],
+
+  "contacts": [
+    {
+      "text": "0997-221-7704",
+      "icon": "mdi-cellphone"
+    },
+
+    {
+      "text": "denzilbao@gmail.com",
+      "icon": "mdi-email"
+    },
+
+    {
+      "text": "https://bastilavarias.github.io",
+      "icon": "mdi-web"
+    }
+  ]
+}
