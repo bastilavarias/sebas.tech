@@ -1,16 +1,18 @@
 <template>
-  <v-card>
+  <v-card min-height="750">
     <v-carousel
       cycle
       height="250"
       hide-delimiter-background
       show-arrows-on-hover
+      v-model="carouselState"
     >
-      <v-carousel-item v-for="(path, index) in imagePaths" :key="index">
-        <img
-          style="width: 100%; height: auto !important;"
-          :src="require(`../assets/projects/${path}`)"
-        />
+      <v-carousel-item
+        v-for="(path, index) in imagePaths"
+        :key="index"
+        :src="require(`../assets/projects/${path}`)"
+        @click="zoomImage"
+      >
       </v-carousel-item>
     </v-carousel>
 
@@ -83,6 +85,30 @@
         >
       </div>
     </v-card-text>
+
+    <v-dialog v-model="isImageZoomed" width="1100">
+      <v-card>
+        <v-card-title>
+          <div class="flex-grow-1"></div>
+          <v-btn icon class="white--text" @click="isImageZoomed = false">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+        </v-card-title>
+        <v-carousel
+          height="100%"
+          hide-delimiter-background
+          show-arrows-on-hover
+          v-model="carouselZoomedImageState"
+        >
+          <v-carousel-item
+            v-for="(path, index) in imagePaths"
+            :key="index"
+            :src="require(`../assets/projects/${path}`)"
+          >
+          </v-carousel-item>
+        </v-carousel>
+      </v-card>
+    </v-dialog>
   </v-card>
 </template>
 
@@ -120,6 +146,21 @@ export default {
     imagePaths: {
       type: Array,
       required: true,
+    },
+  },
+
+  data() {
+    return {
+      carouselState: null,
+      isImageZoomed: false,
+      carouselZoomedImageState: null,
+    }
+  },
+
+  methods: {
+    zoomImage() {
+      this.carouselZoomedImageState = this.carouselState
+      this.isImageZoomed = true
     },
   },
 }

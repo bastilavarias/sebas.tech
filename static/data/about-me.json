@@ -46,7 +46,7 @@
   "featuredProjects": [
     {
       "name": "Channel",
-      "description": "A simple messenger clone created for developers wants to hang out.",
+      "description": "A simple messenger clone created for developers wants to hit a instant chat to other group of developers.",
       "url": {
         "demo": "https://channel-web.herokuapp.com/",
         "sourceCode":"https://github.com/bastilavarias/channel/tree/1.0.0"
@@ -68,11 +68,21 @@
         },
 
         {
+          "text": "GitHub OAuth",
+          "icon": "mdi-github"
+        },
+        {
+          "text": "SQL",
+          "icon": "mdi-database"
+        },
+
+        {
           "text": "Git",
           "icon": "mdi-git"
         }
       ],
       "role": "Full Stack Developer",
+
       "imagePaths": [
         "channel/1.png",
         "channel/2.png",
@@ -80,6 +90,83 @@
         "channel/4.png",
         "channel/5.png",
         "channel/6.png"
+      ]
+    },
+
+    {
+      "name": "Forum Site",
+      "description": "A simple reddit clone created for developers to ask a different kind of questions to other developers.",
+      "url": {
+        "demo": "https://forum-site-demo.herokuapp.com/",
+        "sourceCode":"https://github.com/bastilavarias/forum-site/tree/1.0.0"
+      },
+      "technologies": [
+        {
+          "text": "Vue.js",
+          "icon": "mdi-vuejs"
+        },
+
+        {
+          "text": "Node.js",
+          "icon": "mdi-nodejs"
+        },
+
+        {
+          "text": "SQL",
+          "icon": "mdi-database"
+        },
+
+        {
+          "text": "GitHub OAuth",
+          "icon": "mdi-github"
+        },
+        {
+          "text": "SQL",
+          "icon": "mdi-database"
+        },
+
+        {
+          "text": "Git",
+          "icon": "mdi-git"
+        }
+      ],
+      "role": "Full Stack Developer",
+
+      "imagePaths": [
+        "forum-site/1.png",
+        "forum-site/2.png",
+        "forum-site/3.png",
+        "forum-site/4.png",
+        "forum-site/5.png"
+      ]
+    },
+
+    {
+      "name": "Tondo Football Club",
+      "description": "The official website of Tondo Football Club",
+      "url": {
+        "demo": "https://www.tondofc.com/",
+        "sourceCode":"https://github.com/bastilavarias/tondo-football-club/tree/1.0.0"
+      },
+      "technologies": [
+        {
+          "text": "Vue.js",
+          "icon": "mdi-vuejs"
+        },
+
+        {
+          "text": "Git",
+          "icon": "mdi-git"
+        }
+      ],
+      "role": "Frontend Developer",
+
+      "imagePaths": [
+        "tondo-fc/1.png",
+        "tondo-fc/2.png",
+        "tondo-fc/3.png",
+        "tondo-fc/4.png",
+        "tondo-fc/5.png"
       ]
     }
   ]

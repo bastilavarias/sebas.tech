@@ -21,7 +21,7 @@
       Featured Projects 🖥️
     </v-card-title>
     <v-card-text>
-      <v-row dense>
+      <v-row>
         <v-col
           v-for="(project, index) in aboutMe.featuredProjects"
           :key="index"
