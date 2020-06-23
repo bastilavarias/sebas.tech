@@ -1,0 +1,86 @@
+{
+  "introduction": "I'm Sebastian Curtis T. Lavarias, 20 years of age. A student and web developer from Manila, Philippines. Currently, I'm in my junior year at <span class='success--text'>Universidad de Manila</span> and taking Bachelor of Science in Information Technology.",
+
+  "skills": [
+    {
+      "text": "HTML",
+      "icon": "mdi-language-html5"
+    },
+
+    {
+      "text": "CSS",
+      "icon": "mdi-language-css3"
+    },
+
+    {
+      "text": "JavaScript",
+      "icon": "mdi-language-javascript"
+    },
+
+    {
+      "text": "TypeScript",
+      "icon": "mdi-language-typescript"
+    },
+
+    {
+      "text": "Vue.js",
+      "icon": "mdi-vuejs"
+    },
+
+    {
+      "text": "Node.js",
+      "icon": "mdi-nodejs"
+    },
+
+    {
+      "text": "SQL",
+      "icon": "mdi-database"
+    },
+
+    {
+      "text": "Git",
+      "icon": "mdi-git"
+    }
+  ],
+
+  "featuredProjects": [
+    {
+      "name": "Channel",
+      "description": "A simple messenger clone created for developers wants to hang out.",
+      "url": {
+        "demo": "https://channel-web.herokuapp.com/",
+        "sourceCode":"https://github.com/bastilavarias/channel/tree/1.0.0"
+      },
+      "technologies": [
+        {
+          "text": "Vue.js",
+          "icon": "mdi-vuejs"
+        },
+
+        {
+          "text": "Node.js",
+          "icon": "mdi-nodejs"
+        },
+
+        {
+          "text": "SQL",
+          "icon": "mdi-database"
+        },
+
+        {
+          "text": "Git",
+          "icon": "mdi-git"
+        }
+      ],
+      "role": "Full Stack Developer",
+      "imagePaths": [
+        "channel/1.png",
+        "channel/2.png",
+        "channel/3.png",
+        "channel/4.png",
+        "channel/5.png",
+        "channel/6.png"
+      ]
+    }
+  ]
+}
