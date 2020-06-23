@@ -3,8 +3,8 @@
     <div class="text-center">
       <v-avatar :size="125" class="mb-10">
         <v-img
-          :src="require('@/assets/profile-picture.png')"
-          :lazy-src="require('@/assets/profile-picture.png')"
+          :src="require(`../assets/${profile.picture}`)"
+          :lazy-src="require(`../assets/${profile.picture}`)"
         ></v-img>
       </v-avatar>
       <h1 class="display-1 font-weight-bold mb-5">
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import profile from '~/static/profile-data.json'
+import profileData from '~/static/data/profile.json'
 import ButtonTooltip from './custom/ButtonTooltip'
 
 export default {
@@ -44,7 +44,7 @@ export default {
   components: { ButtonTooltip },
   data() {
     return {
-      profile: profile,
+      profile: profileData,
     }
   },
 }
