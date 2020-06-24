@@ -7,7 +7,7 @@
         }}</v-card-title>
         <v-card-text>
           <span class="d-block mb-3 text-truncate">
-            {{ description ? description : 'No description.' }}
+            {{ description ? truncateText(description) : 'No description.' }}
           </span>
         </v-card-text>
       </div>
@@ -51,6 +51,13 @@ export default {
     sourceCodeUrl: {
       type: String,
       required: true,
+    },
+  },
+
+  methods: {
+    truncateText(string) {
+      const truncatedString = string.slice(0, 75)
+      return truncatedString ? `${truncatedString}...` : 'Something went wrong.'
     },
   },
 }
