@@ -7,7 +7,7 @@
           <blog-card
             :key="index"
             :title="blog.title"
-            :description="blog.description"
+            :introduction="blog.introduction"
             :language="blog.language"
             :created-at="blog.createdAt"
             :updated-at="blog.updatedAt"
