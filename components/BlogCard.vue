@@ -19,7 +19,9 @@
       {{ title }}
     </v-card-title>
     <v-card-text>
-      <span class="d-block">{{ description }}</span>
+      <span class="d-block">
+        {{ truncateText(introduction) }}
+      </span>
     </v-card-text>
 
     <v-card-actions>
@@ -32,8 +34,12 @@
 </template>
 
 <script>
+import customUtilities from '../common/customUtilities'
+
 export default {
   name: 'blog-card',
+
+  mixins: [customUtilities],
 
   props: {
     title: {
@@ -41,7 +47,7 @@ export default {
       required: true,
     },
 
-    description: {
+    introduction: {
       type: String,
       required: true,
     },

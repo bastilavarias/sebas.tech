@@ -29,6 +29,8 @@
 >
 
 <script>
+import customUtilities from '../common/customUtilities'
+
 export default {
   name: 'repository-card',
 
@@ -54,11 +56,6 @@ export default {
     },
   },
 
-  methods: {
-    truncateText(string) {
-      const truncatedString = string.slice(0, 75)
-      return truncatedString ? `${truncatedString}...` : 'Something went wrong.'
-    },
-  },
+  mixins: [customUtilities],
 }
 </script>
