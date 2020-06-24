@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <div
-      class="d-flex justify-space-between align-content-center align-center px-4 pt-1"
+      class="d-flex justify-space-between align-content-center align-center px-4 pt-2"
     >
       <div>
         <span :title="`Language: ${language}`">
