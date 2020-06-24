@@ -2,6 +2,7 @@
   <v-app dark>
     <v-main>
       <v-container>
+        <color-mode-switcher></color-mode-switcher>
         <v-row>
           <v-col cols="12" md="4">
             <profile-sidebar></profile-sidebar>
@@ -9,7 +10,12 @@
           <v-col cols="12" md="8">
             <v-card class="mb-5">
               <v-tabs v-model="tab" color="error" show-arrows>
-                <v-tab v-for="(tab, index) in tabs" :key="index">
+                <v-tab
+                  v-for="(tab, index) in tabs"
+                  :key="index"
+                  :to="tab.to"
+                  exact
+                >
                   <v-icon class="mr-1">
                     {{ tab.icon }}
                   </v-icon>
@@ -37,8 +43,9 @@
 
 <script>
 import ProfileSidebar from '../components/ProfileSidebar'
+import ColorModeSwitcher from '../components/ColorModeSwitcher'
 export default {
-  components: { ProfileSidebar },
+  components: { ColorModeSwitcher, ProfileSidebar },
 
   data() {
     return {
@@ -53,7 +60,7 @@ export default {
         {
           text: 'Blogs',
           icon: 'mdi-blogger',
-          to: { name: 'index' },
+          to: { name: 'blogs' },
         },
       ],
     }
