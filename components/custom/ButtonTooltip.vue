@@ -5,7 +5,6 @@
         v-on="on"
         :icon="icon"
         :color="color"
-        :dark="dark"
         :large="large"
         :x-large="xLarge"
         :href="url"
@@ -34,11 +33,6 @@ export default {
 
     color: {
       type: String,
-      required: false,
-    },
-
-    dark: {
-      type: Boolean,
       required: false,
     },
 

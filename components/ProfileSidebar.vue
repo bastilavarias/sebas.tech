@@ -16,7 +16,6 @@
           :key="index"
           :text="social.text"
           icon
-          dark
           x-large
           :url="social.url"
         >
