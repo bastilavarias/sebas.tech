@@ -1,12 +1,12 @@
 <template>
-  <v-card :class="`${className}`" min-width="400">
+  <v-card :class="`${className}`" min-width="200">
     <div class="d-flex justify-space-between">
       <div>
         <v-card-title class="text-capitalize">{{
           name ? name : 'No name.'
         }}</v-card-title>
         <v-card-text>
-          <span class="d-block mb-3 text-capitalize">
+          <span class="d-block mb-3 text-truncate">
             {{ description ? description : 'No description.' }}
           </span>
         </v-card-text>
@@ -20,7 +20,7 @@
     </div>
     <v-card-actions>
       <div class="flex-grow-1"></div>
-      <v-btn small color="error" :href="githubUrl" target="_blank">
+      <v-btn small color="error" :href="sourceCodeUrl" target="_blank">
         <span class="text-capitalize mr-1">Source Code</span>
         <v-icon small>mdi-xml</v-icon>
       </v-btn>
@@ -45,10 +45,10 @@ export default {
 
     description: {
       type: String,
-      required: true,
+      required: false,
     },
 
-    githubUrl: {
+    sourceCodeUrl: {
       type: String,
       required: true,
     },

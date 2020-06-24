@@ -45,17 +45,29 @@
     </v-card-title>
     <v-card-text>
       <v-slide-group v-model="slidGroupState" show-arrows>
-        <v-slide-item v-for="n in 10">
+        <v-slide-item v-for="(repository, index) in aboutMe.repositories">
           <repository-card
-            :key="n"
-            name="Repository Name"
-            description="Description"
-            github-url="testest"
+            :key="index"
+            :name="repository.name"
+            :description="repository.description"
+            :sourceCodeUrl="repository.sourceCodeUrl"
             class-name="ma-1"
           ></repository-card>
         </v-slide-item>
       </v-slide-group>
     </v-card-text>
+    <v-card-actions>
+      <div class="flex-grow-1"></div>
+      <v-btn
+        text
+        color="error"
+        href="https://github.com/bastilavarias?tab=repositories"
+        target="_blank"
+      >
+        <span class="text-capitalize mr-1">View More</span>
+        <v-icon color="error">mdi-xml</v-icon>
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
