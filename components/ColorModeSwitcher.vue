@@ -22,7 +22,7 @@ export default {
 
   data() {
     return {
-      isDarkMode: true,
+      isDarkMode: false,
     }
   },
 
@@ -31,8 +31,11 @@ export default {
       this.$vuetify.theme.isDark = this.isDarkMode
     },
   },
+
   created() {
-    this.$vuetify.theme.isDark = true
+    const hours = new Date().getHours()
+    const isDayTime = hours > 6 && hours < 18
+    this.isDarkMode = !isDayTime
   },
 }
 </script>
