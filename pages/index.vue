@@ -40,18 +40,36 @@
         </v-col>
       </v-row>
     </v-card-text>
+    <v-card-title>
+      Repositories 📁
+    </v-card-title>
+    <v-card-text>
+      <v-slide-group v-model="slidGroupState" show-arrows>
+        <v-slide-item v-for="n in 10">
+          <repository-card
+            :key="n"
+            name="Repository Name"
+            description="Description"
+            github-url="testest"
+            class-name="ma-1"
+          ></repository-card>
+        </v-slide-item>
+      </v-slide-group>
+    </v-card-text>
   </v-card>
 </template>
 
 <script>
 import aboutMeData from '~/static/data/about-me.json'
 import ProjectCard from '../components/ProjectCard'
+import RepositoryCard from '../components/RepositoryCard'
 
 export default {
-  components: { ProjectCard },
+  components: { RepositoryCard, ProjectCard },
   data() {
     return {
       aboutMe: aboutMeData,
+      slidGroupState: null,
     }
   },
 }
