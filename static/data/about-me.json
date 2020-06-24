@@ -169,5 +169,24 @@
         "tondo-fc/5.png"
       ]
     }
+  ],
+  "repositories": [
+    {
+      "name": "Expense manager",
+      "description": "My custom expense manager tailored for my daily expense activity.",
+      "sourceCodeUrl": "https://github.com/bastilavarias/expense-manager"
+    },
+
+    {
+      "name": "Nursing quizlet",
+      "description": "Simple nursing best practices quiz web application made for nursing students at my university.",
+      "sourceCodeUrl": "https://github.com/bastilavarias/nursing-quizlet"
+    },
+
+    {
+      "name": "3 typescript sorter",
+      "description": "3 typescript-node application that sorts an array of numbers, string and linked list.",
+      "sourceCodeUrl": "https://github.com/bastilavarias/typscript-node-3-types-sorter"
+    }
   ]
 }
