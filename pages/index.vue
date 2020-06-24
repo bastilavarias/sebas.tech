@@ -27,7 +27,6 @@
           :key="index"
           cols="12"
           sm="6"
-          lg="4"
         >
           <project-card
             :key="index"
