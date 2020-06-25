@@ -14,7 +14,7 @@
                   v-for="(tab, index) in tabs"
                   :key="index"
                   exact
-                  @click="goTo(tab.to)"
+                  :to="tab.to"
                 >
                   <v-icon class="mr-1">
                     {{ tab.icon }}
@@ -56,22 +56,16 @@ export default {
         {
           text: "About Me",
           icon: "mdi-information-variant",
-          to: { name: "index" }
+          to: "/"
         },
 
         {
           text: "Blogs",
           icon: "mdi-blogger",
-          to: { name: "blogs" }
+          to: "/blogs"
         }
       ]
     };
-  },
-
-  methods: {
-    goTo(route) {
-      this.$router.push(route);
-    }
   }
 };
 </script>
