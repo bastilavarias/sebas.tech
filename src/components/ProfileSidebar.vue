@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import profileData from "../static/data/profile.json";
+import profileData from "../data/profile.json";
 import ButtonTooltip from "./custom/ButtonTooltip";
 
 export default {

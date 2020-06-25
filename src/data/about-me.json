@@ -139,35 +139,6 @@
         "forum-site/fs-blog-form.png",
         "forum-site/fs-profile.png"
       ]
-    },
-
-    {
-      "name": "Tondo Football Club",
-      "description": "The official website of Tondo Football Club",
-      "url": {
-        "demo": "https://www.tondofc.com/",
-        "sourceCode":"https://github.com/bastilavarias/tondo-football-club/tree/1.0.0"
-      },
-      "technologies": [
-        {
-          "text": "Vue.js",
-          "icon": "mdi-vuejs"
-        },
-
-        {
-          "text": "Git",
-          "icon": "mdi-git"
-        }
-      ],
-      "role": "Frontend Developer",
-
-      "imagePaths": [
-        "tondo-fc/tfc-landing.png",
-        "tondo-fc/tfc-league-table-1.png",
-        "tondo-fc/tfc-league-table-2.png",
-        "tondo-fc/tfc-about.png",
-        "tondo-fc/tfc-zoomed.png"
-      ]
     }
   ],
 

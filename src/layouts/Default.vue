@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app id="app">
     <v-main>
       <v-container>
         <color-mode-switcher></color-mode-switcher>
@@ -13,8 +13,8 @@
                 <v-tab
                   v-for="(tab, index) in tabs"
                   :key="index"
-                  :to="tab.to"
                   exact
+                  @click="goTo(tab.to)"
                 >
                   <v-icon class="mr-1">
                     {{ tab.icon }}
@@ -68,10 +68,10 @@ export default {
     };
   },
 
-  created() {
-    const hours = new Date().getHours();
-    const isDayTime = hours > 6 && hours < 18;
-    this.$vuetify.theme.isDark = !isDayTime;
+  methods: {
+    goTo(route) {
+      this.$router.push(route);
+    }
   }
 };
 </script>
