@@ -74,16 +74,16 @@
 </template>
 
 <script>
-import DefaultLayout from "../layouts/Default";
-import aboutMeData from "../static/data/about-me.json";
+import aboutMeData from "../data/about-me.json";
 import ProjectCard from "../components/ProjectCard";
 import RepositoryCard from "../components/RepositoryCard";
+import DefaultLayout from "../layouts/Default";
 
 export default {
-  components: { RepositoryCard, ProjectCard, DefaultLayout },
+  components: { DefaultLayout, RepositoryCard, ProjectCard },
 
   metaInfo: {
-    title: "Hello, world!"
+    title: "About Me"
   },
 
   data() {

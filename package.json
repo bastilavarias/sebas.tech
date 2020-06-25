@@ -7,12 +7,12 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
-    "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.6.0",
     "gridsome": "^0.7.0",
     "vuetify": "^2.3.2"
   },
   "devDependencies": {
+    "@gridsome/source-filesystem": "^0.6.2",
+    "@gridsome/transformer-remark": "^0.6.0",
     "deepmerge": "^4.2.2",
     "fibers": "^5.0.0",
     "prettier": "^2.0.5",
