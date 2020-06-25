@@ -13,6 +13,10 @@ module.exports = {
   ],
 
   transformers: {
-    remark: {}
+    remark: {
+      externalLinksTarget: "_blank",
+      externalLinksRel: ["nofollow", "noopener", "noreferrer"],
+      anchorClassName: "icon icon-link"
+    }
   }
 };
