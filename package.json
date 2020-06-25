@@ -1,22 +1,23 @@
 {
-  "name": "bastilavarias.github.io",
-  "version": "1.0.0",
+  "name": "portfolio",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "export": "nuxt export",
-    "serve": "nuxt serve"
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.11.0",
-    "nuxt": "^2.13.0"
+    "@gridsome/source-filesystem": "^0.6.2",
+    "@gridsome/transformer-remark": "^0.6.0",
+    "gridsome": "^0.7.0",
+    "vuetify": "^2.3.2"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.11.2",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5"
+    "deepmerge": "^4.2.2",
+    "fibers": "^5.0.0",
+    "prettier": "^2.0.5",
+    "sass": "^1.26.9",
+    "sass-loader": "^7.3.1",
+    "vuetify-loader": "^1.5.0"
   }
 }
