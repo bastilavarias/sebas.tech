@@ -28,8 +28,8 @@ import BlogCard from "../components/BlogCard";
 export default {
   components: { BlogCard, DefaultLayout },
 
-  etaInfo: {
-    title: "Blogs"
+  metaInfo: {
+    title: "My Blogs"
   },
 
   computed: {

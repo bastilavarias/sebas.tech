@@ -1,5 +1,5 @@
 module.exports = {
-  siteName: "Sebastian Lavarias",
+  siteName: "Sebastian Curtis T. Lavarias",
 
   plugins: [
     {

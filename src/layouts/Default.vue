@@ -55,7 +55,7 @@ export default {
         },
 
         {
-          text: "Blogs",
+          text: "My Blogs",
           icon: "mdi-blogger",
           to: "/blogs"
         }
