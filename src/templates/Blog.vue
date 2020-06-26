@@ -16,9 +16,11 @@ import LanguageIcon from "../components/LanguageIcon";
 export default {
   components: { LanguageIcon, DefaultLayout },
 
-  metaInfo: {
-    title: "Blog title",
-    description: "sdfsdfsdfsdfsdf"
+  metaInfo() {
+    return {
+      title: this.blog.title,
+      description: this.blog.excerpt
+    };
   },
 
   computed: {

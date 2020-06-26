@@ -14,6 +14,18 @@ export default function (Vue, { appOptions, head }) {
     href:
       "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
   });
+
+  head.meta.push({
+    name: "keywords",
+    content:
+      "Sebastian Curtis T. Lavarias, Basti Lavarias, bastilavarias, UdM, Sebastian Lavarias, Lavarias"
+  });
+
+  head.meta.push({
+    name: "author",
+    content: "Sebastian Curtis T. Lavarias"
+  });
+
   const opts = {
     theme: {
       themes: {
