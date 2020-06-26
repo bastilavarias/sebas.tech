@@ -1,6 +1,12 @@
 module.exports = {
   siteName: "Sebastian Curtis T. Lavarias",
 
+  siteUrl: "https://bastilavarias.github.io",
+
+  siteDescription: "The meta description for homepage",
+
+  icon: "src/favicon.png",
+
   plugins: [
     {
       use: "@gridsome/source-filesystem",

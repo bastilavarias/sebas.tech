@@ -30,7 +30,6 @@
             sm="6"
           >
             <project-card
-              :key="index"
               :name="project.name"
               :description="project.description"
               :url="project.url"
@@ -46,9 +45,11 @@
       </v-card-title>
       <v-card-text>
         <v-slide-group v-model="slidGroupState" show-arrows>
-          <v-slide-item v-for="(repository, index) in aboutMe.repositories">
+          <v-slide-item
+            v-for="(repository, index) in aboutMe.repositories"
+            :key="index"
+          >
             <repository-card
-              :key="index"
               :name="repository.name"
               :description="repository.description"
               :sourceCodeUrl="repository.sourceCodeUrl"
@@ -82,8 +83,11 @@ import DefaultLayout from "../layouts/Default";
 export default {
   components: { DefaultLayout, RepositoryCard, ProjectCard },
 
-  metaInfo: {
-    title: "About Me"
+  metaInfo() {
+    return {
+      title: "About Me",
+      description: this.aboutMe.introduction
+    };
   },
 
   data() {
