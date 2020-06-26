@@ -2,7 +2,10 @@
   <v-card color="transparent" flat>
     <div class="text-center">
       <v-avatar :size="125" class="mb-10">
-        <v-img :src="require(`../assets/${profile.picture}`)"></v-img>
+        <v-img
+          :src="require(`../assets/${profile.picture}`)"
+          :lazy-src="require(`../assets/${profile.picture}`)"
+        ></v-img>
       </v-avatar>
       <h1 class="display-1 font-weight-bold mb-5">
         {{ profile.name }}
