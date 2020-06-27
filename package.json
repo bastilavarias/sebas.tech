@@ -6,7 +6,7 @@
     "develop": "gridsome develop",
     "explore": "gridsome explore",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master dist"
+    "deploy": "gh-pages -b master -d dist"
   },
   "dependencies": {
     "file-saver": "^2.0.2",

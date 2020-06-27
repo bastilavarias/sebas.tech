@@ -71,10 +71,6 @@
           "text": "GitHub OAuth",
           "icon": "mdi-github"
         },
-        {
-          "text": "SQL",
-          "icon": "mdi-database"
-        },
 
         {
           "text": "Git",
@@ -119,10 +115,6 @@
         {
           "text": "GitHub OAuth",
           "icon": "mdi-github"
-        },
-        {
-          "text": "SQL",
-          "icon": "mdi-database"
         },
 
         {
