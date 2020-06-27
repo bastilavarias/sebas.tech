@@ -18,7 +18,7 @@
                     tab.text
                   }}</span>
                 </v-tab>
-                <v-tab>
+                <v-tab @click="downloadResume">
                   <v-icon class="mr-1">
                     mdi-file-account
                   </v-icon>
@@ -39,10 +39,14 @@
 <script>
 import ProfileSidebar from "../components/ProfileSidebar";
 import ColorModeSwitcher from "../components/ColorModeSwitcher";
+import customUtilities from "../common/customUtilities";
+
 export default {
   name: "default-layout",
 
   components: { ColorModeSwitcher, ProfileSidebar },
+
+  mixins: [customUtilities],
 
   data() {
     return {
@@ -61,6 +65,12 @@ export default {
         }
       ]
     };
+  },
+
+  methods: {
+    downloadResume() {
+      this.redirectBlank("/resume/Sebastian Curtis Lavarias.pdf");
+    }
   }
 };
 </script>

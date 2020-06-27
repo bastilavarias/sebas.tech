@@ -5,6 +5,13 @@ export default {
       return truncatedString && truncatedString.length >= 50
         ? `${truncatedString}...`
         : truncatedString;
+    },
+
+    redirectBlank(url) {
+      const a = document.createElement("a");
+      a.target = "_blank";
+      a.href = url;
+      a.click();
     }
   },
 
