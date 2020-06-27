@@ -3,8 +3,6 @@ module.exports = {
 
   siteUrl: "https://bastilavarias.github.io",
 
-  siteDescription: "The meta description for homepage",
-
   icon: "src/favicon.png",
 
   plugins: [
