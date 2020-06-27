@@ -4,7 +4,8 @@
     :color="$vuetify.theme.isDark ? '#1E1E1E' : 'white'"
     @click="back"
     :class="className"
-    elevation="1"
+    :elevation="1"
+    small
   >
     <v-icon>mdi-arrow-left</v-icon>
   </v-btn>
