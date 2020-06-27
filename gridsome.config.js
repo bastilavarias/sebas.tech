@@ -3,6 +3,8 @@ module.exports = {
 
   siteUrl: "https://bastilavarias.github.io",
 
+  pathPrefix: "/bastilavarias.github.io",
+
   icon: "src/favicon.png",
 
   plugins: [
