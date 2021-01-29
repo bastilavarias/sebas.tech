@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "deploy": "deploy.sh"
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "@sanity/client": "^2.1.4",
