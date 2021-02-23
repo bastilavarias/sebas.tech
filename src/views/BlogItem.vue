@@ -17,7 +17,7 @@
       <v-col cols="12" v-if="!this.isGetBlogStart && blog">
         <v-card flat color="transparent">
           <v-card-title>{{ blog.title }}</v-card-title>
-          <v-card-subtitle>{{ formatDate(blog.createdAt) }}</v-card-subtitle>
+          <v-card-subtitle>{{ formatDate(blog.publishedAt) }}</v-card-subtitle>
           <v-card-text class="body-1">
             {{ blog.body[0].children[0].text }}
           </v-card-text>
