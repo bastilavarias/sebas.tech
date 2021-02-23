@@ -16,7 +16,7 @@ const blogStoreModule = {
     async [GET_BLOGS]({ commit }) {
       try {
         const query =
-          "*[_type == 'post'] | order(_createdAt asc) {title, slug, excerpt, _createdAt}";
+          "*[_type == 'post'] | order(_createdAt asc)";
         const blogs = await sanityService.fetch(query);
         commit(SET_BLOGS, blogs);
       } catch (_) {
