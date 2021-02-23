@@ -3,7 +3,7 @@ import moment from "moment";
 const commonUtility = {
   methods: {
     formatDate(date) {
-      return moment(date).format("MMM Do YY");
+      return moment(new Date(date)).format("MMM Do YY");
     }
   }
 };

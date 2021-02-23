@@ -98,7 +98,7 @@
                       </router-link></v-list-item-title
                     >
                     <v-list-item-subtitle>{{
-                      formatDate(blog.createdAt)
+                      formatDate(blog.publishedAt)
                     }}</v-list-item-subtitle>
                   </v-list-item-content>
                 </v-list-item>
@@ -200,7 +200,7 @@ export default {
     async getLatestBlogs() {
       try {
         const query =
-          "*[_type == 'post'] | order(_createdAt desc) {title, slug, _createdAt}[0...3]";
+          "*[_type == 'post'] | order(_createdAt desc) [0...3]";
         this.isGetLatestBlogsStart = true;
         this.latestBlogs = await sanityService.fetch(query);
         this.isGetLatestBlogsStart = false;
