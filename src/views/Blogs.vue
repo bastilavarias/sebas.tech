@@ -31,7 +31,7 @@
               >
               <v-list-item-subtitle>{{ blog.excerpt }}</v-list-item-subtitle>
               <v-list-item-subtitle
-                >Created {{ formatDate(blog.createdAt) }}</v-list-item-subtitle
+                >Created {{ formatDate(blog.publishedAt) }}</v-list-item-subtitle
               >
             </v-list-item-content>
           </v-list-item>
