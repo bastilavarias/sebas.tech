@@ -2,6 +2,21 @@ const informationMixin = {
     data() {
         return {
             age: 21,
+            email: 'sebastiancurtislavarias@gmail.com',
+            mobileNumber: '09972217704',
+
+            socials: [
+                {
+                    text: 'GitHub',
+                    icon: 'mdi-github',
+                    link: 'https://github.com/bastilavarias?tab=repositories',
+                },
+                {
+                    text: 'LinkedIn',
+                    icon: 'mdi-linkedin',
+                    link: 'https://www.linkedin.com/in/sebastian-curtis-lavarias-b20a57175/',
+                },
+            ],
 
             skills: [
                 {
