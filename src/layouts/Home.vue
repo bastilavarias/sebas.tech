@@ -14,15 +14,19 @@
                                         :to="navigation.to"
                                         exact
                                         class="font-weight-medium"
+                                        active-class="primary--text"
                                         exact-active-class="primary--text"
                                     >
                                         <v-list-item-content>
                                             <v-list-item-title>
-                                                <v-icon class="mr-1">
+                                                <v-icon
+                                                    class="mr-1"
+                                                    color="primary"
+                                                >
                                                     {{ navigation.icon }}
                                                 </v-icon>
                                                 <span
-                                                    class="subtitle-2 font-weight-medium"
+                                                    class="subtitle-2 font-weight-medium primary--text"
                                                 >
                                                     {{ navigation.text }}
                                                 </span>
@@ -55,7 +59,11 @@
                         </v-card>
                     </v-col>
                     <v-col cols="12" md="9">
-                        <v-breadcrumbs :items="breadcrumbs" class="pl-0 mb-2">
+                        <v-breadcrumbs
+                            :items="$route.meta.breadcrumbs"
+                            class="pl-0 mb-2"
+                            divider=">"
+                        >
                             <template v-slot:item="{ item }">
                                 <v-icon color="primary" class="mr-1">{{
                                     item.icon
@@ -226,29 +234,17 @@ export default {
         return {
             tab: null,
             tabs: ['Experience', 'Projects'],
-            breadcrumbs: [
-                {
-                    text: 'Home',
-                    href: '/',
-                    icon: 'mdi-home-variant-outline',
-                },
-            ],
             navigations: [
                 {
                     text: 'Home',
                     to: { name: 'home' },
                     icon: 'mdi-home-variant-outline',
                 },
-                // {
-                //     text: 'Projects',
-                //     to: { name: 'home' },
-                //     icon: 'mdi-webpack',
-                // },
-                // {
-                //     text: 'Wall',
-                //     to: { name: 'home' },
-                //     icon: 'mdi-view-dashboard',
-                // },
+                {
+                    text: 'Projects',
+                    to: { name: 'project' },
+                    icon: 'mdi-webpack',
+                },
             ],
         };
     },
