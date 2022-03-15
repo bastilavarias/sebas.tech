@@ -5,7 +5,7 @@
                 <v-row>
                     <v-col cols="12" md="3">
                         <v-list outlined rounded dense color="transparent">
-                            <v-list-item-group color="secondary">
+                            <v-list-item-group color="primary">
                                 <template
                                     v-for="(navigation, index) in navigations"
                                 >
@@ -14,7 +14,7 @@
                                         :to="navigation.to"
                                         exact
                                         class="font-weight-medium"
-                                        exact-active-class="secondary--text"
+                                        exact-active-class="primary--text"
                                     >
                                         <v-list-item-content>
                                             <v-list-item-title>
@@ -46,11 +46,11 @@
                     <v-col cols="12" md="9">
                         <v-breadcrumbs :items="breadcrumbs" class="pl-0 mb-2">
                             <template v-slot:item="{ item }">
-                                <v-icon color="secondary" class="mr-1">{{
+                                <v-icon color="primary" class="mr-1">{{
                                     item.icon
                                 }}</v-icon
                                 ><span
-                                    class="font-weight-medium subtitle-2 secondary--text"
+                                    class="font-weight-medium subtitle-2 primary--text"
                                     >{{ item.text }}</span
                                 >
                             </template>
