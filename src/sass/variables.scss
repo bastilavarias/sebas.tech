@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Fraunces:400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700,900&display=swap");
 @import "../../node_modules/vuetify/src/styles/styles";
 
-$body-font-family: 'Fraunces', sans-serif;
+$body-font-family: 'Poppins', sans-serif;
 $typoOptions: display-4, display-3, display-2, display-1, headline, title, subtitle-1, subtitle-2, body-1, body-2, caption, overline;
 #app {
   font-family: $body-font-family, sans-serif !important;
@@ -13,5 +13,5 @@ $typoOptions: display-4, display-3, display-2, display-1, headline, title, subti
 }
 
 $container-max-widths: map-merge($container-max-widths, (
-        'xl': map-get($grid-breakpoints, 'md') * 0.9375
+        'xl': map-get($grid-breakpoints, 'lg') * 0.9375
 ))

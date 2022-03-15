@@ -1,41 +1,24 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    component: () => import("@/layouts/Home"),
-    children: [
-      {
-        path: "",
-        name: "About Page",
-        component: () => import("@/views/About")
-      },
-
-      {
-        path: "blog",
-        name: "Blogs Page",
-        component: () => import("@/views/Blogs")
-      },
-
-      {
-        path: "blog/:slug",
-        name: "Blog Item Page",
-        component: () => import("@/views/BlogItem")
-      }
-    ]
-  }
+    {
+        path: '/',
+        component: () => import('@/layouts/Home'),
+        children: [
+            {
+                path: '',
+                name: 'home',
+                component: () => import('@/views/Home'),
+            },
+        ],
+    },
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
-  }
+    routes,
 });
 
 export default router;
