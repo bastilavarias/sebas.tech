@@ -1,5 +1,5 @@
 <template>
-    <v-card color="secondary" flat style="border-radius: 1rem">
+    <v-card color="#F5F7F9" flat style="border-radius: 1rem">
         <v-list-item three-line>
             <v-list-item-content>
                 <v-list-item-title class="font-weight-bold"
