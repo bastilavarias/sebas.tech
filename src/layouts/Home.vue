@@ -238,7 +238,7 @@ export default {
             tab: null,
             tabs: [
                 {
-                    text: 'Home',
+                    text: 'Experience',
                     to: { name: 'home' },
                 },
                 { text: 'Public Projects', to: { name: 'project' } },
