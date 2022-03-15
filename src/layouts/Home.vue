@@ -37,8 +37,19 @@
                             <v-card-text>
                                 <v-row dense>
                                     <v-col cols="12">
-                                        <div class="subtitle-2">Skills</div>
+                                        <div class="caption primary--text">
+                                            Skills
+                                        </div>
                                     </v-col>
+
+                                    <template v-for="(skill, index) in skills">
+                                        <v-col cols="6" :key="index">
+                                            <skill-card
+                                                :text="skill.text"
+                                                :icon="skill.icon"
+                                            ></skill-card>
+                                        </v-col>
+                                    </template>
                                 </v-row>
                             </v-card-text>
                         </v-card>
@@ -183,12 +194,17 @@
 </template>
 
 <script>
+import SkillCard from '@/components/custom/SkillCard';
+import informationMixin from '@/mixins/informatiton';
 export default {
     name: 'home-layout',
 
+    mixins: [informationMixin],
+
+    components: { SkillCard },
+
     data() {
         return {
-            age: 21,
             tab: null,
             tabs: ['Experiences', 'Projects'],
             breadcrumbs: [

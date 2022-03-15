@@ -4,18 +4,29 @@
             <v-col cols="12"
                 ><span class="caption">Work Experience</span></v-col
             >
-            <template v-for="n in 2">
-                <v-col cols="12" :key="n">
-                    <work-experience-card></work-experience-card>
+            <template v-for="(exp, index) in workExperiences">
+                <v-col cols="12" :key="index">
+                    <work-experience-card
+                        :company="exp.company"
+                        :span="exp.span"
+                        :role="exp.role"
+                        :type="exp.type"
+                        :details="exp.details"
+                    ></work-experience-card>
                 </v-col>
             </template>
         </v-row>
 
         <v-row>
             <v-col cols="12"><span class="caption">Education</span></v-col>
-            <template v-for="n in 4">
-                <v-col cols="12" :key="n">
-                    <education-card></education-card>
+            <template v-for="(educ, index) in educationExperiences">
+                <v-col cols="12" :key="index">
+                    <education-card
+                        :level="educ.level"
+                        :school="educ.school"
+                        :course="educ.course"
+                        :span="educ.span"
+                    ></education-card>
                 </v-col>
             </template>
         </v-row>
@@ -25,8 +36,11 @@
 <script>
 import WorkExperienceCard from '@/components/custom/WorkExperienceCard';
 import EducationCard from '@/components/custom/EducationCard';
+import informationMixin from '@/mixins/informatiton';
 
 export default {
     components: { EducationCard, WorkExperienceCard },
+
+    mixins: [informationMixin],
 };
 </script>
