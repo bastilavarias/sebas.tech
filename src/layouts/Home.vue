@@ -133,7 +133,7 @@
                                                     >E-mail</v-list-item-subtitle
                                                 >
                                                 <v-list-item-title>
-                                                    sebastiancurtislavarias@gmail.com
+                                                    {{ email }}
                                                 </v-list-item-title>
                                             </v-list-item-content>
                                         </v-list-item>
@@ -144,7 +144,7 @@
                                                     Number</v-list-item-subtitle
                                                 >
                                                 <v-list-item-title>
-                                                    09972217704
+                                                    {{ mobileNumber }}
                                                 </v-list-item-title>
                                             </v-list-item-content>
                                         </v-list-item>
@@ -154,16 +154,35 @@
                                                     >Socials</v-list-item-subtitle
                                                 >
                                                 <v-list-item-title>
-                                                    <span
-                                                        style="cursor: pointer"
+                                                    <template
+                                                        v-for="(
+                                                            social, index
+                                                        ) in socials"
                                                     >
-                                                        <v-icon
+                                                        <v-btn
+                                                            depressed
                                                             small
+                                                            target="_blank"
+                                                            :href="social.link"
                                                             class="mr-1"
-                                                            >mdi-github</v-icon
+                                                            :key="index"
                                                         >
-                                                        <span> GitHub </span>
-                                                    </span>
+                                                            <v-icon
+                                                                small
+                                                                class="mr-1"
+                                                                >{{
+                                                                    social.icon
+                                                                }}</v-icon
+                                                            >
+                                                            <span
+                                                                class="text-capitalize"
+                                                            >
+                                                                {{
+                                                                    social.text
+                                                                }}
+                                                            </span>
+                                                        </v-btn>
+                                                    </template>
                                                 </v-list-item-title>
                                             </v-list-item-content>
                                         </v-list-item>
@@ -206,7 +225,7 @@ export default {
     data() {
         return {
             tab: null,
-            tabs: ['Experiences', 'Projects'],
+            tabs: ['Experience', 'Projects'],
             breadcrumbs: [
                 {
                     text: 'Home',
