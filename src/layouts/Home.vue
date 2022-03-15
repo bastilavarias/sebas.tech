@@ -201,8 +201,11 @@
                                 <template v-for="(tab, index) in tabs">
                                     <v-tab
                                         class="text-capitalize subtitle-2"
+                                        exact
+                                        exact-active-class="secondary--text"
+                                        :to="tab.to"
                                         :key="index"
-                                        >{{ tab }}</v-tab
+                                        >{{ tab.text }}</v-tab
                                     >
                                 </template>
                             </v-tabs>
@@ -233,7 +236,13 @@ export default {
     data() {
         return {
             tab: null,
-            tabs: ['Experience', 'Projects'],
+            tabs: [
+                {
+                    text: 'Home',
+                    to: { name: 'home' },
+                },
+                { text: 'Projects', to: { name: 'project' } },
+            ],
             navigations: [
                 {
                     text: 'Home',
