@@ -12,6 +12,34 @@ const routes = [
                 path: '',
                 name: 'home',
                 component: () => import('@/views/Home'),
+                meta: {
+                    breadcrumbs: [
+                        {
+                            text: 'Home',
+                            href: '/',
+                            icon: 'mdi-home-variant-outline',
+                        },
+                    ],
+                },
+            },
+            {
+                path: 'projects',
+                name: 'project',
+                component: () => import('@/views/Project'),
+                meta: {
+                    breadcrumbs: [
+                        {
+                            text: 'Home',
+                            href: '/',
+                            icon: 'mdi-home-variant-outline',
+                        },
+                        {
+                            text: 'Projects',
+                            href: '/projects',
+                            icon: 'mdi-webpack',
+                        },
+                    ],
+                },
             },
         ],
     },
