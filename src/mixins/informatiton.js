@@ -57,7 +57,7 @@ const informationMixin = {
                 {
                     company: 'Malabon LGU',
                     span: 'Dec 2021 - Present',
-                    role: 'Full-stack Developer',
+                    role: 'Web Developer',
                     type: 'Outsourced',
                     details: [],
                 },
@@ -65,7 +65,7 @@ const informationMixin = {
                 {
                     company: 'Fourello',
                     span: 'Dec 2020 - Dec 2021',
-                    role: 'Full-stack Developer',
+                    role: 'Web Developer',
                     type: 'Full-time',
                     details: [
                         'Converted UI/UX designs to an interactive website.',
