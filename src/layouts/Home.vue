@@ -5,7 +5,7 @@
                 <v-row>
                     <v-col cols="12" md="3">
                         <v-list outlined rounded dense color="transparent">
-                            <v-list-item-group color="#9A8D84">
+                            <v-list-item-group color="secondary">
                                 <template
                                     v-for="(navigation, index) in navigations"
                                 >
@@ -14,7 +14,7 @@
                                         :to="navigation.to"
                                         exact
                                         class="font-weight-medium"
-                                        exact-active-class="#9A8D84--text"
+                                        exact-active-class="secondary--text"
                                     >
                                         <v-list-item-content>
                                             <v-list-item-title>
@@ -32,16 +32,25 @@
                                 </template>
                             </v-list-item-group>
                         </v-list>
+
+                        <v-card color="transparent" flat>
+                            <v-card-text>
+                                <v-row dense>
+                                    <v-col cols="12">
+                                        <div class="subtitle-2">Skills</div>
+                                    </v-col>
+                                </v-row>
+                            </v-card-text>
+                        </v-card>
                     </v-col>
                     <v-col cols="12" md="9">
                         <v-breadcrumbs :items="breadcrumbs" class="pl-0 mb-2">
                             <template v-slot:item="{ item }">
-                                <v-icon color="#9a8d84" class="mr-1">{{
+                                <v-icon color="secondary" class="mr-1">{{
                                     item.icon
                                 }}</v-icon
                                 ><span
-                                    style="color: #9a8d84"
-                                    class="font-weight-medium subtitle-2"
+                                    class="font-weight-medium subtitle-2 secondary--text"
                                     >{{ item.text }}</span
                                 >
                             </template>
