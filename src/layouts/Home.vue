@@ -241,7 +241,7 @@ export default {
                     text: 'Home',
                     to: { name: 'home' },
                 },
-                { text: 'Projects', to: { name: 'project' } },
+                { text: 'Public Projects', to: { name: 'project' } },
             ],
             navigations: [
                 {
