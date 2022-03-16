@@ -6,8 +6,8 @@
         class="d-flex justify-center align-center custom-border"
     >
         <v-card-text class="text-center">
-            <v-icon x-large class="mb-lg-1">{{ icon }}</v-icon>
-            <span class="d-none d-lg-block caption">{{ text }}</span>
+            <v-icon x-large class="mb-1">{{ icon }}</v-icon>
+            <span class="d-block caption">{{ text }}</span>
         </v-card-text>
     </v-card>
 </template>

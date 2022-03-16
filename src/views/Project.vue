@@ -5,7 +5,7 @@
                 ><span class="caption"
                     >Some of my work projects are prohibited to share and most
                     of the projects I posted here are my side projects or my
-                    current employer gives me a permit to post here.
+                    current employer gave me a permit to post here.
                 </span></v-col
             >
             <template v-for="(project, index) in projects">
