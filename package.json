@@ -8,7 +8,6 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "@sanity/client": "^2.1.4",
     "core-js": "^3.6.5",
     "moment": "^2.29.1",
     "vue": "^2.6.11",
