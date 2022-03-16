@@ -118,7 +118,7 @@ const informationMixin = {
                 {
                     name: 'Safe Line',
                     description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut pharetra nibh.',
+                        'A web based telemedicine platform with clinic locator for identifying the nearest suitable clinic based on patient’s needs.',
                     type: 'Side Project',
                     url: 'https://safe-line-development.netlify.app',
                     previews: [
@@ -130,7 +130,7 @@ const informationMixin = {
                 {
                     name: 'Lokal PH',
                     description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut pharetra nibh.',
+                        'A web based E-commerce for  buying and selling of "Dope🔥" goods.',
                     type: 'Side Project',
                     url: 'https://lokalph-development.netlify.app',
                     previews: [
@@ -140,9 +140,9 @@ const informationMixin = {
                     ],
                 },
                 {
-                    name: 'City of Malabon Barangay System',
+                    name: 'Malabon Barangay System',
                     description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut pharetra nibh.',
+                        'A web based system for City of Malabon 21 barangays to manage inhabitants, clearance, business permits etc.',
                     type: 'Work Project',
                     url: 'http://barangay-development.s3-website-ap-southeast-1.amazonaws.com',
                     previews: [
