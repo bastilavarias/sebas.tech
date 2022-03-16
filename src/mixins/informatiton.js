@@ -105,6 +105,44 @@ const informationMixin = {
                     span: '2006 - 2012',
                 },
             ],
+
+            projects: [
+                {
+                    name: 'Safe Line',
+                    description:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut pharetra nibh.',
+                    type: 'Side Project',
+                    url: 'https://safe-line-development.netlify.app',
+                    previews: [
+                        require('@/assets/previews/safe-line/1.png'),
+                        require('@/assets/previews/safe-line/2.png'),
+                        require('@/assets/previews/safe-line/3.png'),
+                    ],
+                },
+                {
+                    name: 'Lokal PH',
+                    description:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut pharetra nibh.',
+                    type: 'Side Project',
+                    url: 'https://lokalph-development.netlify.app',
+                    previews: [
+                        require('@/assets/previews/lokal-ph/1.png'),
+                        require('@/assets/previews/lokal-ph/2.png'),
+                        require('@/assets/previews/lokal-ph/3.png'),
+                    ],
+                },
+                {
+                    name: 'City of Malabon Barangay System',
+                    description:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut pharetra nibh.',
+                    type: 'Work Project',
+                    url: 'http://barangay-development.s3-website-ap-southeast-1.amazonaws.com',
+                    previews: [
+                        require('@/assets/previews/malabon-barangay/1.png'),
+                        require('@/assets/previews/malabon-barangay/2.png'),
+                    ],
+                },
+            ],
         };
     },
 };
