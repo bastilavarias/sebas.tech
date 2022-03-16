@@ -3,8 +3,14 @@
         <v-main>
             <v-container>
                 <v-row>
-                    <v-col cols="12" md="3">
-                        <v-list outlined rounded dense color="transparent">
+                    <v-col cols="12" md="3" class="d-none d-md-block">
+                        <v-list
+                            outlined
+                            rounded
+                            dense
+                            color="transparent"
+                            class=""
+                        >
                             <v-list-item-group color="primary">
                                 <template
                                     v-for="(navigation, index) in navigations"
@@ -36,7 +42,6 @@
                                 </template>
                             </v-list-item-group>
                         </v-list>
-
                         <v-card color="transparent" flat>
                             <v-card-text>
                                 <v-row dense>
@@ -103,26 +108,41 @@
                                     </v-list-item>
 
                                     <v-card-text>
-                                        <v-card
-                                            flat
-                                            style="border-radius: 1rem"
+                                        <div
+                                            class="text-justify black--text mb-5"
                                         >
-                                            <v-card-text
-                                                class="text-justify black--text"
-                                                >I'm Sebastian Curtis T.
-                                                Lavarias, {{ age }} years of
-                                                age. A student and web developer
-                                                from Manila, Philippines.
-                                                Currently, I'm in my senior year
-                                                at Universidad de Manila taking
-                                                Bachelor of Science in
-                                                Information
-                                                Technology.</v-card-text
-                                            >
-                                        </v-card>
+                                            I'm Sebastian Curtis T. Lavarias,
+                                            {{ age }} years of age. A student
+                                            and web developer from Manila,
+                                            Philippines. Currently, I'm in my
+                                            senior year at Universidad de Manila
+                                            taking Bachelor of Science in
+                                            Information Technology.
+                                        </div>
+
+                                        <div class="d-block d-md-none">
+                                            <v-row dense>
+                                                <template
+                                                    v-for="(
+                                                        skill, index
+                                                    ) in skills"
+                                                >
+                                                    <v-col
+                                                        cols="6"
+                                                        sm="4"
+                                                        :key="index"
+                                                    >
+                                                        <skill-card
+                                                            :text="skill.text"
+                                                            :icon="skill.icon"
+                                                        ></skill-card>
+                                                    </v-col>
+                                                </template>
+                                            </v-row>
+                                        </div>
                                     </v-card-text>
                                 </v-col>
-                                <v-col cols="12" md="5">
+                                <v-col cols="12" md="5" class="mb-5">
                                     <v-list dense>
                                         <v-list-item>
                                             <v-list-item-content>
