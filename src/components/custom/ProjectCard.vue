@@ -20,7 +20,7 @@
             {{ description }}
         </v-card-text>
 
-        <v-card-text>
+        <v-card-text class="d-none d-md-block">
             <v-carousel
                 v-model="carousel"
                 hide-delimiters

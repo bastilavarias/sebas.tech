@@ -36,6 +36,10 @@ const informationMixin = {
                     icon: 'mdi-sass',
                 },
                 {
+                    text: 'Vue',
+                    icon: 'mdi-vuejs',
+                },
+                {
                     text: 'NodeJS',
                     icon: 'mdi-nodejs',
                 },
@@ -46,6 +50,10 @@ const informationMixin = {
                 {
                     text: 'SQL',
                     icon: 'mdi-database-search',
+                },
+                {
+                    text: 'Git',
+                    icon: 'mdi-git',
                 },
                 {
                     text: 'AWS',
