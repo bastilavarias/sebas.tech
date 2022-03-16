@@ -151,7 +151,6 @@
                                                         <v-list-item-title
                                                             class="text-decoration-underline"
                                                             ><v-btn
-                                                                small
                                                                 text
                                                                 href="./my-resume-2022.pdf"
                                                                 target="_blank"
