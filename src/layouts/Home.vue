@@ -140,9 +140,97 @@
                                                 </template>
                                             </v-row>
                                         </div>
+
+                                        <div class="d-block d-md-none">
+                                            <v-list>
+                                                <v-list-item class="pl-0">
+                                                    <v-list-item-content>
+                                                        <v-list-item-subtitle
+                                                            >Resume</v-list-item-subtitle
+                                                        >
+                                                        <v-list-item-title
+                                                            class="text-decoration-underline"
+                                                            ><v-btn
+                                                                small
+                                                                text
+                                                                href="./my-resume-2022.pdf"
+                                                                target="_blank"
+                                                                class="pl-0"
+                                                            >
+                                                                MyResume2022.pdf
+                                                            </v-btn></v-list-item-title
+                                                        >
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                                <v-list-item class="pl-0">
+                                                    <v-list-item-content>
+                                                        <v-list-item-subtitle
+                                                            >E-mail</v-list-item-subtitle
+                                                        >
+                                                        <v-list-item-title>
+                                                            {{ email }}
+                                                        </v-list-item-title>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                                <v-list-item class="pl-0">
+                                                    <v-list-item-content>
+                                                        <v-list-item-subtitle
+                                                            >Mobile
+                                                            Number</v-list-item-subtitle
+                                                        >
+                                                        <v-list-item-title>
+                                                            {{ mobileNumber }}
+                                                        </v-list-item-title>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                                <v-list-item class="pl-0">
+                                                    <v-list-item-content>
+                                                        <v-list-item-subtitle
+                                                            >Socials</v-list-item-subtitle
+                                                        >
+                                                        <v-list-item-title>
+                                                            <template
+                                                                v-for="(
+                                                                    social,
+                                                                    index
+                                                                ) in socials"
+                                                            >
+                                                                <v-btn
+                                                                    depressed
+                                                                    target="_blank"
+                                                                    :href="
+                                                                        social.link
+                                                                    "
+                                                                    class="mr-1"
+                                                                    :key="index"
+                                                                >
+                                                                    <v-icon
+                                                                        class="mr-1"
+                                                                        >{{
+                                                                            social.icon
+                                                                        }}</v-icon
+                                                                    >
+                                                                    <span
+                                                                        class="text-capitalize"
+                                                                    >
+                                                                        {{
+                                                                            social.text
+                                                                        }}
+                                                                    </span>
+                                                                </v-btn>
+                                                            </template>
+                                                        </v-list-item-title>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-list>
+                                        </div>
                                     </v-card-text>
                                 </v-col>
-                                <v-col cols="12" md="5" class="mb-5">
+                                <v-col
+                                    cols="12"
+                                    md="5"
+                                    class="d-none d-md-block mb-md-5"
+                                >
                                     <v-list dense>
                                         <v-list-item>
                                             <v-list-item-content>
@@ -151,7 +239,15 @@
                                                 >
                                                 <v-list-item-title
                                                     class="text-decoration-underline"
-                                                    >MyResume2022.pdf</v-list-item-title
+                                                    ><v-btn
+                                                        small
+                                                        text
+                                                        href="./my-resume-2022.pdf"
+                                                        target="_blank"
+                                                        class="pl-0"
+                                                    >
+                                                        MyResume2022.pdf
+                                                    </v-btn></v-list-item-title
                                                 >
                                             </v-list-item-content>
                                         </v-list-item>
