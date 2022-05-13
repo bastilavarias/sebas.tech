@@ -75,7 +75,7 @@ const informationMixin = {
                             type: null,
                             gigs: [],
                             details: [
-                                'Uses Vue, Laravel, MySQL, and AWS Technologies.',
+                                'Used Vue, Laravel, MySQL, and AWS Technologies.',
                                 'Developed, implemented features, and made revisions to Malabon City Hall HRIS, Malabon Barangay System, and City of Malabon University Portal.',
                             ],
                         },
@@ -87,7 +87,7 @@ const informationMixin = {
                             type: null,
                             gigs: [],
                             details: [
-                                'Uses Vue, Google Cloud Platform, and AWS Technologies.',
+                                'Used Vue, Google Cloud Platform, and AWS Technologies.',
                                 'Developed the admin portal of the Vaskeappen App.',
                             ],
                         },
@@ -103,7 +103,7 @@ const informationMixin = {
                     type: 'Full-time',
                     gigs: [],
                     details: [
-                        'Uses Vue, Laravel, Node, and AWS Technologies.',
+                        'Used Vue, Laravel, Node, and AWS Technologies.',
                         'Converted UI/UX designs to an interactive website.',
                         'Developed responsive and mobile-friendly web applications.',
                         'Implemented and made APIs according to the business requirements.',
