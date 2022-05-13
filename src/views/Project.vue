@@ -16,6 +16,7 @@
                         :type="project.type"
                         :url="project.url"
                         :previews="project.previews"
+                        :technologies="project.technologies"
                     ></project-card>
                 </v-col>
             </template>
