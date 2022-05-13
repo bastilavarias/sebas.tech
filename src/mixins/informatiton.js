@@ -63,10 +63,36 @@ const informationMixin = {
 
             workExperiences: [
                 {
-                    company: 'Malabon LGU',
+                    company: 'Freelance Web Developer',
                     span: 'Dec 2021 - Present',
-                    role: 'Web Developer',
-                    type: 'Outsourced',
+                    role: null,
+                    type: 'Part-time',
+                    gigs: [
+                        {
+                            company: 'Malabon LGU',
+                            span: null,
+                            role: 'Web Developer',
+                            type: null,
+                            gigs: [],
+                            details: [
+                                'Uses Vue, Laravel, MySQL, and AWS technologies.',
+                                'Developed, implemented features, and made revisions to Malabon City Hall HRIS, Malabon Barangay System, and City of Malabon University Portal.',
+                            ],
+                        },
+
+                        {
+                            company: 'Vaskeappen',
+                            span: null,
+                            role: 'Web Developer',
+                            type: null,
+                            gigs: [],
+                            details: [
+                                'Uses Vue, Google Cloud Platform, and AWS technologies.',
+                                'Developed the admin portal of the Vaskeappen App.',
+                            ],
+                        },
+                    ],
+
                     details: [],
                 },
 
@@ -75,7 +101,9 @@ const informationMixin = {
                     span: 'Dec 2020 - Dec 2021',
                     role: 'Web Developer',
                     type: 'Full-time',
+                    gigs: [],
                     details: [
+                        'Uses Vue, Laravel, Node, and AWS technologies.',
                         'Converted UI/UX designs to an interactive website.',
                         'Developed responsive and mobile-friendly web applications.',
                         'Implemented and made APIs according to the business requirements.',
@@ -116,7 +144,20 @@ const informationMixin = {
 
             projects: [
                 {
+                    name: 'Tipid Gadgets',
+                    description:
+                        'A web based Buy and Sell Computers and Gadgets in the Philippines.',
+                    technologies: 'Vue, Laravel, MySQL, and AWS technologies.',
+                    type: 'Side Project',
+                    url: 'http://tipid-gadgets-production.s3-website-ap-southeast-1.amazonaws.com',
+                    previews: [
+                        require('@/assets/previews/tipid-gadgets/1.png'),
+                        require('@/assets/previews/tipid-gadgets/2.png'),
+                    ],
+                },
+                {
                     name: 'Safe Line',
+                    technologies: 'Vue, Laravel, MySQL, and Netlify/Heroku.',
                     description:
                         'A web based telemedicine platform with clinic locator for identifying the nearest suitable clinic based on patient’s needs.',
                     type: 'Side Project',
@@ -129,6 +170,7 @@ const informationMixin = {
                 },
                 {
                     name: 'Lokal PH',
+                    technologies: 'Vue, Node, PostgreSQL, and Netlify/Heroku.',
                     description:
                         'A web based E-commerce for  buying and selling of "Dope🔥" goods.',
                     type: 'Side Project',
@@ -137,17 +179,6 @@ const informationMixin = {
                         require('@/assets/previews/lokal-ph/1.png'),
                         require('@/assets/previews/lokal-ph/2.png'),
                         require('@/assets/previews/lokal-ph/3.png'),
-                    ],
-                },
-                {
-                    name: 'Malabon Barangay System',
-                    description:
-                        'A web based system for City of Malabon 21 barangays to manage inhabitants, clearance, business permits etc.',
-                    type: 'Work Project',
-                    url: 'http://barangay-development.s3-website-ap-southeast-1.amazonaws.com',
-                    previews: [
-                        require('@/assets/previews/malabon-barangay/1.png'),
-                        require('@/assets/previews/malabon-barangay/2.png'),
                     ],
                 },
             ],

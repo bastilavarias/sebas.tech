@@ -11,6 +11,7 @@
                         :span="exp.span"
                         :role="exp.role"
                         :type="exp.type"
+                        :gigs="exp.gigs"
                         :details="exp.details"
                     ></work-experience-card>
                 </v-col>
