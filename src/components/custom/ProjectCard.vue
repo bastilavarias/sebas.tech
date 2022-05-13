@@ -1,12 +1,16 @@
 <template>
     <v-card color="#F5F7F9" flat style="border-radius: 1rem">
-        <v-list-item>
+        <v-list-item two-line>
             <v-list-item-content>
                 <v-list-item-title class="d-flex"
                     ><span class="font-weight-bold mr-2">{{ name }}</span
                     ><span class="caption grey--text">{{
                         type
                     }}</span></v-list-item-title
+                >
+                <v-list-item-subtitle
+                    >Techonologies used:
+                    {{ technologies }}</v-list-item-subtitle
                 >
             </v-list-item-content>
             <v-list-item-action>
@@ -87,6 +91,7 @@ export default {
         type: String,
         url: String,
         previews: Array,
+        technologies: String,
     },
 
     methods: {
