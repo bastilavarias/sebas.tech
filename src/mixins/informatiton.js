@@ -1,7 +1,7 @@
 const informationMixin = {
     data() {
         return {
-            age: 21,
+            age: 22,
             email: 'sebastiancurtislavarias@gmail.com',
             mobileNumber: '09972217704',
 
@@ -63,23 +63,25 @@ const informationMixin = {
 
             workExperiences: [
                 {
+                    company: 'Fourello',
+                    span: 'Dec 2020 - Present',
+                    role: 'Web Developer',
+                    type: 'Full-time',
+                    gigs: [],
+                    details: [
+                        'Used Vue, Laravel, Node, and AWS Technologies.',
+                        'Converted UI/UX designs to an interactive website.',
+                        'Developed responsive and mobile-friendly web applications.',
+                        'Implemented and made APIs according to the business requirements.',
+                    ],
+                },
+
+                {
                     company: 'Freelance Web Developer',
                     span: 'Dec 2021 - Present',
                     role: null,
                     type: 'Part-time',
                     gigs: [
-                        {
-                            company: 'Malabon LGU',
-                            span: null,
-                            role: 'Web Developer',
-                            type: null,
-                            gigs: [],
-                            details: [
-                                'Used Vue, Laravel, MySQL, and AWS Technologies.',
-                                'Developed, implemented features, and made revisions to Malabon City Hall HRIS, Malabon Barangay System, and City of Malabon University Portal.',
-                            ],
-                        },
-
                         {
                             company: 'Vaskeappen',
                             span: null,
@@ -94,21 +96,6 @@ const informationMixin = {
                     ],
 
                     details: [],
-                },
-
-                {
-                    company: 'Fourello',
-                    span: 'Dec 2020 - Dec 2021',
-                    role: 'Web Developer',
-                    type: 'Full-time',
-                    gigs: [],
-                    details: [
-                        'Used Vue, Laravel, Node, and AWS Technologies.',
-                        'Converted UI/UX designs to an interactive website.',
-                        'Developed responsive and mobile-friendly web applications.',
-                        'Implemented and made APIs according to the business requirements.',
-                        'Led a team consisting of developers to implement features to a project.',
-                    ],
                 },
             ],
 
@@ -143,6 +130,17 @@ const informationMixin = {
             ],
 
             projects: [
+                {
+                    name: 'Static Websites Compilation',
+                    description: 'Compilation of static websites I made.',
+                    technologies: 'Vue, Tailwind.',
+                    type: 'Side Project',
+                    url: 'https://tailwind-websites.netlify.app/#/',
+                    previews: [
+                        require('@/assets/previews/tailwind-websites/1.png'),
+                        require('@/assets/previews/tailwind-websites/2.png'),
+                    ],
+                },
                 {
                     name: 'Tipid Gadgets',
                     description:
