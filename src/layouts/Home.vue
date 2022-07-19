@@ -356,7 +356,7 @@ export default {
                     text: 'Experience',
                     to: { name: 'home' },
                 },
-                { text: 'Public Projects', to: { name: 'project' } },
+                // { text: 'Public Projects', to: { name: 'project' } },
             ],
             navigations: [
                 {
