@@ -64,7 +64,7 @@ const informationMixin = {
             workExperiences: [
                 {
                     company: 'Fourello',
-                    span: 'Dec 2020 - Present',
+                    span: 'Dec 2019 - Present',
                     role: 'Web Developer',
                     type: 'Full-time',
                     gigs: [],
