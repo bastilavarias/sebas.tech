@@ -2,9 +2,17 @@
     <v-card color="#F5F7F9" flat style="border-radius: 1rem">
         <v-list-item :three-line="!!role" :two-line="!!!role">
             <v-list-item-content>
-                <v-list-item-title class="d-flex"
-                    ><span class="font-weight-bold mr-2">{{ company }}</span
-                    ><span class="caption grey--text">{{
+                <v-list-item-title class="d-flex">
+                    <a :href="url" target="_blank" v-if="url">
+                        <span
+                            class="font-weight-bold text-decoration-underline mr-2 black--text"
+                            >{{ company }}</span
+                        >
+                    </a>
+                    <span class="font-weight-bold mr-2 black--text" v-else>{{
+                        company
+                    }}</span>
+                    <span class="caption grey--text">{{
                         type
                     }}</span></v-list-item-title
                 >
@@ -18,11 +26,19 @@
             <template v-for="(gig, index) in gigs">
                 <v-list-item two-line :key="index">
                     <v-list-item-content>
-                        <v-list-item-title class="d-flex"
-                            ><span class="font-weight-bold mr-2">{{
-                                gig.company
-                            }}</span
-                            ><span class="caption grey--text" v-if="gig.type">{{
+                        <v-list-item-title class="d-flex">
+                            <a :href="gig.url" target="_blank" v-if="gig.url">
+                                <span
+                                    class="font-weight-bold text-decoration-underline mr-2 black--text"
+                                    >{{ gig.company }}</span
+                                >
+                            </a>
+                            <span
+                                class="font-weight-bold mr-2 black--text"
+                                v-else
+                                >{{ gig.company }}</span
+                            >
+                            <span class="caption grey--text" v-if="gig.type">{{
                                 gig.type
                             }}</span></v-list-item-title
                         >
@@ -66,6 +82,7 @@ export default {
         type: String,
         gigs: Array,
         details: Array,
+        url: String,
     },
 };
 </script>

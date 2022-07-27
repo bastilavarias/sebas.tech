@@ -10,6 +10,7 @@
                         :company="exp.company"
                         :span="exp.span"
                         :role="exp.role"
+                        :url="exp.url"
                         :type="exp.type"
                         :gigs="exp.gigs"
                         :details="exp.details"
@@ -37,7 +38,7 @@
 <script>
 import WorkExperienceCard from '@/components/custom/WorkExperienceCard';
 import EducationCard from '@/components/custom/EducationCard';
-import informationMixin from '@/mixins/informatiton';
+import informationMixin from '@/mixins/information';
 
 export default {
     components: { EducationCard, WorkExperienceCard },
