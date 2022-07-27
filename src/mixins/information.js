@@ -63,10 +63,34 @@ const informationMixin = {
 
             workExperiences: [
                 {
+                    company: 'Outsourced Web Developer',
+                    span: 'Nov 2021 - Present',
+                    role: null,
+                    type: 'Part-time',
+                    gigs: [
+                        {
+                            company: 'Vaskeappen',
+                            span: null,
+                            role: 'Front-end Developer',
+                            type: null,
+                            url: 'https://vaskeappen.com/',
+                            gigs: [],
+                            details: [
+                                'Used Vue, Google Cloud Platform, and AWS Technologies.',
+                                'Developed the web portal of the Vaskeappen App.',
+                            ],
+                        },
+                    ],
+
+                    details: [],
+                },
+
+                {
                     company: 'Fourello',
-                    span: 'Dec 2019 - Present',
-                    role: 'Web Developer',
+                    span: 'Dec 2020 - Present',
+                    role: 'Full-stack Web Developer',
                     type: 'Full-time',
+                    url: 'https://fourello.com/',
                     gigs: [],
                     details: [
                         'Used Vue, Laravel, Node, and AWS Technologies.',
@@ -74,28 +98,6 @@ const informationMixin = {
                         'Developed responsive and mobile-friendly web applications.',
                         'Implemented and made APIs according to the business requirements.',
                     ],
-                },
-
-                {
-                    company: 'Freelance Web Developer',
-                    span: 'Dec 2021 - Present',
-                    role: null,
-                    type: 'Part-time',
-                    gigs: [
-                        {
-                            company: 'Vaskeappen',
-                            span: null,
-                            role: 'Web Developer',
-                            type: null,
-                            gigs: [],
-                            details: [
-                                'Used Vue, Google Cloud Platform, and AWS Technologies.',
-                                'Developed the admin portal of the Vaskeappen App.',
-                            ],
-                        },
-                    ],
-
-                    details: [],
                 },
             ],
 
@@ -131,53 +133,58 @@ const informationMixin = {
 
             projects: [
                 {
-                    name: 'Static Websites Compilation',
-                    description: 'Compilation of static websites I made.',
-                    technologies: 'Vue, Tailwind.',
-                    type: 'Side Project',
-                    url: 'https://tailwind-websites.netlify.app/#/',
-                    previews: [
-                        require('@/assets/previews/tailwind-websites/1.png'),
-                        require('@/assets/previews/tailwind-websites/2.png'),
-                    ],
-                },
-                {
-                    name: 'Tipid Gadgets',
+                    name: 'Medgate',
                     description:
-                        'A web based Buy and Sell Computers and Gadgets in the Philippines.',
-                    technologies: 'Vue, Laravel, MySQL, and AWS Technologies.',
-                    type: 'Side Project',
-                    url: 'http://tipid-gadgets-production.s3-website-ap-southeast-1.amazonaws.com',
-                    previews: [
-                        require('@/assets/previews/tipid-gadgets/2.png'),
-                        require('@/assets/previews/tipid-gadgets/1.png'),
-                    ],
+                        'Medgate is a teleconsultation mobile app that allows patients to talk to doctors regarding various illnesses as well as receive follow-up care and virtual prescription. I was assigned to create and maintain the public website, web portal, and CSR chats part of the system.',
+                    technologies: 'PHP/Laravel, JavaScript/Vuejs, AWS',
+                    type: 'Work Project',
+                    url: 'https://medgate.ph/',
+                    role: 'Full-stack Web Developer',
+                    previews: [],
                 },
+
                 {
-                    name: 'Safe Line',
-                    technologies: 'Vue, Laravel, MySQL, and Netlify/Heroku.',
+                    name: 'Inspire Church',
                     description:
-                        'A web based telemedicine platform with clinic locator for identifying the nearest suitable clinic based on patient’s needs.',
-                    type: 'Side Project',
-                    url: 'https://safe-line-development.netlify.app',
-                    previews: [
-                        require('@/assets/previews/safe-line/1.png'),
-                        require('@/assets/previews/safe-line/2.png'),
-                        require('@/assets/previews/safe-line/3.png'),
-                    ],
+                        'Inspire App is designed to publish content and have the church members watch or listen to these contents. I was assigned to create and maintain the web portal part of the system.',
+                    technologies: 'PHP/Laravel, JavaScript/Vuejs, AWS',
+                    type: 'Work Project',
+                    url: 'https://www.inspirechurch.live/',
+                    role: 'Full-stack Web Developer',
+                    previews: [],
                 },
+
+                {
+                    name: 'ZWELL Philippines',
+                    description:
+                        'ZWELL Philippine Realty Development Corp is a Philippine-based real-estate corporation. I was assigned to create and maintain ZWELL`s web portal.',
+                    technologies: 'PHP/Laravel, JavaScript/Vuejs, AWS',
+                    type: 'Work Project',
+                    url: null,
+                    role: 'Full-stack Web Developer',
+                    previews: [],
+                },
+
+                {
+                    name: 'Vaskeappen',
+                    description:
+                        'A mobile app that connects customers to self-employed cleaners with just a few taps of their fingers.  I was assigned to create and maintain the public website and web portal part of the system.',
+                    technologies: 'JavaScript/Vuejs, AWS',
+                    type: 'Work Project',
+                    url: 'https://vaskeappen.com/',
+                    role: 'Front-end Developer',
+                    previews: [],
+                },
+
                 {
                     name: 'Lokal PH',
-                    technologies: 'Vue, Node, PostgreSQL, and Netlify/Heroku.',
                     description:
-                        'A web based E-commerce for  buying and selling of "Dope🔥" goods.',
+                        'An e-commerce web platform for locally made products from the Philippines.',
+                    technologies: 'JavaScript/Vuejs, NodeJS, Heroku',
                     type: 'Side Project',
-                    url: 'https://lokalph-development.netlify.app',
-                    previews: [
-                        require('@/assets/previews/lokal-ph/1.png'),
-                        require('@/assets/previews/lokal-ph/2.png'),
-                        require('@/assets/previews/lokal-ph/3.png'),
-                    ],
+                    url: 'https://lokalph-development.netlify.app/',
+                    role: 'Full-stack Web Developer',
+                    previews: [],
                 },
             ],
         };

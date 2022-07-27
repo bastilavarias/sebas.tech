@@ -2,19 +2,39 @@
     <v-card color="#F5F7F9" flat style="border-radius: 1rem">
         <v-list-item two-line>
             <v-list-item-content>
-                <v-list-item-title class="d-flex"
-                    ><span class="font-weight-bold mr-2">{{ name }}</span
-                    ><span class="caption grey--text">{{
-                        type
-                    }}</span></v-list-item-title
+                <v-list-item-title class="d-flex">
+                    <a :href="url" target="_blank" v-if="url">
+                        <span
+                            class="font-weight-bold mr-2 text-decoration-underline black--text"
+                            >{{ name }}</span
+                        >
+                    </a>
+                    <span class="font-weight-bold mr-2 black--text" v-else>{{
+                        name
+                    }}</span>
+                    <span class="caption grey--text">{{ type }}</span>
+                </v-list-item-title>
+                <v-list-item-subtitle
+                    >Role:
+                    <span class="black--text">{{
+                        role
+                    }}</span></v-list-item-subtitle
                 >
                 <v-list-item-subtitle
-                    >Techonologies used:
-                    {{ technologies }}</v-list-item-subtitle
+                    >Technologies:
+                    <span class="black--text">{{
+                        technologies
+                    }}</span></v-list-item-subtitle
                 >
             </v-list-item-content>
             <v-list-item-action>
-                <v-btn icon color="blue" :href="url" target="_blank">
+                <v-btn
+                    icon
+                    color="blue"
+                    :href="url"
+                    target="_blank"
+                    :disabled="!url"
+                >
                     <v-icon>mdi-web</v-icon>
                 </v-btn>
             </v-list-item-action>
@@ -24,7 +44,7 @@
             {{ description }}
         </v-card-text>
 
-        <v-card-text class="d-none d-md-block">
+        <v-card-text class="d-none d-md-block" v-if="previews.length > 0">
             <v-carousel
                 v-model="carousel"
                 hide-delimiters
@@ -89,6 +109,7 @@ export default {
         name: String,
         description: String,
         type: String,
+        role: String,
         url: String,
         previews: Array,
         technologies: String,

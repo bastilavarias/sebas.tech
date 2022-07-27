@@ -340,7 +340,8 @@
 
 <script>
 import SkillCard from '@/components/custom/SkillCard';
-import informationMixin from '@/mixins/informatiton';
+import informationMixin from '@/mixins/information';
+
 export default {
     name: 'home-layout',
 
@@ -356,7 +357,7 @@ export default {
                     text: 'Experience',
                     to: { name: 'home' },
                 },
-                // { text: 'Public Projects', to: { name: 'project' } },
+                { text: 'Projects', to: { name: 'project' } },
             ],
             navigations: [
                 {
