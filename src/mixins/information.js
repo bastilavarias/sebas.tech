@@ -68,7 +68,7 @@ const informationMixin = {
             workExperiences: [
                 {
                     company: 'Outsourced Web Developer',
-                    span: 'Nov 2021 - Present',
+                    span: 'Nov 2021 - Aug 2022',
                     role: null,
                     type: 'Part-time',
                     gigs: [
