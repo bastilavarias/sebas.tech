@@ -44,6 +44,10 @@ const informationMixin = {
                     icon: 'mdi-nodejs',
                 },
                 {
+                    text: 'PHP',
+                    icon: 'mdi-language-php',
+                },
+                {
                     text: 'Laravel',
                     icon: 'mdi-laravel',
                 },
