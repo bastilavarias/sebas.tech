@@ -112,12 +112,9 @@
                                             class="text-justify black--text mb-5"
                                         >
                                             I'm Sebastian Curtis T. Lavarias,
-                                            {{ age }} years of age. A student
-                                            and web developer from Manila,
-                                            Philippines. Currently, I'm in my
-                                            senior year at Universidad de Manila
-                                            taking Bachelor of Science in
-                                            Information Technology.
+                                            {{ age }} years of age. A Full-stack
+                                            web developer from Manila,
+                                            Philippines.
                                         </div>
 
                                         <div class="d-block d-md-none">
