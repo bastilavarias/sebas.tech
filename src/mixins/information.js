@@ -110,28 +110,28 @@ const informationMixin = {
                     level: 'College',
                     school: 'Universidad de Manila',
                     course: 'BS Information Technology',
-                    span: '2018 - Present',
+                    span: '2023',
                 },
 
                 {
                     level: null,
                     school: 'Metropolitan Medical Center College of Arts Science & Technology',
                     course: 'Senior High school',
-                    span: '2016 - 2018',
+                    span: '2018',
                 },
 
                 {
                     level: null,
                     school: 'Tondo High School',
                     course: 'Junior High school',
-                    span: '2012 - 2016',
+                    span: '2016',
                 },
 
                 {
                     level: null,
                     school: 'Magat Salamat Elementary School',
                     course: 'Elementary',
-                    span: '2006 - 2012',
+                    span: '2012',
                 },
             ],
 
