@@ -152,11 +152,11 @@
                                                             class="text-decoration-underline"
                                                             ><v-btn
                                                                 text
-                                                                href="./my-resume-2022.pdf"
+                                                                href="./SebastianCurtisLavarias.pdf"
                                                                 target="_blank"
                                                                 class="pl-0"
                                                             >
-                                                                MyResume2022.pdf
+                                                                SLAVARIAS_RESUME.pdf
                                                             </v-btn></v-list-item-title
                                                         >
                                                     </v-list-item-content>
@@ -241,11 +241,11 @@
                                                     ><v-btn
                                                         small
                                                         text
-                                                        href="./my-resume-2022.pdf"
+                                                        href="./SebastianCurtisLavarias.pdf"
                                                         target="_blank"
                                                         class="pl-0"
                                                     >
-                                                        MyResume2022.pdf
+                                                        SLAVARIAS_RESUME.pdf
                                                     </v-btn></v-list-item-title
                                                 >
                                             </v-list-item-content>
