@@ -67,6 +67,20 @@ const informationMixin = {
 
             workExperiences: [
                 {
+                    company: 'ChanzIT',
+                    span: 'Oct 2022 - Present',
+                    role: 'Full-stack Web Developer',
+                    type: 'Full-time',
+                    url: 'https://www.chanzglobal.com/',
+                    gigs: [],
+                    details: [
+                        'Used Vue, Laravel, and AWS Technologies.',
+                        'Converted UI/UX designs to an interactive website.',
+                        'Developed responsive and mobile-friendly web applications.',
+                        'Implemented and made APIs according to the business requirements.',
+                    ],
+                },
+                {
                     company: 'Outsourced Web Developer',
                     span: 'Nov 2021 - Aug 2022',
                     role: null,
@@ -91,7 +105,7 @@ const informationMixin = {
 
                 {
                     company: 'Fourello',
-                    span: 'Dec 2020 - Present',
+                    span: 'Dec 2020 - Oct 2022',
                     role: 'Full-stack Web Developer',
                     type: 'Full-time',
                     url: 'https://fourello.com/',
@@ -137,16 +151,26 @@ const informationMixin = {
 
             projects: [
                 {
-                    name: 'Medgate',
+                    name: 'Water Delivery Philippines',
                     description:
-                        'Medgate is a teleconsultation mobile app that allows patients to talk to doctors regarding various illnesses as well as receive follow-up care and virtual prescription. I was assigned to create and maintain the public website, web portal, and CSR chats part of the system.',
+                        'Water Delivery Philippines is an online platform and mobile application that facilitates the convenient ordering of top-notch drinking water from over 100+ reliable distributors located in the National Capital Region (NCR).  I have been assigned the task of developing the 2.0 version of Water Delivery Philippines.',
+                    technologies: 'PHP/Laravel, JavaScript/Vue 3, CapacitorJS',
+                    type: 'Work Project',
+                    url: 'https://www.waterdelivery.ph/',
+                    role: 'Lead Full-stack Web/Mobile Developer',
+                    previews: [],
+                },
+                {
+
+                    name: 'IMATCH',
+                    description:
+                        'iMatch Realty Inc., a real estate company based in BGC, Manila and Boracay. My responsibility involves maintaining and introducing new features to the website.',
                     technologies: 'PHP/Laravel, JavaScript/Vuejs, AWS',
                     type: 'Work Project',
-                    url: 'https://medgate.ph/',
+                    url: 'https://www.imatch.ph/',
                     role: 'Full-stack Web Developer',
                     previews: [],
                 },
-
                 {
                     name: 'Inspire Church',
                     description:
@@ -181,13 +205,13 @@ const informationMixin = {
                 },
 
                 {
-                    name: 'Lokal PH',
+                    name: 'MySQL Settings',
                     description:
-                        'An e-commerce web platform for locally made products from the Philippines.',
-                    technologies: 'JavaScript/Vuejs, NodeJS, Heroku',
-                    type: 'Side Project',
-                    url: 'https://lokalph-development.netlify.app/',
-                    role: 'Full-stack Web Developer',
+                        'The MySQL memory calculator is aiming to make a system operator\'s life a bit easier. By using the form below, and copying the new values to your settings file, you can fine tune your server and avoid system errors due wrong memory settings for MySQL.',
+                    technologies: 'JavaScript/Vuejs, Nuxt',
+                    type: 'Mini Work Project',
+                    url: 'https://www.mysqlsettings.com/',
+                    role: 'Front-end Developer',
                     previews: [],
                 },
             ],
