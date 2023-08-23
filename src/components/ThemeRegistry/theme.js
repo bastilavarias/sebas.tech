@@ -14,7 +14,10 @@ const theme = createTheme({
             main: '#000000',
         },
         secondary: {
-            main: '#272829',
+            main: '#f5f7f9',
+        },
+        background: {
+            default: '#fcf7f6',
         },
     },
     typography: {

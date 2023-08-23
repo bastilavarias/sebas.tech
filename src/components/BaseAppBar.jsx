@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Container from '@mui/material/Container'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Link from 'next/link'
-import Avatar from '@mui/material/Avatar'
-import Image from 'next/image'
-import MyLogo from '@/assets/my-logo.png'
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Link from 'next/link';
+import Avatar from '@mui/material/Avatar';
+import Image from 'next/image';
+import MyLogo from '@/assets/my-logo.png';
 
-export default function Index() {
+export default function BaseAppBar() {
     const NavigationButtons = () => {
         const navigations = [
             {
@@ -22,7 +22,7 @@ export default function Index() {
                 text: 'THE STOA',
                 href: '/stoa',
             },
-        ]
+        ];
 
         return navigations.map((navigation, index) => (
             <Button
@@ -37,8 +37,8 @@ export default function Index() {
             >
                 {navigation.text}
             </Button>
-        ))
-    }
+        ));
+    };
 
     const ContactButton = () => (
         <Button
@@ -56,21 +56,16 @@ export default function Index() {
         >
             Contact Me
         </Button>
-    )
+    );
 
     return (
         <AppBar
             position="fixed"
-            sx={{ zIndex: 2000, bgcolor: 'white' }}
+            sx={{ zIndex: 2000, bgcolor: 'background.default' }}
             elevation={0}
         >
             <Container>
-                <Toolbar
-                    sx={{
-                        backgroundColor: 'background.paper',
-                    }}
-                    disableGutters
-                >
+                <Toolbar disableGutters>
                     <Avatar variant="square" sx={{ width: 95, height: 95 }}>
                         <Image src={MyLogo} alt="SebasTech" fill />
                     </Avatar>
@@ -81,5 +76,5 @@ export default function Index() {
                 </Toolbar>
             </Container>
         </AppBar>
-    )
+    );
 }

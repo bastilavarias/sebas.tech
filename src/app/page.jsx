@@ -2,8 +2,9 @@ import * as React from 'react';
 import StoicBanner from '@/components/app/root/StoicBanner';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import NewUploadsSection from '@/components/app/root/NewUploadsSection';
+import MaterialsSection from '@/components/app/root/MaterialsSection';
 import PortfolioOverviewSection from '@/components/app/root/PortfolioOverviewSection';
+import Divider from '@mui/material/Divider';
 
 export default function HomePage() {
     return (
@@ -16,7 +17,7 @@ export default function HomePage() {
                     <PortfolioOverviewSection />
                 </Grid>
                 <Grid item xs={12}>
-                    <NewUploadsSection />
+                    <MaterialsSection />
                 </Grid>
             </Grid>
         </Container>

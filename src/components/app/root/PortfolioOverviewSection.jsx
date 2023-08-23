@@ -10,10 +10,11 @@ import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Chip from '@mui/material/Chip';
+import WorkExperienceTimeline from '@/components/app/root/WorkExperienceTimeline';
 
 export default function PortfolioOverviewSection() {
     const [value, setValue] = React.useState(0);
-    const tabs = ['Career', 'Projects', 'Education'];
+    const tabs = ['Career', 'Projects'];
     const workExperiences = [
         {
             company: 'Chanz IT Business Solutions Inc.',
@@ -46,6 +47,28 @@ export default function PortfolioOverviewSection() {
         'SQL',
         'Git',
         'AWS',
+    ];
+    const education = [
+        {
+            school: 'Universidad de Manila',
+            level: 'BSIT',
+            duration: '2023',
+        },
+        {
+            school: 'Metropolitan Medical Center College of Arts Science & Technology',
+            level: 'Senior High School',
+            duration: '2018',
+        },
+        {
+            school: 'Tondo High School',
+            level: 'Junior High School',
+            duration: '2016',
+        },
+        {
+            school: 'Magat Salamat Elementary School',
+            level: 'Elementary',
+            duration: '2012',
+        },
     ];
 
     const a11yProps = (index) => {
@@ -122,7 +145,29 @@ export default function PortfolioOverviewSection() {
     );
 
     const TechSkillChip = ({ skill }) => (
-        <Chip color="primary" label={skill} sx={{ margin: 0.5 }} />
+        <Chip
+            color="primary"
+            label={skill}
+            sx={{ margin: 0.5, borderRadius: 0 }}
+        />
+    );
+
+    const EducationCard = ({ school, duration, level }) => (
+        <Card
+            color="primary"
+            elevation={0}
+            sx={{
+                width: '100%',
+                marginBottom: 1,
+                bgcolor: 'primary.secondary',
+            }}
+        >
+            <CardContent>
+                <Typography variant="subtitle1">{school}</Typography>
+                <Typography color="text.secondary">{level}</Typography>
+                <Typography variant="body2">{duration}</Typography>
+            </CardContent>
+        </Card>
     );
 
     return (
@@ -131,7 +176,6 @@ export default function PortfolioOverviewSection() {
             <Box
                 sx={{
                     flexGrow: 1,
-                    bgcolor: 'background.paper',
                     display: 'flex',
                 }}
             >
@@ -153,7 +197,7 @@ export default function PortfolioOverviewSection() {
                     sx={{ paddingLeft: 0, paddingTop: 0 }}
                 >
                     <Grid container>
-                        <Grid item xs={12} sx={{ paddingBottom: 2 }}>
+                        <Grid item xs={12} sx={{ marginBottom: 2 }}>
                             <Typography
                                 variant="subtitle2"
                                 component="h6"
@@ -161,14 +205,9 @@ export default function PortfolioOverviewSection() {
                             >
                                 Work Experiences
                             </Typography>
-                            {workExperiences.map((experience, index) => (
-                                <WorkExperienceCard
-                                    key={index}
-                                    {...experience}
-                                />
-                            ))}
+                            <WorkExperienceTimeline />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} sx={{ marginBottom: 5 }}>
                             <Typography
                                 variant="subtitle2"
                                 component="h6"
@@ -178,6 +217,18 @@ export default function PortfolioOverviewSection() {
                             </Typography>
                             {skills.map((skill, index) => (
                                 <TechSkillChip key={index} skill={skill} />
+                            ))}
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography
+                                variant="subtitle2"
+                                component="h6"
+                                sx={{ paddingBottom: 2 }}
+                            >
+                                Education
+                            </Typography>
+                            {education.map((item, index) => (
+                                <EducationCard key={index} {...item} />
                             ))}
                         </Grid>
                     </Grid>
@@ -194,13 +245,10 @@ export default function PortfolioOverviewSection() {
                                 component="h6"
                                 sx={{ paddingBottom: 2 }}
                             >
-                                Work Projects
+                                Selected Work Projects
                             </Typography>
                             {workExperiences.map((experience, index) => (
-                                <WorkExperienceCard
-                                    key={index}
-                                    {...experience}
-                                />
+                                <ProjectCard key={index} {...experience} />
                             ))}
                         </Grid>
                     </Grid>

@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function ContentCard({ type }) {
+export default function MaterialCard({ type }) {
     return (
         <Card color="primary" variant="outlined">
             <CardMedia
