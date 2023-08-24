@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import MaterialsSection from '@/components/app/root/MaterialsSection';
 import PortfolioOverviewSection from '@/components/app/root/PortfolioOverviewSection';
-import Divider from '@mui/material/Divider';
 
 export default function HomePage() {
     return (

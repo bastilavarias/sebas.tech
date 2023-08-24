@@ -19,7 +19,7 @@ export default function MaterialCard({ mode, height }) {
                 component="div"
             >
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                animi architecto eius, enim ex excepturi{' '}
+                animi architecto eius, enim ex excepturi
             </Typography>
         );
     };
