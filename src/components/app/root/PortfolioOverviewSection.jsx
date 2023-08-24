@@ -19,7 +19,7 @@ export default function PortfolioOverviewSection() {
         {
             company: 'Chanz IT Business Solutions Inc.',
             duration: 'October 2022 - Now',
-            role: 'Full-stack Web Development',
+            role: 'Full-stack Web Developer',
             website: 'https://www.chanzglobal.com/',
         },
         {
@@ -70,6 +70,71 @@ export default function PortfolioOverviewSection() {
             duration: '2012',
         },
     ];
+    const projects = [
+        {
+            name: 'Water Delivery Philippines',
+            gig: 'Work Project',
+            role: 'Lead Developer',
+            technologies: 'PHP/Laravel, JavaScript/Vue 3, CapacitorJS',
+            website: 'https://www.waterdelivery.ph/',
+            description:
+                'Water Delivery Philippines is an online platform and mobile application that facilitates the convenient ordering of top-notch drinking water from over 100+ reliable distributors located in the National Capital Region (NCR). I have been assigned the task of developing the 2.0 version of Water Delivery Philippines.',
+        },
+        {
+            name: 'iMatch Realty Inc',
+            gig: 'Work Project',
+            role: 'Ful-stack Web Developer',
+            technologies: 'PHP/Laravel, JavaScript/Vuejs',
+            website: 'https://www.imatch.ph/',
+            description:
+                'iMatch Realty Inc., a real estate company based in BGC, Manila and Boracay. My responsibility involves maintaining and introducing new features to the website.',
+        },
+        {
+            name: 'Inspire Church',
+            gig: 'Work Project',
+            role: 'Ful-stack Web Developer',
+            technologies: 'PHP/Laravel, JavaScript/Vuejs',
+            website: 'https://www.inspirechurch.live/',
+            description:
+                'Inspire App is designed to publish content and have the church members watch or listen to these contents. I was assigned to create and maintain the web portal part of the system.',
+        },
+        {
+            name: 'Medgate',
+            gig: 'Work Project',
+            role: 'Ful-stack Web Developer',
+            technologies: 'PHP/Laravel, JavaScript/Vuejs',
+            website: 'https://medgate.ph/',
+            description:
+                'Get your hassle-free medical consultation. Our Filipino specialist doctors are just a phone call away to give you the care you deserve. Available 24/7 year-round, even on holidays. I was assigned to maintain the public website and create the  web portal part of the system.',
+        },
+        {
+            name: 'ZWELL Philippines',
+            gig: 'Work Project',
+            role: 'Ful-stack Web Developer',
+            technologies: 'PHP/Laravel, JavaScript/Vuejs',
+            website: null,
+            description:
+                'ZWELL Philippine Realty Development Corp is a Philippine-based real-estate corporation. I was assigned to create and maintain ZWELL`s web portal.',
+        },
+        {
+            name: 'MySQL Settings',
+            gig: 'Mini Work Project',
+            role: 'Ful-stack Web Developer',
+            technologies: 'JavaScript/Vuejs, Nuxt',
+            website: 'https://www.mysqlsettings.com/',
+            description:
+                'A mobile app that connects customers to self-employed cleaners with just a few taps of their fingers. I was assigned to create and maintain the public website and web portal part of the system.',
+        },
+        {
+            name: 'Vaskeappen',
+            gig: 'Freelance',
+            role: 'Front-end Developer',
+            technologies: 'JavaScript/Vuejs, AWS',
+            website: 'https://vaskeappen.com/',
+            description:
+                'A mobile app that connects customers to self-employed cleaners with just a few taps of their fingers. I was assigned to create and maintain the public website and web portal part of the system.',
+        },
+    ];
 
     const a11yProps = (index) => {
         return {
@@ -107,39 +172,62 @@ export default function PortfolioOverviewSection() {
             </div>
         );
     };
-    const WorkExperienceCard = ({ company, duration, role, website }) => (
-        <Card variant="outlined" sx={{ width: '100%', marginBottom: 1 }}>
+    const ProjectCard = ({
+        name,
+        gig,
+        role,
+        technologies,
+        website,
+        description,
+    }) => (
+        <Card
+            elevation={0}
+            sx={{
+                width: '100%',
+                marginBottom: 1,
+            }}
+        >
             <CardContent>
-                <Link
-                    href={website}
-                    target="_blank"
-                    variant="subtitle1"
-                    sx={{ textDecoration: 'underline' }}
+                <Box display="flex">
+                    {website ? (
+                        <Link
+                            href={website}
+                            target="_blank"
+                            variant="subtitle1"
+                            sx={{
+                                textDecoration: 'underline',
+                                marginRight: 0.5,
+                            }}
+                        >
+                            {name}
+                        </Link>
+                    ) : (
+                        <Typography
+                            variant="subtitle1"
+                            sx={{
+                                marginRight: 0.5,
+                            }}
+                        >
+                            {name}
+                        </Typography>
+                    )}
+                    <Chip
+                        size="small"
+                        label={gig}
+                        sx={{ borderRadius: 0 }}
+                    ></Chip>
+                </Box>
+                <Typography variant="subtitle1">Role: {role}</Typography>
+                <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ marginBottom: 1.5 }}
                 >
-                    {company}
-                </Link>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {duration}
+                    Technologies: {technologies}
                 </Typography>
-                <Typography variant="body2">Role: {role}</Typography>
-            </CardContent>
-        </Card>
-    );
-    const ProjectCard = ({ company, duration, role, website }) => (
-        <Card variant="outlined" sx={{ width: '100%', marginBottom: 1 }}>
-            <CardContent>
-                <Link
-                    href={website}
-                    target="_blank"
-                    variant="subtitle1"
-                    sx={{ textDecoration: 'underline' }}
-                >
-                    {company}
-                </Link>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {duration}
+                <Typography variant="body2" color="gray">
+                    {description}
                 </Typography>
-                <Typography variant="body2">Role: {role}</Typography>
             </CardContent>
         </Card>
     );
@@ -147,7 +235,13 @@ export default function PortfolioOverviewSection() {
     const TechSkillChip = ({ skill }) => (
         <Chip
             color="primary"
-            label={skill}
+            label={
+                <React.Fragment>
+                    <Typography variant="subtitle1" component="p">
+                        {skill}
+                    </Typography>
+                </React.Fragment>
+            }
             sx={{ margin: 0.5, borderRadius: 0 }}
         />
     );
@@ -245,10 +339,10 @@ export default function PortfolioOverviewSection() {
                                 component="h6"
                                 sx={{ paddingBottom: 2 }}
                             >
-                                Selected Work Projects
+                                Projects
                             </Typography>
-                            {workExperiences.map((experience, index) => (
-                                <ProjectCard key={index} {...experience} />
+                            {projects.map((project, index) => (
+                                <ProjectCard key={index} {...project} />
                             ))}
                         </Grid>
                     </Grid>

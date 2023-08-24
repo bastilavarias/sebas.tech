@@ -45,7 +45,7 @@ export default function WorkExperienceTimeline() {
         <TimelineItem>
             <TimelineSeparator>
                 <TimelineDot color={position === 0 ? 'success' : 'secondary'} />
-                <TimelineConnector color="secondary" />
+                <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent sx={{ px: 2, pt: 4 }}>
                 <Link
