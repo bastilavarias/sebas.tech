@@ -152,6 +152,7 @@ export default function PortfolioOverviewSection() {
             variant="h6"
             sx={{ marginBottom: 8, textAlign: 'center' }}
         >
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             I'm Sebastian Curtis T. Lavarias, and I invite you to explore my
             humble web portfolio where I demonstrate my abilities and share
             content related to both technology and Stoicism philosophy.
