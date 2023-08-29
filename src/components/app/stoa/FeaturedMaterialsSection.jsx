@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import MaterialCard from '@/components/MaterialCard';
 import Grid from '@mui/material/Grid';
 
-export default function MaterialsSection() {
+export default function FeaturedMaterialsSection() {
     const featuredMaterialRef = React.useRef(null);
     const [featuredMaterialHeight, setFeaturedMaterialHeight] =
         React.useState(0);
@@ -19,14 +19,16 @@ export default function MaterialsSection() {
 
     return (
         <Box paddingY={2}>
-            <Typography
-                component="h2"
-                variant="h5"
-                sx={{ textTransform: 'uppercase', marginBottom: 2 }}
-            >
-                Materials
-            </Typography>
             <Grid container spacing={1}>
+                <Grid item xs={12}>
+                    <Typography
+                        component="h2"
+                        variant="h5"
+                        sx={{ marginBottom: 2, fontWeight: 'bold' }}
+                    >
+                        Welcome to the Stoa
+                    </Typography>
+                </Grid>
                 <Grid item xs={12} md={6} ref={featuredMaterialRef}>
                     <MaterialCard height="100%" mode="full" />
                 </Grid>
@@ -35,19 +37,15 @@ export default function MaterialsSection() {
                     xs={12}
                     md={6}
                     container
-                    columnSpacing={1}
-                    sx={{ height: featuredMaterialHeight }}
+                    sx={{
+                        height: featuredMaterialHeight,
+                    }}
                 >
-                    <Grid item md={6} sx={{ height: '100%' }} rowSpacing={1}>
-                        {[1, 2].map((n) => (
-                            <MaterialCard height="50%" mode="medium" key={n} />
-                        ))}
-                    </Grid>
-                    <Grid item md={6} sx={{ height: '100%' }} rowSpacing={1}>
-                        {[1, 2, 3, 4].map((n) => (
-                            <MaterialCard height="25%" mode="mini" key={n} />
-                        ))}
-                    </Grid>
+                    {[1, 2, 3, 4].map((n) => (
+                        <Grid item md={6} key={n}>
+                            <MaterialCard height="100%" mode="medium" />
+                        </Grid>
+                    ))}
                 </Grid>
             </Grid>
         </Box>

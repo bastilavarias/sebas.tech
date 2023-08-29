@@ -1,26 +1,48 @@
+'use client';
+
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { truncateString } from '@/utils/string';
+import Chip from '@mui/material/Chip';
+import Link from 'next/link';
+import MUILink from '@mui/material/Link';
 
 /*
  *  The prop "mode" could be  full, medium, mini
  * */
-export default function MaterialCard({ mode, height }) {
+export default function MaterialCard({ mode, height, sx }) {
+    const CategoryChip = () => {
+        return (
+            <Chip
+                color="primary"
+                label="Category"
+                sx={{ borderRadius: 0, marginBottom: 1 }}
+                size="small"
+            ></Chip>
+        );
+    };
+
     const TitleTypography = () => {
         return (
-            <Typography
+            <MUILink
+                component={Link}
                 gutterBottom
                 variant={mode === 'full' ? 'h6' : 'caption'}
-                component="div"
+                sx={{
+                    textDecoration: 'none',
+                    display: 'block',
+                    ':hover': {
+                        cursor: 'pointer',
+                        textDecoration: 'underline',
+                    },
+                }}
+                href="/stoa/sample-slug"
             >
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
                 animi architecto eius, enim ex excepturi
-            </Typography>
+            </MUILink>
         );
     };
 
@@ -47,9 +69,13 @@ export default function MaterialCard({ mode, height }) {
     };
 
     return (
-        <Card elevation={0} sx={{ width: '100%', height }}>
+        <Card
+            elevation={0}
+            sx={{ ...sx, width: '100%', height, borderRadius: 0 }}
+        >
             <HeaderImage />
             <CardContent>
+                <CategoryChip />
                 <TitleTypography />
                 <DescriptionTypography />
                 <Typography
