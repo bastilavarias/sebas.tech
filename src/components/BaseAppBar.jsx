@@ -49,7 +49,7 @@ export default function BaseAppBar() {
             }}
             size="large"
             component={Link}
-            href="contact"
+            href="/contact"
             color="primary"
             variant="contained"
             disableElevation
@@ -66,7 +66,12 @@ export default function BaseAppBar() {
         >
             <Container>
                 <Toolbar disableGutters>
-                    <Avatar variant="square" sx={{ width: 95, height: 95 }}>
+                    <Avatar
+                        component={Link}
+                        href="/"
+                        variant="square"
+                        sx={{ width: 95, height: 95 }}
+                    >
                         <Image src={MyLogo} alt="SebasTech" fill />
                     </Avatar>
                     <Box sx={{ flexGrow: 1 }} />
