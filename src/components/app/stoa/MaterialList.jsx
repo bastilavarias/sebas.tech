@@ -6,7 +6,11 @@ import Typography from '@mui/material/Typography';
 import MaterialCard from '@/components/MaterialCard';
 import Grid from '@mui/material/Grid';
 
-export default function MaterialList() {
+export default function MaterialList({ materials }) {
+    if (materials.length === 0) {
+        return null;
+    }
+
     return (
         <Box paddingY={2}>
             <Grid container>
@@ -20,9 +24,13 @@ export default function MaterialList() {
                     </Typography>
                 </Grid>
                 <Grid xs={12} item container spacing={1}>
-                    {[1, 2, 3, 4].map((n) => (
-                        <Grid item xs={12} md={4} xl={3} key={n}>
-                            <MaterialCard height="20rem" mode="medium" />
+                    {materials.map((material, index) => (
+                        <Grid item xs={12} md={4} xl={3} key={index}>
+                            <MaterialCard
+                                material={material}
+                                height="20rem"
+                                mode="medium"
+                            />
                         </Grid>
                     ))}
                 </Grid>

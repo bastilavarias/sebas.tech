@@ -8,16 +8,18 @@ import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import Link from 'next/link';
 import MUILink from '@mui/material/Link';
+import { sanityImageUrlFor, sanityToPlainText } from '@/services/sanity';
+import Image from 'next/image';
 
 /*
  *  The prop "mode" could be  full, medium, mini
  * */
-export default function MaterialCard({ mode, height, sx }) {
+export default function MaterialCard({ mode, sx, material, height }) {
     const CategoryChip = () => {
         return (
             <Chip
                 color="primary"
-                label="Category"
+                label={material.categories[0].title}
                 sx={{ borderRadius: 0, marginBottom: 1 }}
                 size="small"
             ></Chip>
@@ -29,7 +31,7 @@ export default function MaterialCard({ mode, height, sx }) {
             <MUILink
                 component={Link}
                 gutterBottom
-                variant={mode === 'full' ? 'h6' : 'caption'}
+                variant={mode === 'full' ? 'h6' : 'subtitle1'}
                 sx={{
                     textDecoration: 'none',
                     display: 'block',
@@ -38,54 +40,67 @@ export default function MaterialCard({ mode, height, sx }) {
                         textDecoration: 'underline',
                     },
                 }}
-                href="/stoa/sample-slug"
+                href={`/stoa/${material.slug.current}`}
             >
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                animi architecto eius, enim ex excepturi
+                {material.title}
             </MUILink>
         );
     };
 
     const DescriptionTypography = () => {
-        const testDescription =
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi architecto eius, enim ex excepturi, illo ipsum iste itaque laudantium nam, natus nisi quasi qui rem sunt vitae voluptatem voluptatibus? Dignissimos dolorem ducimus ea eos quos? Accusamus aspernatur dolorum error, id iure non obcaecati perferendis qui quia quos repellat tenetur totam voluptatem. Blanditiis consequatur debitis ducimus minima nulla odit sunt tempora. Amet dignissimos eveniet nobis vero! Assumenda atque aut beatae dicta distinctio dolore dolorem doloremque dolorum eligendi est et exercitationem facere fugiat hic in laborum minus nisi odio officia omnis optio porro possimus provident quaerat quia velit, vero voluptatibus! Et hic iure modi odit repudiandae, sequi. Beatae facilis itaque quos? Excepturi iusto optio quia rem saepe? Delectus dicta ex explicabo illum in maxime odio voluptatibus. Accusantium, amet dolore error possimus ratione veritatis. Alias, amet aspernatur aut beatae blanditiis consequuntur dolorem, harum ipsam labore laboriosam odit quasi temporibus vel, vero voluptate!';
-        if (mode === 'full') {
+        if (mode === 'full' || mode === 'medium') {
             return (
-                <Typography variant="body2" color="text.secondary">
-                    {testDescription}
+                <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    nowrap
+                    sx={{
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: mode === 'full' ? '15' : '2',
+                        WebkitBoxOrient: 'vertical',
+                    }}
+                >
+                    {sanityToPlainText(material.body)}
                 </Typography>
             );
         }
     };
+
     const HeaderImage = () => {
         if (mode === 'full' || mode === 'medium') {
             return (
                 <CardMedia
-                    sx={{ height: mode === 'full' ? '40%' : '30%' }}
-                    image="https://hips.hearstapps.com/hmg-prod/images/5-1669844484.jpg"
+                    component="img"
+                    src={sanityImageUrlFor(material.mainImage)}
+                    sx={{ height: '40%' }}
                 />
             );
         }
     };
 
+    if (!material) {
+        return <div></div>;
+    }
+
+    console.log(material);
+
     return (
         <Card
             elevation={0}
-            sx={{ ...sx, width: '100%', height, borderRadius: 0 }}
+            sx={{
+                ...sx,
+                width: '100%',
+                height: height ? height : 'auto',
+                borderRadius: 0,
+            }}
         >
             <HeaderImage />
             <CardContent>
                 <CategoryChip />
                 <TitleTypography />
                 <DescriptionTypography />
-                <Typography
-                    variant="caption"
-                    component="div"
-                    color="gray"
-                    marginTop={5}
-                >
-                    Posted August 24 2023
-                </Typography>
             </CardContent>
         </Card>
     );

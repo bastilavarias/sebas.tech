@@ -6,16 +6,23 @@ import Typography from '@mui/material/Typography';
 import MaterialCard from '@/components/MaterialCard';
 import Grid from '@mui/material/Grid';
 
-export default function FeaturedMaterialsSection() {
+export default function FeaturedMaterialsSection({ materials }) {
     const featuredMaterialRef = React.useRef(null);
     const [featuredMaterialHeight, setFeaturedMaterialHeight] =
         React.useState(0);
 
     React.useEffect(() => {
-        if (featuredMaterialRef.current.clientHeight > 0) {
+        if (
+            featuredMaterialRef.current &&
+            featuredMaterialRef.current.clientHeight > 0
+        ) {
             setFeaturedMaterialHeight(featuredMaterialRef.current.clientHeight);
         }
-    }, [featuredMaterialHeight]);
+    }, [featuredMaterialRef, materials]);
+
+    if (materials.length === 0) {
+        return null;
+    }
 
     return (
         <Box paddingY={2}>
@@ -29,21 +36,28 @@ export default function FeaturedMaterialsSection() {
                         Welcome to the Stoa
                     </Typography>
                 </Grid>
-                <Grid item xs={12} md={6} ref={featuredMaterialRef}>
-                    <MaterialCard height="100%" mode="full" />
+                <Grid item xs={12} md={6}>
+                    <MaterialCard
+                        height={featuredMaterialHeight - 20}
+                        mode="full"
+                        material={materials[0]}
+                    />
                 </Grid>
                 <Grid
                     item
                     xs={12}
                     md={6}
                     container
-                    sx={{
-                        height: featuredMaterialHeight,
-                    }}
+                    spacing={1}
+                    ref={featuredMaterialRef}
                 >
-                    {[1, 2, 3, 4].map((n) => (
-                        <Grid item md={6} key={n}>
-                            <MaterialCard height="100%" mode="medium" />
+                    {[...materials].slice(1).map((post, index) => (
+                        <Grid item xs={12} md={6} key={index}>
+                            <MaterialCard
+                                height={400}
+                                mode="medium"
+                                material={post}
+                            />
                         </Grid>
                     ))}
                 </Grid>
