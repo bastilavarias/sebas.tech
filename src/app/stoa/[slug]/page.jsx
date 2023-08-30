@@ -118,13 +118,15 @@ export default function StoaPost({ params }) {
     const SuggestedMaterialSection = () => {
         return (
             <>
-                <Typography
-                    variant="subtitle2"
-                    component="h6"
-                    sx={{ paddingBottom: 2 }}
-                >
-                    Suggested materials
-                </Typography>
+                {suggestedMaterials.length > 0 ? (
+                    <Typography
+                        variant="subtitle2"
+                        component="h6"
+                        sx={{ paddingBottom: 2 }}
+                    >
+                        Suggested Materials
+                    </Typography>
+                ) : null}
                 {suggestedMaterials.map((material, index) => (
                     <MaterialCard
                         material={material}

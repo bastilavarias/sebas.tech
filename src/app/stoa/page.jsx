@@ -21,7 +21,7 @@ export default function StoaPage() {
 
     const getNewMaterials = async () => {
         const _posts = await sanityClient.fetch(
-            '*[_type == "post"]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt desc)[0...4]'
+            '*[_type == "post"]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt desc)'
         );
         setNewMaterials(_posts);
     };
