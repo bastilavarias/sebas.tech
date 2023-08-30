@@ -53,7 +53,7 @@ export default function MaterialCard({ mode, sx, material, height }) {
                 <Typography
                     variant="body2"
                     color="text.secondary"
-                    nowrap
+                    nowrap="true"
                     sx={{
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
