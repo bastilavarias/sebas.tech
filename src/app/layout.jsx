@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import BaseAppBar from '@/components/BaseAppBar';
 import ThemeRegistry from '@/components/ThemeRegistry';
-import BaseFooter from '@/components/BaseFooter/BaseFooter';
+import BaseFooter from '@/components/BaseFooter';
 
 export const metadata = {
     title: 'Next.js App Router + Material UI v5',

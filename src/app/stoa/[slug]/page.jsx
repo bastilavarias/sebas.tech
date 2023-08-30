@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import StoaPostBanner from '@/components/app/stoa/post/PostBanner';
 import Grid from '@mui/material/Grid';
 import StoaPostBreadcrumb from '@/components/app/stoa/post/Breadcrumb';
 import MaterialCard from '@/components/MaterialCard';
@@ -10,6 +9,8 @@ import sanityClient from '@/services/sanity';
 import { sanityImageUrlFor } from '@/services/sanity';
 import { PortableText } from '@portabletext/react';
 import Chip from '@mui/material/Chip';
+import Box from '@mui/material/Box';
+import Image from 'next/image';
 
 const PortableTextComponents = {
     block: {
@@ -65,6 +66,27 @@ export default function StoaPost({ params }) {
             { title: material.title }
         );
         setNewMaterials(_posts);
+    };
+
+    const MainImageBanner = () => {
+        return (
+            <Box
+                sx={{
+                    width: '100%',
+                    height: 'auto',
+                }}
+            >
+                <Image
+                    src={sanityImageUrlFor(material.mainImage).url()}
+                    alt={material.title}
+                    quality={50}
+                    width="0"
+                    height="0"
+                    sizes="100vw"
+                    style={{ width: '100%', height: 'auto' }}
+                />
+            </Box>
+        );
     };
 
     const CategoryChip = () => {
@@ -162,10 +184,7 @@ export default function StoaPost({ params }) {
             <Grid item container xs={12} spacing={2} sx={{ marginBottom: 5 }}>
                 <Grid item xs={9} container>
                     <Grid item xs={12}>
-                        <StoaPostBanner
-                            title={material.title}
-                            src={sanityImageUrlFor(material.mainImage)}
-                        />
+                        <MainImageBanner />
                         <CategoryChip />
                         <TitleTypography />
                         <PortableText

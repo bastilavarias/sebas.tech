@@ -6,10 +6,10 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import MUILink from '@mui/material/Link';
 import Link from 'next/link';
 
-function handleClick(event) {
+const handleClick = (event) => {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
-}
+};
 
 export default function StoaPostBreadcrumb({ title }) {
     return (
