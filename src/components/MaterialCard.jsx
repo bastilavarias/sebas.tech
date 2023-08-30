@@ -71,11 +71,24 @@ export default function MaterialCard({ mode, sx, material, height }) {
     const HeaderImage = () => {
         if (mode === 'full' || mode === 'medium') {
             return (
-                <CardMedia
-                    component="img"
-                    src={sanityImageUrlFor(material.mainImage)}
-                    sx={{ height: '40%' }}
-                />
+                <CardMedia sx={{ height: '40%' }}>
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
+                        }}
+                    >
+                        <Image
+                            src={sanityImageUrlFor(material.mainImage).url()}
+                            alt={material.title}
+                            width="0"
+                            height="0"
+                            sizes="100vw"
+                            style={{ width: '100%', height: '100%' }}
+                        />
+                    </div>
+                </CardMedia>
             );
         }
     };
@@ -83,8 +96,6 @@ export default function MaterialCard({ mode, sx, material, height }) {
     if (!material) {
         return <div></div>;
     }
-
-    console.log(material);
 
     return (
         <Card

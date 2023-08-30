@@ -11,7 +11,7 @@ function handleClick(event) {
     console.info('You clicked a breadcrumb.');
 }
 
-export default function StoaPostBreadcrumb() {
+export default function StoaPostBreadcrumb({ title }) {
     return (
         <div role="presentation" onClick={handleClick}>
             <Breadcrumbs aria-label="breadcrumb">
@@ -23,10 +23,7 @@ export default function StoaPostBreadcrumb() {
                 >
                     Stoa
                 </MUILink>
-                <Typography color="text.primary">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                    animi architecto eius, enim ex excepturi
-                </Typography>
+                <Typography color="text.primary">{title}</Typography>
             </Breadcrumbs>
         </div>
     );

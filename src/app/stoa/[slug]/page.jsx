@@ -1,130 +1,98 @@
+'use client';
+
 import * as React from 'react';
 import StoaPostBanner from '@/components/app/stoa/post/PostBanner';
 import Grid from '@mui/material/Grid';
 import StoaPostBreadcrumb from '@/components/app/stoa/post/Breadcrumb';
 import MaterialCard from '@/components/MaterialCard';
 import Typography from '@mui/material/Typography';
+import sanityClient from '@/services/sanity';
+import { sanityImageUrlFor } from '@/services/sanity';
+import { PortableText } from '@portabletext/react';
+import Chip from '@mui/material/Chip';
 
-export default function StoaPost() {
-    return (
-        <Grid container sx={{ paddingBottom: 5 }}>
-            <Grid item xs={12} sx={{ marginBottom: 5 }}>
-                <StoaPostBreadcrumb />
-            </Grid>
-            <Grid item container xs={12} spacing={2} sx={{ marginBottom: 5 }}>
-                <Grid item xs={9} container>
-                    <Grid item xs={12}>
-                        <StoaPostBanner />
-                        <Typography
-                            variant="h5"
-                            component="h1"
-                            sx={{ fontWeight: 'bold', paddingY: 3 }}
-                        >
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. A animi architecto eius, enim ex excepturi
-                        </Typography>
-                        <Typography variant="body1" component="p">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. A alias amet animi blanditiis consequatur
-                            corporis, dicta dolor ducimus eligendi, esse illum
-                            iure laborum laudantium magnam modi molestias
-                            necessitatibus nobis nulla porro possimus quas
-                            quibusdam reprehenderit suscipit tempora tempore
-                            unde, vitae voluptate. Aspernatur distinctio
-                            eligendi, et illum iusto nesciunt quia reprehenderit
-                            totam? Autem eius ipsum laudantium necessitatibus
-                            quidem quis quisquam repellat. Aliquam ea eaque hic
-                            ipsum neque officiis quo, repudiandae sapiente sunt
-                            veritatis. Amet commodi, excepturi illum iste
-                            nostrum obcaecati omnis repellat rerum. Eaque,
-                            provident sunt. Ipsum quasi sapiente tenetur.
-                            Adipisci architecto dolorem necessitatibus
-                            perferendis repellat. Aut dignissimos laboriosam
-                            magni minima pariatur. Accusamus asperiores beatae
-                            consectetur consequuntur cupiditate ea eveniet ex
-                            expedita hic illo, in incidunt, iste labore libero
-                            magnam maxime modi natus nulla quam quas quia
-                            quisquam quod reiciendis repellendus sunt suscipit
-                            ut voluptatibus. Accusantium, at, praesentium. A
-                            adipisci aliquam deleniti eaque et illo rerum,
-                            sapiente vitae? Eveniet ex id reiciendis voluptas
-                            voluptatem. Animi consequatur culpa debitis dolores
-                            minima necessitatibus, neque nihil ratione saepe
-                            sapiente sint suscipit voluptate? Architecto
-                            consequuntur culpa iusto libero minima nemo quas
-                            quasi sapiente sed sequi? Beatae minima, quaerat!
-                            Accusantium doloribus exercitationem impedit
-                            mollitia officia porro reprehenderit soluta.
-                            Deserunt, reprehenderit tempora? A, ad consectetur
-                            distinctio esse et id laboriosam mollitia nesciunt
-                            non odit omnis possimus quae quas sed tempora
-                            tenetur veritatis. Accusamus delectus magnam
-                            molestias, neque praesentium quaerat quidem quod
-                            reprehenderit, sunt tempora, temporibus ut
-                            voluptatem? Ad, amet aspernatur assumenda beatae
-                            consectetur deleniti, deserunt dolorem doloremque
-                            eaque ex ipsum labore laudantium maiores maxime modi
-                            molestiae necessitatibus obcaecati odio officia
-                            perferendis possimus quisquam reiciendis rerum sed
-                            sequi sit tempore voluptas! Aperiam dolorem dolores
-                            dolorum expedita pariatur quam, quidem quis? Ab
-                            adipisci at culpa cumque dolorem dolores doloribus
-                            eaque eius facere fuga, ipsum, molestias mollitia
-                            quaerat quibusdam quod repellendus sapiente
-                            similique ullam vitae voluptatibus! Consequatur
-                            culpa ducimus exercitationem itaque nemo qui, quos
-                            rem veritatis vero voluptatem. Adipisci animi aut
-                            consectetur debitis doloremque eius enim
-                            exercitationem id illo magnam maiores, maxime
-                            mollitia nam obcaecati omnis possimus quae quidem
-                            sint sit totam? Ad architecto consequuntur delectus
-                            deserunt dolorum ducimus eos facere fugiat illo
-                            molestiae nemo nisi nobis non officia quaerat quas
-                            quibusdam quod repellendus reprehenderit sequi sint
-                            tempore, vitae voluptas! Accusamus est laborum odio
-                            sed voluptatibus. Adipisci dignissimos dolorem
-                            dolores ea est eveniet iusto, laborum maiores nemo
-                            nisi odit pariatur quo quos recusandae voluptas?
-                            Alias architecto autem consequuntur corporis debitis
-                            dicta doloremque quos, ratione ut voluptates!
-                            Aperiam assumenda consequatur cumque cupiditate
-                            delectus eaque eius facilis iure, maiores modi
-                            nesciunt quam quas quos tenetur voluptate? In nam
-                            natus temporibus. Ab animi aperiam architecto
-                            aspernatur autem, blanditiis cumque deleniti
-                            doloribus dolorum ducimus enim hic itaque minus
-                            perspiciatis rem rerum velit voluptatum. Accusantium
-                            commodi delectus est, facere magni maiores odio
-                            provident quis rem veritatis. Asperiores aut
-                            consequatur, eum harum hic inventore ipsam
-                            laboriosam porro possimus quo reprehenderit sunt
-                            vitae voluptatum. Aspernatur corporis, debitis
-                            ducimus eveniet facere laborum nesciunt nihil non
-                            officia pariatur quis repellat ut? Deserunt ea eos
-                            porro quo voluptates. Animi at autem consequatur
-                            dicta fuga illo incidunt molestiae quos, unde
-                            veniam.
-                        </Typography>
-                    </Grid>
-                </Grid>
-                <Grid item xs={3}>
-                    <Typography
-                        variant="subtitle2"
-                        component="h6"
-                        sx={{ paddingBottom: 2 }}
-                    >
-                        New materials
-                    </Typography>
-                    {[1, 2, 3, 4, 5].map((n) => (
-                        <MaterialCard
-                            mode="mini"
-                            sx={{ marginBottom: 1 }}
-                            key={n}
-                        />
-                    ))}
-                </Grid>
-            </Grid>
-            <Grid item xs={12}>
+const PortableTextComponents = {
+    block: {
+        blockquote: ({ children }) => (
+            <blockquote
+                style={{
+                    borderLeft: '5px solid #ccc',
+                    margin: '1.5em 10px',
+                    padding: '0.3em 10px',
+                    quotes: '"\\201C""\\201D""\\2018""\\2019"',
+                    ':before': {
+                        color: '#ccc',
+                        content: 'open-quote',
+                        lineHeight: '0.1em',
+                        marginRight: '0.25em',
+                        verticalAlign: '-0.4em',
+                    },
+                    p: {
+                        display: 'inline',
+                    },
+                }}
+            >
+                <p>&quot;{children}&quot;</p>
+            </blockquote>
+        ),
+    },
+};
+
+export default function StoaPost({ params }) {
+    const [material, setMaterial] = React.useState(null);
+    const [suggestedMaterials, setSuggestedMaterials] = React.useState([]);
+    const [newMaterials, setNewMaterials] = React.useState([]);
+
+    const getMaterial = async () => {
+        const materials = await sanityClient.fetch(
+            '*[_type == "post" && slug.current == $slug]{title, body, slug, mainImage, categories[]->, _createdAt}',
+            { slug: params.slug }
+        );
+        setMaterial(materials[0]);
+    };
+
+    const getSuggestedMaterials = async () => {
+        const _posts = await sanityClient.fetch(
+            '*[_type == "post" && title != $title && $category in categories[]->title]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt desc)[0...4]',
+            { title: material.title, category: material.categories[0].title }
+        );
+        setSuggestedMaterials(_posts);
+    };
+
+    const getNewMaterials = async () => {
+        const _posts = await sanityClient.fetch(
+            '*[_type == "post" && title != $title]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt desc)[0...4]',
+            { title: material.title }
+        );
+        setNewMaterials(_posts);
+    };
+
+    const CategoryChip = () => {
+        return (
+            <Chip
+                color="primary"
+                label={material.categories[0].title}
+                sx={{ borderRadius: 0, marginBottom: 1, marginY: 3 }}
+            ></Chip>
+        );
+    };
+    const TitleTypography = () => {
+        return (
+            <Typography
+                variant="h5"
+                component="h1"
+                sx={{
+                    fontWeight: 'bold',
+                }}
+            >
+                {material.title}
+            </Typography>
+        );
+    };
+
+    const NewMaterialsSection = () => {
+        return (
+            <>
                 <Typography
                     variant="subtitle2"
                     component="h6"
@@ -133,12 +101,83 @@ export default function StoaPost() {
                     New materials
                 </Typography>
                 <Grid item xs={12} container spacing={1}>
-                    {[1, 2, 3, 4].map((n) => (
-                        <Grid item xs={3} key={n}>
-                            <MaterialCard height="20rem" mode="medium" />
+                    {newMaterials.map((material, index) => (
+                        <Grid item xs={3} md={6} lg={4} xl={3} key={index}>
+                            <MaterialCard
+                                material={material}
+                                height="20rem"
+                                mode="medium"
+                            />
                         </Grid>
                     ))}
                 </Grid>
+            </>
+        );
+    };
+
+    const SuggestedMaterialSection = () => {
+        return (
+            <>
+                <Typography
+                    variant="subtitle2"
+                    component="h6"
+                    sx={{ paddingBottom: 2 }}
+                >
+                    Suggested materials
+                </Typography>
+                {suggestedMaterials.map((material, index) => (
+                    <MaterialCard
+                        material={material}
+                        mode="mini"
+                        sx={{ marginBottom: 1 }}
+                        key={index}
+                    />
+                ))}
+            </>
+        );
+    };
+
+    React.useEffect(() => {
+        getMaterial();
+    }, []);
+
+    React.useEffect(() => {
+        if (material) {
+            getSuggestedMaterials();
+            getNewMaterials();
+        }
+    }, [material]);
+
+    if (!material) {
+        return <div></div>;
+    }
+
+    return (
+        <Grid container sx={{ paddingBottom: 5 }}>
+            <Grid item xs={12} sx={{ marginBottom: 5 }}>
+                <StoaPostBreadcrumb title={material.title} />
+            </Grid>
+            <Grid item container xs={12} spacing={2} sx={{ marginBottom: 5 }}>
+                <Grid item xs={9} container>
+                    <Grid item xs={12}>
+                        <StoaPostBanner
+                            title={material.title}
+                            src={sanityImageUrlFor(material.mainImage)}
+                        />
+                        <CategoryChip />
+                        <TitleTypography />
+                        <PortableText
+                            value={material.body}
+                            components={PortableTextComponents}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid item xs={3}>
+                    <SuggestedMaterialSection />
+                </Grid>
+            </Grid>
+            <Grid item xs={12}>
+                <NewMaterialsSection />
             </Grid>
         </Grid>
     );
