@@ -10,10 +10,16 @@ import Box from '@mui/material/Box';
 import Image from 'next/image';
 import StoaImage from '@/assets/stoa.jpg';
 import FeaturedMaterialsSection from '@/components/app/stoa/FeaturedMaterialsSection';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 export default function StoaPage() {
+    const theme = useTheme();
     const [featuredMaterials, setFeaturedMaterials] = React.useState([]);
     const [newMaterials, setNewMaterials] = React.useState([]);
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'), {
+        noSsr: true,
+    });
+    const [isPageHydrated, setIsPageHydrated] = React.useState(false);
 
     const getFeaturedMaterials = async () => {
         const materials = await sanityClient.fetch(
