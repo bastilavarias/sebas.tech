@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import StoaPostBreadcrumb from '@/components/app/stoa/post/Breadcrumb';
 import MaterialCard from '@/components/MaterialCard';

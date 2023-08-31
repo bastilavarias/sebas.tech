@@ -6,11 +6,11 @@ import ThemeRegistry from '@/components/ThemeRegistry';
 import BaseFooter from '@/components/BaseFooter';
 
 export const metadata = {
-    title: 'Next.js App Router + Material UI v5',
+    title: 'Sebastian Curtis Lavarias',
     description: 'Next.js App Router + Material UI v5',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, deviceType }) {
     return (
         <html lang="en">
             <body>

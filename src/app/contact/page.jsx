@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import React from 'react';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
