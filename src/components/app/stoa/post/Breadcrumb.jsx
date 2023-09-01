@@ -8,7 +8,6 @@ import Link from 'next/link';
 
 const handleClick = (event) => {
     event.preventDefault();
-    console.info('You clicked a breadcrumb.');
 };
 
 export default function StoaPostBreadcrumb({ title }) {
