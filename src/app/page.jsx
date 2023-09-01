@@ -5,6 +5,34 @@ import PortfolioOverviewSection from '@/components/app/root/PortfolioOverviewSec
 import Image from 'next/image';
 import StoicImage from '@/assets/stoic.png';
 import Box from '@mui/material/Box';
+import {
+    SELF_DESCRIPTION,
+    SELF_NAME,
+    SITE_LOGO,
+    SITE_NAME,
+    SITE_URL,
+} from '@/consts';
+
+export const metadata = {
+    title: SELF_NAME,
+    description: SELF_DESCRIPTION,
+    openGraph: {
+        title: SELF_NAME,
+        description: SELF_DESCRIPTION,
+        url: SITE_URL,
+        siteName: SITE_NAME,
+        images: [
+            {
+                url: SITE_LOGO,
+                width: 1800,
+                height: 1600,
+                alt: 'SebasTech Logo',
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+};
 
 export default function HomePage() {
     const StoicBanner = () => {

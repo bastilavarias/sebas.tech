@@ -1,190 +1,33 @@
-'use client';
+import StoaPageContent from '@/components/app/stoa/page';
 
-import React from 'react';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import sanityClient from '@/services/sanity';
-import Typography from '@mui/material/Typography';
-import MaterialCard from '@/components/MaterialCard';
-import Box from '@mui/material/Box';
-import Image from 'next/image';
-import StoaImage from '@/assets/stoa.jpg';
-import FeaturedMaterialsSection from '@/components/app/stoa/FeaturedMaterialsSection';
-import { useMediaQuery, useTheme } from '@mui/material';
-import Skeleton from '@mui/material/Skeleton';
+import { SITE_NAME, SITE_URL } from '@/consts';
+
+const PAGE_TITLE = 'The Stoa';
+const PAGE_DESCRIPTION =
+    'Welcome to the Stoa, where your practical wisdom will be honed. I advise you to read all of the materials here for the maximum learning experience. Feel free to suggest a topic or the content of your desire.';
+const PAGE_LOGO = `${SITE_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstoa.cd1d4f02.jpg&w=2048&q=100`;
+
+export const metadata = {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    openGraph: {
+        title: PAGE_TITLE,
+        description: PAGE_DESCRIPTION,
+        url: SITE_URL,
+        siteName: SITE_NAME,
+        images: [
+            {
+                url: PAGE_LOGO,
+                width: 1800,
+                height: 1600,
+                alt: 'Stoa Logo',
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+};
 
 export default function StoaPage() {
-    const theme = useTheme();
-    const [featuredMaterials, setFeaturedMaterials] = React.useState([]);
-    const [newMaterials, setNewMaterials] = React.useState([]);
-    const [isFetchingContents, setIsFetchingContents] = React.useState(true);
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'), {
-        noSsr: true,
-    });
-    const [isPageHydrated, setIsPageHydrated] = React.useState(false);
-
-    const getFeaturedMaterials = async () => {
-        const materials = await sanityClient.fetch(
-            '*[_type == "post"]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt asc)[0...5]'
-        );
-        setFeaturedMaterials(materials);
-    };
-
-    const getNewMaterials = async () => {
-        const _posts = await sanityClient.fetch(
-            '*[_type == "post"]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt desc)'
-        );
-        setNewMaterials(_posts);
-    };
-
-    const StoaBanner = () => {
-        return (
-            <>
-                <Box
-                    sx={{
-                        width: '100%',
-                        height: '50vh',
-                        backgroundColor: 'black',
-                        position: 'relative',
-                        marginBottom: 3,
-                    }}
-                    flex
-                >
-                    <Image
-                        src={StoaImage}
-                        alt="Stoa"
-                        quality={100}
-                        style={{
-                            height: '100%',
-                            width: '100%',
-                        }}
-                        priority
-                        objectFit="cover"
-                    />
-                </Box>
-                <Typography variant="body1" component="p">
-                    The word &quot;Stoa&quot; refers to a covered colonnade or
-                    porch in ancient Greek architecture. Stoas were commonly
-                    used as places for public gatherings, discussions, and
-                    philosophical teachings. They often had rows of columns
-                    supporting a roof, providing a shaded and sheltered space
-                    for various activities. The term &quot;Stoa&quot; can also
-                    refer to specific philosophical schools in ancient Greece,
-                    particularly the Stoicism school. Stoicism was a school of
-                    philosophy founded in Athens by Zeno of Citium around 300
-                    BCE. It emphasized ethics, self-control, rationality, and
-                    the idea that individuals can attain tranquility by aligning
-                    their actions and attitudes with nature and reason.
-                    Prominent Stoic philosophers included Seneca, Epictetus, and
-                    the Roman Emperor Marcus Aurelius.
-                </Typography>
-            </>
-        );
-    };
-
-    const NewMaterialsSection = () => {
-        return (
-            <Box paddingY={2}>
-                <Grid container>
-                    <Grid xs={12} item>
-                        <Typography
-                            component="h2"
-                            variant="h5"
-                            sx={{ marginBottom: 2 }}
-                        >
-                            Explore more Materials
-                        </Typography>
-                    </Grid>
-                    <Grid xs={12} item container spacing={1}>
-                        {newMaterials.map((material, index) => (
-                            <Grid item xs={12} md={4} xl={3} key={index}>
-                                <MaterialCard
-                                    material={material}
-                                    height={isMobile ? 'auto' : '20rem'}
-                                    mode="medium"
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Grid>
-            </Box>
-        );
-    };
-
-    const PageContent = () => {
-        return (
-            <Grid container>
-                <Grid item xs={12} marginBottom={5}>
-                    <FeaturedMaterialsSection materials={featuredMaterials} />
-                </Grid>
-                <Grid item xs={12} marginBottom={3}>
-                    <StoaBanner />
-                </Grid>
-                <Grid item xs={12} marginBottom={1}>
-                    <NewMaterialsSection />
-                </Grid>
-            </Grid>
-        );
-    };
-
-    const PageSkeletonLoaders = () => {
-        return (
-            <Grid container>
-                <Grid item xs={12} marginBottom={5}>
-                    <Typography
-                        variant="h6"
-                        width="40%"
-                        sx={{ marginBottom: 2 }}
-                    >
-                        <Skeleton />
-                    </Typography>
-                    <Skeleton
-                        variant="rectangular"
-                        sx={{ width: '100%', height: 815, marginBottom: 2 }}
-                    />
-                </Grid>
-                <Grid item xs={12} marginBottom={3}>
-                    <Skeleton
-                        variant="rectangular"
-                        sx={{ width: '100%', height: 600, marginBottom: 2 }}
-                    />
-                </Grid>
-                <Grid item container xs={12} marginBottom={1} spacing={1}>
-                    {[1, 2, 3, 4].map((n) => (
-                        <Grid item xs={12} md={4} xl={3} key={n}>
-                            <Skeleton
-                                variant="rectangular"
-                                sx={{ width: '100%', height: '20rem' }}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Grid>
-        );
-    };
-
-    React.useEffect(() => {
-        const fetchData = async () => {
-            await getFeaturedMaterials();
-            await getNewMaterials();
-        };
-
-        fetchData().finally(() => {
-            setIsFetchingContents(false);
-        });
-    }, []);
-
-    React.useEffect(() => {
-        setIsPageHydrated(true);
-    }, []);
-
-    return (
-        <Container disableGutters>
-            {isPageHydrated && !isFetchingContents ? (
-                <PageContent />
-            ) : (
-                <PageSkeletonLoaders />
-            )}
-        </Container>
-    );
+    return <StoaPageContent />;
 }
