@@ -176,6 +176,7 @@ export default function ContactPage() {
                 sx={{
                     width: '100%',
                     bgcolor: 'primary.secondary',
+                    height: '70vh',
                 }}
             >
                 <CardHeader

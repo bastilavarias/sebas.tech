@@ -86,6 +86,7 @@ export default function MaterialCard({ mode, sx, material, height }) {
                             height="0"
                             sizes="100vw"
                             style={{ width: '100%', height: '100%' }}
+                            priority
                         />
                     </div>
                 </CardMedia>

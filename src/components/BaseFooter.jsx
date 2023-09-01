@@ -40,7 +40,7 @@ export default function BaseFooter() {
         return (
             <Box>
                 <Avatar variant="square" sx={{ width: 120, height: 120 }}>
-                    <Image src={MyLogo} alt="SebasTech" fill />
+                    <Image src={MyLogo} alt="SebasTech" fill priority />
                 </Avatar>
                 {!isMobile ? <SocialMediaIcons /> : null}
             </Box>

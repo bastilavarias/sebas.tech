@@ -12,8 +12,9 @@ import Image from 'next/image';
 import MyLogo from '@/assets/my-logo.png';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import CustomContactButton from '@/components/CustomContactButton';
 
-export default function BaseAppBar() {
+export default function BaseAppBar({ isDrawerOpen, onOpenDrawer }) {
     const NavigationButtons = () => {
         const navigations = [
             {
@@ -43,27 +44,6 @@ export default function BaseAppBar() {
         ));
     };
 
-    const ContactButton = () => {
-        return (
-            <Button
-                sx={{
-                    display: { xs: 'none', md: 'block' },
-                    paddingX: 3,
-                    textTransform: 'capitalize',
-                    letterSpacing: 2,
-                }}
-                size="large"
-                component={Link}
-                href="/contact"
-                color="primary"
-                variant="contained"
-                disableElevation
-            >
-                Contact Me
-            </Button>
-        );
-    };
-
     const HamburgerMenu = () => {
         return (
             <IconButton
@@ -73,6 +53,7 @@ export default function BaseAppBar() {
                 sx={{
                     display: { md: 'none' },
                 }}
+                onClick={() => onOpenDrawer(!isDrawerOpen)}
             >
                 <MenuIcon />
             </IconButton>
@@ -93,7 +74,7 @@ export default function BaseAppBar() {
                         variant="square"
                         sx={{ width: 95, height: 95 }}
                     >
-                        <Image src={MyLogo} alt="SebasTech" fill />
+                        <Image src={MyLogo} alt="SebasTech" fill priority />
                     </Avatar>
                     <Box sx={{ flexGrow: 1 }} />
                     <NavigationButtons />
@@ -103,7 +84,7 @@ export default function BaseAppBar() {
                             display: { xs: 'none', md: 'block' },
                         }}
                     />
-                    <ContactButton />
+                    <CustomContactButton />
                     <HamburgerMenu />
                 </Toolbar>
             </Container>
