@@ -11,11 +11,13 @@ import Image from 'next/image';
 import StoaImage from '@/assets/stoa.jpg';
 import FeaturedMaterialsSection from '@/components/app/stoa/FeaturedMaterialsSection';
 import { useMediaQuery, useTheme } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function StoaPage() {
     const theme = useTheme();
     const [featuredMaterials, setFeaturedMaterials] = React.useState([]);
     const [newMaterials, setNewMaterials] = React.useState([]);
+    const [isFetchingContents, setIsFetchingContents] = React.useState(true);
     const isMobile = useMediaQuery(theme.breakpoints.down('md'), {
         noSsr: true,
     });
@@ -30,7 +32,7 @@ export default function StoaPage() {
 
     const getNewMaterials = async () => {
         const _posts = await sanityClient.fetch(
-            '*[_type == "post"]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt desc)'
+            '*[_type == "post"]{title, body, slug, mainImage, categories[]->, _createdAt} | order(_createdAt desc)[0...4]'
         );
         setNewMaterials(_posts);
     };
@@ -97,7 +99,7 @@ export default function StoaPage() {
                             <Grid item xs={12} md={4} xl={3} key={index}>
                                 <MaterialCard
                                     material={material}
-                                    height="20rem"
+                                    height={isMobile ? 'auto' : '20rem'}
                                     mode="medium"
                                 />
                             </Grid>
@@ -108,13 +110,8 @@ export default function StoaPage() {
         );
     };
 
-    React.useEffect(() => {
-        getFeaturedMaterials();
-        getNewMaterials();
-    }, []);
-
-    return (
-        <Container disableGutters>
+    const PageContent = () => {
+        return (
             <Grid container>
                 <Grid item xs={12} marginBottom={5}>
                     <FeaturedMaterialsSection materials={featuredMaterials} />
@@ -126,6 +123,67 @@ export default function StoaPage() {
                     <NewMaterialsSection />
                 </Grid>
             </Grid>
+        );
+    };
+
+    const PageSkeletonLoaders = () => {
+        return (
+            <Grid container>
+                <Grid item xs={12} marginBottom={5}>
+                    <Typography
+                        variant="h6"
+                        width="40%"
+                        sx={{ marginBottom: 2 }}
+                    >
+                        <Skeleton />
+                    </Typography>
+                    <Skeleton
+                        variant="rectangular"
+                        sx={{ width: '100%', height: 815, marginBottom: 2 }}
+                    />
+                </Grid>
+                <Grid item xs={12} marginBottom={3}>
+                    <Skeleton
+                        variant="rectangular"
+                        sx={{ width: '100%', height: 600, marginBottom: 2 }}
+                    />
+                </Grid>
+                <Grid item container xs={12} marginBottom={1} spacing={1}>
+                    {[1, 2, 3, 4].map((n) => (
+                        <Grid item xs={12} md={4} xl={3} key={n}>
+                            <Skeleton
+                                variant="rectangular"
+                                sx={{ width: '100%', height: '20rem' }}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Grid>
+        );
+    };
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            await getFeaturedMaterials();
+            await getNewMaterials();
+        };
+
+        fetchData().finally(() => {
+            setIsFetchingContents(false);
+        });
+    }, []);
+
+    React.useEffect(() => {
+        setIsPageHydrated(true);
+    }, []);
+
+    return (
+        <Container disableGutters>
+            {isPageHydrated && !isFetchingContents ? (
+                <PageContent />
+            ) : (
+                <PageSkeletonLoaders />
+            )}
         </Container>
     );
 }
