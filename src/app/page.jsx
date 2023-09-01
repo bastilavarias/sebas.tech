@@ -24,7 +24,7 @@ export default function HomePage() {
                     quality={75}
                     style={{
                         height: '85%',
-                        width: 'auto',
+                        width: '100%',
                         position: 'absolute',
                         left: '50%',
                         top: '50%',
