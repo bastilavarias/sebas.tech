@@ -11,6 +11,8 @@ import { PortableText } from '@portabletext/react';
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
+import { useMediaQuery, useTheme } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
 
 const PortableTextComponents = {
     block: {
@@ -40,9 +42,15 @@ const PortableTextComponents = {
 };
 
 export default function StoaPost({ params }) {
+    const theme = useTheme();
     const [material, setMaterial] = React.useState(null);
     const [suggestedMaterials, setSuggestedMaterials] = React.useState([]);
     const [newMaterials, setNewMaterials] = React.useState([]);
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'), {
+        noSsr: true,
+    });
+    const [isPageHydrated, setIsPageHydrated] = React.useState(false);
+    const [isFetchingContents, setIsFetchingContents] = React.useState(true);
 
     const getMaterial = async () => {
         const materials = await sanityClient.fetch(
@@ -124,10 +132,10 @@ export default function StoaPost({ params }) {
                 </Typography>
                 <Grid item xs={12} container spacing={1}>
                     {newMaterials.map((material, index) => (
-                        <Grid item xs={3} md={6} lg={4} xl={3} key={index}>
+                        <Grid item xs={12} md={6} lg={4} xl={3} key={index}>
                             <MaterialCard
                                 material={material}
-                                height="20rem"
+                                height={isMobile ? 'auto' : '20rem'}
                                 mode="medium"
                             />
                         </Grid>
@@ -151,8 +159,9 @@ export default function StoaPost({ params }) {
                 ) : null}
                 {suggestedMaterials.map((material, index) => (
                     <MaterialCard
+                        height="auto"
                         material={material}
-                        mode="mini"
+                        mode={isMobile ? 'medium' : 'mini'}
                         sx={{ marginBottom: 1 }}
                         key={index}
                     />
@@ -162,44 +171,146 @@ export default function StoaPost({ params }) {
     };
 
     React.useEffect(() => {
-        getMaterial();
+        setIsPageHydrated(true);
+        const fetchData = async () => {
+            await getMaterial();
+        };
+
+        fetchData();
     }, []);
 
     React.useEffect(() => {
+        const fetchData = async () => {
+            await getSuggestedMaterials();
+            await getNewMaterials();
+        };
+
         if (material) {
-            getSuggestedMaterials();
-            getNewMaterials();
+            fetchData().finally(() => {
+                setIsFetchingContents(false);
+            });
         }
     }, [material]);
 
-    if (!material) {
-        return <div></div>;
-    }
+    const PageContent = () => {
+        return (
+            <React.Fragment>
+                <Grid item xs={12} sx={{ marginBottom: 5 }}>
+                    <StoaPostBreadcrumb title={material.title} />
+                </Grid>
+                <Grid
+                    item
+                    container
+                    xs={12}
+                    spacing={2}
+                    sx={{ marginBottom: 5 }}
+                >
+                    <Grid item xs={12} md={10} lg={9} xl={8} container>
+                        <Grid item xs={12}>
+                            <MainImageBanner />
+                            <CategoryChip />
+                            <TitleTypography />
+                            <PortableText
+                                value={material.body}
+                                components={PortableTextComponents}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} md={2} lg={3} xl={4}>
+                        <SuggestedMaterialSection />
+                    </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                    <NewMaterialsSection />
+                </Grid>
+            </React.Fragment>
+        );
+    };
+
+    const PageSkeletonLoaders = () => {
+        return (
+            <React.Fragment>
+                <Grid item xs={12} sx={{ marginBottom: 5 }}>
+                    <Typography
+                        variant="h5"
+                        width="40%"
+                        sx={{ marginBottom: 2 }}
+                    >
+                        <Skeleton />
+                    </Typography>
+                </Grid>
+                <Grid
+                    item
+                    container
+                    xs={12}
+                    spacing={2}
+                    sx={{ marginBottom: 5 }}
+                >
+                    <Grid item xs={12} md={10} lg={9} xl={8} container>
+                        <Grid item xs={12}>
+                            <Skeleton
+                                variant="rectangular"
+                                sx={{
+                                    width: '100%',
+                                    height: 400,
+                                    marginBottom: 2,
+                                }}
+                            />
+                            <Typography
+                                variant="caption"
+                                width="20%"
+                                sx={{ marginBottom: 2 }}
+                            >
+                                <Skeleton />
+                            </Typography>
+                            <Typography
+                                variant="h3"
+                                width="40%"
+                                sx={{ marginBottom: 2 }}
+                            >
+                                <Skeleton />
+                            </Typography>
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                                <Skeleton key={n} />
+                            ))}
+                        </Grid>
+                    </Grid>
+                    <Grid
+                        item
+                        container
+                        spacing={1}
+                        xs={12}
+                        md={2}
+                        lg={3}
+                        xl={4}
+                    >
+                        <Grid item xs={12}>
+                            <Skeleton
+                                variant="rectangular"
+                                sx={{
+                                    width: '100%',
+                                    height: '5rem',
+                                    marginBottom: 1,
+                                }}
+                            />
+                            <Skeleton
+                                variant="rectangular"
+                                sx={{ width: '100%', height: '5rem' }}
+                            />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </React.Fragment>
+        );
+    };
 
     return (
         <Grid container sx={{ paddingBottom: 5 }}>
-            <Grid item xs={12} sx={{ marginBottom: 5 }}>
-                <StoaPostBreadcrumb title={material.title} />
-            </Grid>
-            <Grid item container xs={12} spacing={2} sx={{ marginBottom: 5 }}>
-                <Grid item xs={9} container>
-                    <Grid item xs={12}>
-                        <MainImageBanner />
-                        <CategoryChip />
-                        <TitleTypography />
-                        <PortableText
-                            value={material.body}
-                            components={PortableTextComponents}
-                        />
-                    </Grid>
-                </Grid>
-                <Grid item xs={3}>
-                    <SuggestedMaterialSection />
-                </Grid>
-            </Grid>
-            <Grid item xs={12}>
-                <NewMaterialsSection />
-            </Grid>
+            {isPageHydrated && material && !isFetchingContents ? (
+                <PageContent />
+            ) : (
+                <PageSkeletonLoaders />
+            )}
         </Grid>
     );
 }
