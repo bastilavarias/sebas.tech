@@ -13,10 +13,7 @@ import { SITE, SOCIALS } from "@config";
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
-
-const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
 <Layout>
@@ -32,53 +29,65 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           title="RSS Feed"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
+            ><path
+              d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+            ></path><path
+              d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+            ></path><circle cx="6" cy="18" r="2"></circle>
           </svg>
           <span class="sr-only">RSS Feed</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center sm:flex-row sm:items-start">
-        <img class="w-1/3 mb-5 block" src="/assets/profile.png" />
+        <img class="mb-5 block w-1/3" src="/assets/profile.png" />
 
-        <div class="pl-8">
+        <div class="sm:pl-8">
           <div class="text-center sm:text-left">
-            <h1>
-              Sebastian Lavarias
-            </h1>
+            <h1>Sebastian Curtis Lavarias</h1>
           </div>
 
-          <p class="mb-5 text-center sm:text-left">
-            “First, solve the problem. Then, write the code.” — John Johnson
+          <p class="text-center font-bold sm:text-left">
+            “First, solve the problem. Then, write the code.” <span
+              class="mt-2 block text-right italic sm:text-left"
+              >- John Johnson</span
+            >
           </p>
 
-          <div class="flex flex-col items-center sm:flex-row sm:items-start sm:justify-start mb-5">
+          <div
+            class="mb-1 flex flex-col items-center pt-3 sm:flex-row sm:items-start sm:justify-start"
+          >
             <Socials />
           </div>
 
           <div class="text-center sm:text-left">
-            <a target="_blank" class="underline text-skin-accent" href="/assets/files/resume.pdf">View resume...</a>
+            <a
+              target="_blank"
+              class="text-skin-accent underline"
+              href="/assets/files/resume.pdf">View resume...</a
+            >
           </div>
         </div>
       </div>
-
     </section>
 
     <section id="techs">
       <h2>About this Site</h2>
 
       <p class="mb-5">
-        Diagram below the architecture of this website and I explained it to my YouTube channel  <a target="_blank" class="underline text-skin-accent" href="#">Click to watch...</a>
+        Diagram below the architecture of this website and I explained it to my
+        YouTube channel <a
+          target="_blank"
+          class="text-skin-accent underline"
+          href="#">Click to watch...</a
+        >
       </p>
 
-      <img class="w-full mb-5" src="/assets/techs.png" />
+      <img class="mb-5 w-full" src="/assets/techs.png" />
 
       <p>
-        TLDR: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, vel?
+        TLDR: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
+        vel?
       </p>
     </section>
 
@@ -93,7 +102,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               ({ data, slug }, index) =>
                 index < SITE.postPerIndex && (
                   <Card
-                    href={`/posts/${slug}/`}
+                    href={`/articles/${slug}/`}
                     frontmatter={data}
                     secHeading={false}
                   />
@@ -105,7 +114,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     }
 
     <div class="all-posts-btn-wrapper">
-      <LinkButton href="/posts/">
+      <LinkButton href="/articles/">
         All Posts
         <svg xmlns="http://www.w3.org/2000/svg"
           ><path
@@ -122,7 +131,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply pb-6 pt-8;
+    @apply pt-8;
   }
   #hero h1 {
     @apply my-4 inline-block text-3xl font-bold sm:text-5xl;
