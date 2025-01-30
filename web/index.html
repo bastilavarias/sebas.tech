@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .post-list {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0;
+        }
+        .post-item {
+            background-color: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .post-item:hover {
+            background-color: #f0f0f0;
+        }
+        .content {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>My Blog</h1>
+</header>
+
+<div class="post-list" x-data="{ posts: [
+      { id: 1, title: 'First Blog Post', content: 'This is the content of the first post.' },
+      { id: 2, title: 'Second Blog Post', content: 'Here is some content for the second post.' },
+      { id: 3, title: 'Third Blog Post', content: 'Content for the third post is right here.' }
+    ], showContent: null }">
+
+    <!-- Blog Post List -->
+    <template x-for="post in posts" :key="post.id">
+        <div class="post-item">
+            <h2 x-text="post.title" class="text-xl font-bold cursor-pointer" @click="showContent === post.id ? showContent = null : showContent = post.id"></h2>
+            <div x-show="showContent === post.id" x-text="post.content" class="content"></div>
+        </div>
+    </template>
+
+</div>
+
+</body>
+</html>
