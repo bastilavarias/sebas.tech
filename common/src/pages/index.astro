@@ -1,0 +1,160 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Hr from "@components/Hr.astro";
+import Card from "@components/Card";
+import Socials from "@components/Socials.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import { SITE, SOCIALS } from "@config";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+const socialCount = SOCIALS.filter(social => social.active).length;
+---
+
+<Layout>
+  <Header />
+  <main id="main-content">
+    <section id="hero">
+      <div class="flex justify-end">
+        <a
+          target="_blank"
+          href="/rss.xml"
+          class="rss-link"
+          aria-label="rss feed"
+          title="RSS Feed"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+          ><path
+            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+          ></path><path
+            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+          ></path><circle cx="6" cy="18" r="2"></circle>
+          </svg>
+          <span class="sr-only">RSS Feed</span>
+        </a>
+      </div>
+
+      <div class="flex flex-col items-center sm:flex-row sm:items-start">
+        <img class="w-1/3 mb-5 block" src="/assets/profile.png" />
+
+        <div class="pl-8">
+          <div class="text-center sm:text-left">
+            <h1>
+              Sebastian Lavarias
+            </h1>
+          </div>
+
+          <p class="mb-5 text-center sm:text-left">
+            “First, solve the problem. Then, write the code.” — John Johnson
+          </p>
+
+          <div class="flex flex-col items-center sm:flex-row sm:items-start sm:justify-start mb-5">
+            <Socials />
+          </div>
+
+          <div class="text-center sm:text-left">
+            <a target="_blank" class="underline text-skin-accent" href="/assets/files/resume.pdf">View resume...</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="techs">
+      <h2>About this Site</h2>
+
+      <p class="mb-5">
+        Diagram below the architecture of this website and I explained it to my YouTube channel  <a target="_blank" class="underline text-skin-accent" href="#">Click to watch...</a>
+      </p>
+
+      <img class="w-full mb-5" src="/assets/techs.png" />
+
+      <p>
+        TLDR: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, vel?
+      </p>
+    </section>
+
+    <Hr />
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts">
+          <h2>Featured</h2>
+          <ul>
+            {recentPosts.map(
+              ({ data, slug }, index) =>
+                index < SITE.postPerIndex && (
+                  <Card
+                    href={`/posts/${slug}/`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="all-posts-btn-wrapper">
+      <LinkButton href="/posts/">
+        All Posts
+        <svg xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+          ></path>
+        </svg>
+      </LinkButton>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pb-6 pt-8;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:text-5xl;
+  }
+  #hero .rss-link {
+    @apply mb-6;
+  }
+  #hero .rss-icon {
+    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  }
+
+  /* ===== Featured & Recent Posts Sections ===== */
+  #techs,
+  #featured,
+  #recent-posts {
+    @apply pb-6 pt-12;
+  }
+  #techs h2,
+  #featured h2,
+  #recent-posts h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  .all-posts-btn-wrapper {
+    @apply my-8 text-center;
+  }
+</style>
