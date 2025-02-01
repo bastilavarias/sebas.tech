@@ -1,0 +1,12 @@
+---
+import { marked } from "marked";
+
+export interface Props {
+  content: string;
+}
+
+const { content = "" } = Astro.props;
+const htmlContent = marked.parse(content);
+---
+
+<article set:html={htmlContent} />

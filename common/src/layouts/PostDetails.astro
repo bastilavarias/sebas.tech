@@ -8,6 +8,7 @@ import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
 import { SITE } from "@config";
+import ArticleContent from "../components/ArticleContent.astro";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -28,7 +29,7 @@ const {
   editPost,
 } = post.data;
 
-const { Content } = await post.render();
+// const { Content } = await post.render();
 
 const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
 const ogUrl = new URL(
@@ -77,7 +78,9 @@ const nextPost =
     </button>
   </div>
   <main id="main-content">
-    <h1 transition:name={slugifyStr(title)} class="post-title inline-block">{title}</h1>
+    <h1 transition:name={slugifyStr(title)} class="post-title inline-block">
+      {title}
+    </h1>
     <Datetime
       pubDatetime={pubDatetime}
       modDatetime={modDatetime}
@@ -87,7 +90,9 @@ const nextPost =
       postId={post.id}
     />
     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
-      <Content />
+      <ArticleContent
+        content={post.data.content ? post.data.content.value : ""}
+      />
     </article>
 
     <ul class="my-8">

@@ -2,12 +2,34 @@
 import { SITE } from "@config";
 import Posts from "@layouts/Posts.astro";
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
-import getSortedPosts from "@utils/getSortedPosts";
+import articlesCollection from "../../content/collection/articles";
+import type { Article } from "../../pocketbase";
+
+// export const getStaticPaths = (async ({ paginate }) => {
+//   const posts = await getCollection("blog", ({ data }) => !data.draft);
+//   return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
+// }) satisfies GetStaticPaths;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
+  const articles = await articlesCollection.list();
+  return paginate(
+    articles.map((article: Article) => ({
+      slug: article.slug,
+      data: {
+        author: article.author,
+        pubDatetime: article.date_posted,
+        modDatetime: article.updated,
+        title: article.title,
+        featured: article.featured,
+        draft: article.draft,
+        tags: [article.category],
+        description: article.conclusion,
+      },
+    })),
+    {
+      pageSize: SITE.postPerPage,
+    }
+  );
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;

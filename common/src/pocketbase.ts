@@ -2,9 +2,24 @@
 // @ts-expect-error
 import PocketBase from "pocketbase";
 
-export const pb = new PocketBase("http://127.0.0.1:8080");
+export type Article = {
+  id: number;
+  category: string[];
+  author: string;
+  title: string;
+  slug: string;
+  content: string;
+  conclusion: string;
+  featured: boolean;
+  draft: false;
+  date_posted: string;
+  created: string;
+  updated: string;
+};
+
+export const pb = new PocketBase(import.meta.env.BACKEND_URL);
 
 await pb.admins.authWithPassword(
-  "sebastiancurtislavarias@gmail.com",
-  "#VueVechain052100"
+  import.meta.env.BACKEND_EMAIL,
+  import.meta.env.BACKEND_PASSWORD
 );
