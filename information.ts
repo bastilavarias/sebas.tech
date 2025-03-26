@@ -1,7 +1,7 @@
 export const BASIC_INFO = {
     name: 'Sebastian Curtis Lavarias',
-    work: 'full stack web developer',
-    introduction: 'full-stack developer. lifelong learner. content creator.',
+    work: 'Full stack web developer',
+    introduction: 'A Programmer. Content Creator (kinda). Lifelong learner.',
     socials: [
         {
             text: 'github,',

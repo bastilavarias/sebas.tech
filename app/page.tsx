@@ -1,8 +1,5 @@
 import Image from "next/image"
-import Link from "next/link"
 import { cn } from "@/lib/utils"
-import ProjectCard from "@/components/project-card"
-import ToolIcon from "@/components/tool-icon"
 import ThemeToggle from '@/components/theme-toggle';
 import { BASIC_INFO } from '@/information';
 
@@ -35,7 +32,7 @@ export default function Home() {
           </div>
 
           <section className="mb-12">
-            <h2 className="text-lg font-medium mb-4 text-black dark:text-white">about me</h2>
+            <h2 className="text-lg font-medium mb-4 text-black dark:text-white">About me</h2>
             <div className="space-y-4 text-sm text-muted-foreground">
               <p>
                 {BASIC_INFO.introduction}
