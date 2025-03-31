@@ -15,7 +15,7 @@ export default function Home() {
         <main className="max-w-[576px] mx-auto px-4 py-12 md:py-16">
           <ThemeToggle />
 
-          <div className="flex flex-col items-start mb-12">
+          <div className="flex flex-col items-center mb-12">
             <div className="w-16 h-16 md:w-17 md:h-17 rounded-full bg-gray-200 dark:bg-gray-700 mb-4 overflow-hidden">
               <Image
                   src="/images/me.jpg"
@@ -32,13 +32,11 @@ export default function Home() {
           </div>
 
           <section className="mb-12">
-            <h2 className="text-lg font-medium mb-4 text-black dark:text-white">About me</h2>
-            <div className="space-y-4 text-sm text-muted-foreground">
+            <h2 className="text-lg font-medium text-black dark:text-white">About me</h2>
+            <div className="text-sm text-muted-foreground">
               <p>
-                {BASIC_INFO.introduction}
-              </p>
-              <p>
-                feel free to view my <a className="underline mx-1" href="/documents/resume.pdf" target="_blank">resume,</a>and
+                A Programmer. Content Creator (kinda). Lifelong learner. Feel free to view my <a
+                  className="underline mr-1" href="/documents/resume.pdf" target="_blank">resume,</a>and
                 follow my
                 {
                   BASIC_INFO.socials.map(
@@ -131,7 +129,7 @@ export default function Home() {
           {/*  </div>*/}
           {/*</section>*/}
 
-          <footer className="text-xs text-gray-500 dark:text-gray-400 text-center pt-8">
+          <footer className="text-xs text-muted-forreground text-center pt-8">
             © 2025. All rights reserved.
           </footer>
         </main>
