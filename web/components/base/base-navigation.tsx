@@ -13,7 +13,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
         <Link
             href={href}
             className={cn(
-                "underline transition-colors",
+                "transition-colors",
                 isActive
                     ? "text-black dark:text-white font-medium"
                     : "text-muted-foreground hover:text-foreground"
