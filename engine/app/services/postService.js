@@ -31,10 +31,9 @@ const generate = async () => {
         }
 
         const topics = [
-            "DevOps, Ubuntu Server (Favor: 30%)",
-            "Front-end Development focusing on latest version of Vue, React, NextJS and CapacitorJS (Favor: 25%)",
-            "Back-end Development focusing on PHP, Node.js, Go lang (Favor: 25%)",
-            "Tips and tricks to become a better coder/programmer/software engineer (Favor: 20%)",
+            "Front-end Development focusing on latest version of Vue, React, NextJS and CapacitorJS",
+            "Back-end Development focusing on PHP, Node.js, Go lang",
+            "DevOps focusing on Docker, AWS and Digital Ocean",
         ];
         const readMinutes = 5;
         const existingTitles = await database('posts').select('title');
