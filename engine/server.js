@@ -21,7 +21,7 @@ application.use(
 application.use(responseFilter());
 application.use(bodyParser.json());
 application.use(bodyParser.urlencoded({ extended: true }));
-application.use("/api/chat", api);
+application.use("/api", api);
 
 const port = 3000;
 server.listen(port, () => {

@@ -3,11 +3,11 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    return  knex.schema.createTable('posts', (table) => {
+    return  knex.schema.createTable('openai_responses', (table) => {
         table.increments('id').primary();
-        table.string('title').notNullable();
-        table.string('slug').notNullable().unique();
-        table.binary('content');
+        table.text('prompt');
+        table.binary('content').nullable();
+        table.boolean('completed').defaultTo(0);
         table.timestamp('created_at').defaultTo(knex.fn.now());
     })
 };
@@ -17,5 +17,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('posts');  // Drop the 'posts' table if it exists
+    return knex.schema.dropTableIfExists('openai_responses');  // Drop the 'posts' table if it exists
 };

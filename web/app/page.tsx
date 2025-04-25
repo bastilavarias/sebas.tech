@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { BASIC_INFO } from '@/information';
-import {ExternalLink} from "lucide-react";
-import Link from "next/link";
+import CodeBitesList from "@/components/code-bites-list";
 
 export default function Home() {
 
@@ -90,21 +89,15 @@ export default function Home() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-lg font-medium text-black dark:text-white">Latest Code Bites</h2>
-          <div className="break-words text-sm">
-            <Link
-                href="/post/post-1"
-                className="underline flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors text-sm"
-            >
-              <ExternalLink className="w-4 h-4 mr-1.5 mt-0.5"/>
-              How to Build a Scalable API with Node.js and Express
-            </Link>
-          </div>
+          <h2 className="text-lg font-medium text-black dark:text-white">
+            Latest Code Bites
+          </h2>
+          <CodeBitesList perPage={3} paginate={false}/>
         </section>
 
-        <footer className="text-xs text-muted-forreground text-center pt-8">
-          © 2025. All rights reserved.
-        </footer>
+          <footer className="text-xs text-muted-forreground text-center pt-8">
+            © 2025. All rights reserved.
+          </footer>
       </div>
-  )
+)
 }

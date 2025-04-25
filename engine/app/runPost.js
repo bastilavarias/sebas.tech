@@ -1,3 +1,3 @@
-const { generatePost } = require('./post');
+const { generate } = require('./services/postService');
 
-generatePost();
+generate();

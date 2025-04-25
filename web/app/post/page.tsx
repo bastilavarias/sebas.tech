@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {ExternalLink} from "lucide-react";
+import CodeBitesList from "@/components/code-bites-list";
 
 export default function Posts() {
     return (
@@ -9,7 +10,7 @@ export default function Posts() {
                 <div className="break-words text-sm text-black dark:text-muted-foreground space-y-3">
                     <p>
                         Code Bites is an
-                        AI-powered microblogging system I developed and integrated directly into this portfolio. This automated content pipeline
+                        AI-powered micro blogging system I developed and integrated directly into this portfolio. This automated content pipeline
                         leverages:
                     </p>
 
@@ -21,15 +22,7 @@ export default function Posts() {
                 </div>
             </div>
 
-            <Link
-                href="/post/post-1"
-                className="underline flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors text-sm"
-            >
-                <ExternalLink className="w-4 h-4 mr-1.5 mt-0.5"/>
-                How to Build a Scalable API with Node.js and Express
-            </Link>
-
-            <button className="text-sm cursor-pointer">Load more code bytes</button>
+            <CodeBitesList paginate={true} perPage={5}/>
         </section>
     )
 }

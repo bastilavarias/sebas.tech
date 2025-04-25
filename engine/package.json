@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon -L server.js",
-    "generate:post": "node app/runPost.js",
-    "db:migrate": "node database/run-migration.js"
+    "generate:post": "node app/runPost.js"
   },
   "author": "Sebastian Curtis Lavarias",
   "license": "ISC",
