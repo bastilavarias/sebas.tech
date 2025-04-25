@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { BASIC_INFO } from '@/information';
-import CodeBitesList from "@/components/code-bites-list";
+import HomeCodeBitesList from "@/components/home-code-bites-list";
 
 export default function Home() {
 
@@ -92,7 +92,7 @@ export default function Home() {
           <h2 className="text-lg font-medium text-black dark:text-white">
             Latest Code Bites
           </h2>
-          <CodeBitesList perPage={3} paginate={false}/>
+          <HomeCodeBitesList/>
         </section>
 
           <footer className="text-xs text-muted-forreground text-center pt-8">

@@ -1,5 +1,3 @@
-import Link from "next/link";
-import {ExternalLink} from "lucide-react";
 import CodeBitesList from "@/components/code-bites-list";
 
 export default function Posts() {
@@ -22,7 +20,7 @@ export default function Posts() {
                 </div>
             </div>
 
-            <CodeBitesList paginate={true} perPage={5}/>
+            <CodeBitesList paginate={true} perPage={10}/>
         </section>
     )
 }
