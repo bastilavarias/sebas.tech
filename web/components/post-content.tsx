@@ -16,7 +16,7 @@ export default function PostContent() {
         const fetchPost = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`http://localhost:3000/api/post/single/${slug}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/single/${slug}`);
                 const { data } = await response.json();
                 setPost({ ...data.data });
             } catch (error) {

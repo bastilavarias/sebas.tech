@@ -14,7 +14,7 @@ export default function HomeCodeBitesList() {
             setLoading(true);
             try {
                 const response = await fetch(
-                    `http://localhost:3000/api/post?page=1&perPage=3&titleOnly=1`
+                    `${process.env.NEXT_PUBLIC_API_URL}/api/post?page=1&perPage=3&titleOnly=1`
                 );
                 const { data } = await response.json();
                 const posts = data.data.posts;

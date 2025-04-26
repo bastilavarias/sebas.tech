@@ -24,7 +24,7 @@ export default function CodeBitesList({ perPage = 3, paginate = false }: CodeBit
         setLoading(true);
         try {
             const response = await fetch(
-                `http://localhost:3000/api/post?page=${page}&perPage=${perPage}&titleOnly=1`
+                `${process.env.NEXT_PUBLIC_API_URL}/api/post?page=${page}&perPage=${perPage}&titleOnly=1`
             );
             const { data } = await response.json();
             const _data = data.data;

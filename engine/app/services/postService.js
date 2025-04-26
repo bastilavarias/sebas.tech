@@ -61,7 +61,7 @@ Generate a **unique and engaging blog post** that:
 - Include relatable metaphors or emojis where it helps simplify or humanize an idea 🧠✨
 
 📦 **Output Format**:
-Respond in **pure JSON**, with the following structure:
+Do not wrap the json codes in JSON markers and respond in **pure JSON**, with the following structure:
 
 {
   "title": "Your SEO-optimized blog title",
