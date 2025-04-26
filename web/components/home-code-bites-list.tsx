@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { Post } from "@/types";
+import { PostPreview } from "@/types";
 
 export default function HomeCodeBitesList() {
-    const [posts, setPosts] = useState<Post[]>([]);
+    const [posts, setPosts] = useState<PostPreview[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

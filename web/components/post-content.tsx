@@ -5,10 +5,17 @@ import { useParams  } from "next/navigation";
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/components/prism-javascript';
+import {PostPreview} from "@/types";
 
 export default function PostContent() {
     const { slug } = useParams();
-    const [post, setPost] = useState<any>(null);
+    const [post, setPost] = useState<PostPreview>({
+        id: 0,
+        title: '',
+        slug: '',
+        content: '',
+        created_at: '',
+    });
     const [loading, setLoading] = useState(true);
     const [theme, setTheme] = useState<"light" | "dark">("dark");
 
@@ -32,10 +39,10 @@ export default function PostContent() {
     useEffect(() => {
         const loadPrismTheme = () => {
             if (theme === "dark") {
-                // @ts-ignore
+                // @ts-expect-error: dynamic import of CSS file not typed
                 import('prismjs/themes/prism-tomorrow.css');
             } else {
-                // @ts-ignore
+                // @ts-expect-error: dynamic import of CSS file not typed
                 import('prismjs/themes/prism.css');
             }
         };
@@ -74,10 +81,13 @@ export default function PostContent() {
                                 </small>
                             </div>
 
-                            <div
-                                className="prose max-w-none dark:prose-invert text-sm"
-                                dangerouslySetInnerHTML={{__html: post.content}}
-                            />
+                            {
+                                post.content && <div
+                                    className="prose max-w-none dark:prose-invert text-sm"
+                                    dangerouslySetInnerHTML={{__html: post.content}}
+                                />
+                            }
+
                         </>
                     ) : (
                         <p className="text-sm">Post not found.</p>

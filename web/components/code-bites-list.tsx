@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { Post } from "@/types";
+import { PostPreview } from "@/types";
 
 interface CodeBitesListProps {
     perPage: number;
     paginate: boolean;
 }
 
-export default function CodeBitesList({ perPage = 3, paginate = false }: CodeBitesListProps) {
-    const [posts, setPosts] = useState<Post[]>([]);
+export default function CodeBitesList({ perPage = 3 }: CodeBitesListProps) {
+    const [posts, setPosts] = useState<PostPreview[]>([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [stopPagination, setStopPagination] = useState(false);
@@ -45,7 +45,7 @@ export default function CodeBitesList({ perPage = 3, paginate = false }: CodeBit
 
     useEffect(() => {
         fetchPosts();
-    }, []);
+    });
 
     return (
         <div className="space-y-5">

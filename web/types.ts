@@ -1,4 +1,4 @@
-export interface Post {
+export interface PostPreview {
     id?: number;
     title?: string;
     slug?: string;

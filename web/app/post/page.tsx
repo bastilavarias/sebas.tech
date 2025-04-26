@@ -13,7 +13,7 @@ export default function Posts() {
                     </p>
 
                     <ul className="list-disc pl-5 space-y-1">
-                        <li>OpenAI's API for technical content generation</li>
+                        <li>OpenAI&apos;s API for technical content generation</li>
                         <li>NodeJS/Express API routes for backend processing</li>
                         <li>CRON jobs via Docker for weekly automation</li>
                     </ul>
