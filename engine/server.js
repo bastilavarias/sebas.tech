@@ -28,7 +28,7 @@ cron.schedule('0 6 * * 2,5', async () => {
     require('./app/runPost')
 });
 
-const port = 3000;
+const port = process.env.PORT;
 server.listen(port, () => {
     console.log(`Service running at localhost:${port}`);
 });

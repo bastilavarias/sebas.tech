@@ -7,7 +7,7 @@ services:
     env_file:
       - ./engine/.env
     ports:
-      - "3000:3000"
+      - "5002:5002"
     volumes:
       - ./engine:/usr/src/app
       - ./engine/package.json:/usr/src/app/package.json
@@ -27,9 +27,9 @@ services:
     env_file:
       - .env.database
     ports:
-      - "3307:3307"
+      - "3308:3308"
     expose:
-      - 3307
+      - 3308
     volumes:
       - database_volume:/var/lib/mysql/
     networks:
