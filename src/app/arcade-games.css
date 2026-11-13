@@ -1,0 +1,154 @@
+/* Baste's own spatial arcade components. No generic dialog boxes; the frames
+   are draggable physical props, while their game surfaces keep input local. */
+
+.arcade-machine,.mini-chess {
+ position:absolute!important;margin:0;overflow:visible;
+ transform:rotate(-3deg);transform-origin:center center;
+ translate:var(--asset-dx,0px) var(--asset-dy,0px);
+ touch-action:none;
+ user-select:none;
+ -webkit-user-select:none;
+ box-sizing:border-box;
+ isolation:isolate;
+ z-index:12;
+}
+.arcade-machine{
+ width:368px;max-width:none;
+ border:10px solid #172837!important;
+ border-bottom:15px solid #0b1822!important;
+ border-radius:24px 24px 26px 26px!important;
+ background:#10202e!important;
+ padding:12px 12px 3px;
+ gap:8px!important;
+ color:#f5f0dc!important;
+ box-shadow:0 8px 0 #08141e,0 19px 35px rgba(0,0,0,.32),
+ inset 0 0 0 2px rgba(243,244,225,.14)!important;
+ transform:rotate(-4deg);
+ cursor:grab;
+}
+.arcade-machine:hover:not(.asset-dragging),.mini-chess:hover:not(.asset-dragging){
+ box-shadow:0 9px 0 #0b1a24,0 22px 48px rgba(0,0,0,.34);
+}
+.arcade-heading{display:flex;gap:6px;align-items:center;justify-content:space-between;height:34px;flex-shrink:0;cursor:grab;}
+.arcade-sign{display:flex;align-items:center;gap:7px;font:900 19px/1.1 var(--page-font);letter-spacing:.075em;color:#eecd83;}
+.arcade-sign svg{color:#fc9c40}
+.arcade-heading-flare{color:#ef8649;font-size:12px;margin-left:1px}
+.arcade-machine .arcade-sign-badge{border:1px solid rgba(250,211,152,.46);color:#fae1bc;background:rgba(255,255,255,.04);font:700 9px/1 var(--page-font);letter-spacing:.1em;height:21px}
+.arcade-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.arcade-stats>div{
+ display:flex;align-items:center;justify-content:space-between;flex-direction:column;gap:2px;
+ background:#081a27;border:1px solid rgba(197,223,235,.13);
+ border-radius:9px;padding:6px 8px 4px;
+}
+.arcade-stats small{color:#9db7be;letter-spacing:.15em;font:700 9px/1.2 var(--page-font)}
+.arcade-stats strong{display:flex;align-items:center;gap:5px;font:900 21px/1.1 var(--page-font);font-variant-numeric:tabular-nums;color:#ffc96b}
+.arcade-stats strong svg{color:#d6af68}
+.arcade-canvas-wrap{
+ background:#102238;border:3px solid #33526b;border-radius:9px;
+ box-shadow:inset 0 5px 16px rgba(0,0,0,.6),0 2px 5px rgba(0,0,0,.4);
+ overflow:hidden;touch-action:none;cursor:crosshair;
+}
+.arcade-canvas-wrap canvas{
+ display:block;width:100%;height:auto;
+ aspect-ratio:360/310;touch-action:none;cursor:crosshair;
+}
+.arcade-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:34px;cursor:default;}
+.arcade-helper{font:600 10px/1.25 var(--page-font);color:#d9e6de;max-width:235px;overflow:hidden;}
+.arcade-reset{height:29px!important;background:#f9b65e!important;color:#172837!important;white-space:nowrap;font-size:11px!important;gap:4px!important}
+.arcade-reset:hover{background:#ffcf87!important}
+.arcade-underbar{display:flex;justify-content:center;align-items:center;gap:4px;color:#618da1;letter-spacing:.18em;font:700 8px/1.5 var(--page-font);padding-bottom:2px}
+.arcade-underbar svg{color:#f5be64}
+
+/* Tabletop wooden chess set, deliberately different from a SaaS card. */
+.mini-chess{
+ width:388px;max-width:none;
+ border:12px solid #7c5433!important;
+ border-bottom:18px solid #583920!important;
+ border-radius:20px!important;
+ background:#ad8259!important;
+ color:#2b231b!important;
+ box-shadow:0 7px 0 #39261b,0 16px 31px rgba(0,0,0,.35),
+ inset 0 0 0 2px rgba(246,218,151,.7)!important;
+ gap:0!important;
+ transform:rotate(5deg);
+ cursor:grab;
+}
+.mini-chess .chess-heading{
+ display:flex;align-items:center;justify-content:space-between;
+ padding:8px 12px 6px;height:40px;cursor:grab;
+}
+.chess-title-lockup{display:flex;align-items:center;gap:7px;font:900 17px/1 var(--page-font);letter-spacing:.06em;color:#281b11}
+.chess-title-lockup svg{color:#f1c47d;fill:#f1c47d;filter:drop-shadow(0 1px 0 #65402b)}
+.mini-chess .chess-mode-badge{background:#6a4429;color:#f8e9cf;border:1px solid rgba(255,255,255,.2);font:700 9px/1 var(--page-font);letter-spacing:.1em}
+.mini-chess .chess-content{padding:0 10px 5px!important;display:flex;flex-direction:column;gap:8px;}
+.chess-board-frame{
+ padding:10px;border:2px solid #51321f;border-radius:10px;
+ background:linear-gradient(145deg,#cd9c65,#a57240);
+ box-shadow:inset 0 0 0 2px rgba(238,212,166,.28),0 6px 12px rgba(52,26,11,.28);
+ touch-action:none;
+}
+.chess-board-inner{width:100%;aspect-ratio:1;touch-action:none;cursor:default;}
+.chess-board-inner *{touch-action:none;}
+.chess-summary{
+ display:flex;flex-direction:column;gap:3px;padding:6px 8px;
+ background:rgba(255,239,212,.66);border:1px solid rgba(83,49,20,.25);border-radius:7px;min-height:48px;
+}
+.chess-turn{display:flex;gap:7px;align-items:center;font:700 11px/1.25 var(--page-font)}
+.chess-turn-dot{display:inline-block;flex:none;width:11px;height:11px;border-radius:50%;border:1px solid #715943}
+.chess-turn-dot.white{background:#fdf9e8}
+.chess-turn-dot.black{background:#30251f}
+.chess-moves{font:600 10px/1.25 var(--page-font);color:#6a503b;min-height:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.chess-actions{display:flex;align-items:center;justify-content:space-between;padding:0 2px;gap:8px}
+.chess-modes,.chess-tools{display:flex;align-items:center;gap:3px}
+.mini-chess .chess-actions button{
+ min-height:27px;height:27px;padding:0 7px;gap:4px;
+ border-radius:6px;color:#3c271a;font:700 10px/1 var(--page-font);
+ cursor:pointer;
+}
+.mini-chess .chess-actions button:hover{background:rgba(65,40,20,.16)}
+.mini-chess .chess-actions button[aria-pressed="true"]{background:#6c4427;color:#fff4df}
+.mini-chess .chess-tools button{width:29px;padding:0}
+.chess-announcer{font:600 9px/1 var(--page-font);color:#795335;min-height:11px;text-align:center}
+.chess-corner-ornament{position:absolute;right:7px;bottom:-13px;font:700 8px/1 var(--page-font);letter-spacing:.18em;color:#d7b58e;pointer-events:none}
+
+/* Preserve original polaroid interaction even when the new arcade sits behind it. */
+.scene .photo-one{z-index:30}
+
+/* A clearly labeled jump button stays visible even when the physical game
+   is outside the browser viewport (especially on narrow mobile screens). */
+.hoop-quick-link{
+ position:fixed!important;
+ top:20px;right:22px;z-index:90;
+ height:38px!important;
+ padding:0 15px!important;
+ border:1px solid #e6bd7c!important;
+ background:#fff7e8!important;
+ color:#53371e!important;
+ box-shadow:0 4px 0 rgba(100,66,30,.13),0 8px 22px rgba(24,38,61,.16)!important;
+ border-radius:999px!important;
+ font:800 12px/1 var(--page-font)!important;
+ letter-spacing:.02em;
+ cursor:pointer;
+}
+.hoop-quick-link:hover{background:#ffe8bf!important;transform:translateY(-1px);}
+.hoop-quick-link svg{color:#c46621}
+.hoop-quick-link:focus-visible{outline:3px solid #e99437;outline-offset:3px}
+@media(max-width:639px){
+ .hoop-quick-link{top:13px;right:13px;height:35px!important;padding:0 12px!important}
+}
+
+/* Let users immediately find each offscreen physical game. This dock button
+   remains a shadcn Button with the same Tooltip structure as other actions. */
+#games-dock{position:relative;}
+#games-dock .gamepad-ping{position:absolute;right:3px;top:4px;width:5px;height:5px;border-radius:50%;background:#ed9a48;pointer-events:none}
+@media(max-width:639px){
+ .arcade-machine{width:min(350px,calc(100vw - 20px));transform:rotate(-2deg);padding:9px 9px 2px;border-width:8px!important;border-bottom-width:12px!important}
+ .arcade-sign{font-size:17px}
+ .mini-chess{width:min(346px,calc(100vw - 20px));transform:rotate(2deg)}
+ .mini-chess .chess-heading{height:35px}
+ .mini-chess .chess-content{padding:0 8px 3px!important;gap:7px}
+ .chess-board-frame{padding:7px}
+}
+@media(prefers-reduced-motion:reduce){
+ .arcade-machine,.mini-chess{transition:none!important}
+}

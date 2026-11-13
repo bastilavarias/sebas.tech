@@ -1,0 +1,117 @@
+/* Social profiles replace the main card's old quick-link buttons and project list. */
+.profile-links.timeline {
+  margin: 26px 0 0;
+  gap: 8px;
+}
+.profile-links.timeline li {
+  display: block;
+  min-height: 0;
+}
+.profile-social-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  min-height: 60px;
+  padding: 8px 10px;
+  border: 1px solid var(--card-rule);
+  border-radius: 10px;
+  background: var(--chip);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+.profile-social-link:hover {
+  background: var(--pill-hover);
+}
+.profile-social-link:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+.profile-social-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 7px;
+  color: #fff;
+}
+.profile-social-icon svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+}
+.profile-social-icon--tiktok { background: #151619; }
+.profile-social-icon--youtube { background: #e62117; }
+.profile-social-icon--facebook { background: #1877f2; }
+/* The Facebook tile uses a bold solid white 'f', without a thin circular outline. */
+.profile-social-icon--facebook svg { width: 22px; height: 30px; }
+.profile-social-icon--instagram { background: linear-gradient(145deg, #8044d9 0%, #df358c 48%, #f7ad42 100%); }
+.profile-social-icon--github { background: #25292f; }
+.profile-social-link .timeline-text {
+  min-width: 0;
+  overflow: hidden;
+}
+.profile-social-link .timeline-text small {
+  color: var(--muted);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.profile-social-arrow {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform 160ms ease, color 160ms ease;
+}
+.profile-social-link:hover .profile-social-arrow {
+  transform: translate(2px,-2px);
+  color: var(--ink);
+}
+@media (max-width: 639px) {
+  .profile-links.timeline { margin-top: 21px; gap: 7px; }
+  .profile-social-link { min-height: 56px; padding: 6px 7px; gap: 12px; }
+  .profile-social-icon { width: 40px; height: 40px; flex-basis: 40px; }
+  .profile-social-icon svg { width: 25px; height: 25px; }
+  .profile-social-icon--facebook svg { width: 21px; height: 28px; }
+}
+
+/* Project destinations: real owned logos, no status pills, no nested cards. */
+.project-links.timeline { gap: 8px; }
+.project-links.timeline li { display: block; min-height: 0; }
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  min-height: 60px;
+  padding: 8px 10px;
+  border: 1px solid var(--card-rule);
+  border-radius: 10px;
+  background: var(--chip);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+.project-link:hover { background: var(--pill-hover); }
+.project-link:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 2px; }
+.project-logo {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+}
+.project-logo img { display: block; width: 40px; height: 40px; object-fit: contain; }
+.project-link .timeline-text { min-width: 0; overflow: hidden; }
+.project-link .timeline-text small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.project-arrow { flex: 0 0 auto; margin-left: auto; color: var(--muted); transition: transform 160ms ease, color 160ms ease; }
+.project-link:hover .project-arrow { transform: translate(2px,-2px); color: var(--ink); }
+@media (max-width: 639px) {
+  .project-link { min-height: 56px; padding: 6px 7px; gap: 12px; }
+  .project-logo { width: 40px; height: 40px; flex-basis: 40px; }
+  .project-logo img { width: 38px; height: 38px; }
+}

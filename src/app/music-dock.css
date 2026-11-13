@@ -1,0 +1,204 @@
+/* Build 09 / V11 — Baste's animated dock mini-player.
+   No floating queue card. On desktop the dock grows sideways;
+   on mobile the same dock grows upward into a second row. */
+#main-dock{
+  transition:background-color 220ms ease,border-color 220ms ease,
+             box-shadow 480ms cubic-bezier(.18,.8,.22,1);
+  will-change:auto;
+}
+#main-dock.has-player{box-shadow:0 9px 36px rgba(0,0,0,.20),0 2px 9px rgba(0,0,0,.07)}
+#music-dock.music-playing{background:var(--accent-chip);color:var(--ink)}
+#music-dock.music-preview{color:var(--ink)}
+.dock-player{
+  width:0; height:40px; min-width:0; flex:0 0 auto;
+  box-sizing:border-box; overflow:hidden;
+  visibility:hidden;opacity:0;pointer-events:none;
+  transform:translateX(-12px) scale(.94);
+  transform-origin:left center;
+  transition:width 540ms cubic-bezier(.18,1.15,.36,1),
+    opacity 270ms ease,transform 480ms cubic-bezier(.18,1,.32,1),
+    visibility 0ms linear 540ms;
+}
+#main-dock.has-player .dock-player{
+  width:407px;opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(0) scale(1);
+  transition:width 540ms cubic-bezier(.18,1.15,.36,1),
+    opacity 300ms ease 125ms,transform 440ms cubic-bezier(.18,1,.32,1) 55ms,
+    visibility 0ms;
+}
+.dock-player-inner{
+  display:flex;align-items:center;gap:9px;
+  width:403px;min-width:403px;height:40px;
+  overflow:hidden;
+}
+.dock-track-art{
+  width:39px;height:39px;flex:0 0 39px;object-fit:cover;
+  border-radius:7px;background:var(--chip);
+  box-shadow:0 2px 5px rgba(0,0,0,.10);
+  transform:scale(.84) rotate(-6deg);opacity:0;
+  transition:transform 560ms cubic-bezier(.2,1.18,.38,1),opacity 310ms ease;
+}
+#main-dock.has-player .dock-track-art{transform:scale(1) rotate(0);opacity:1}
+.dock-track-meta{
+  display:flex;flex:1 1 auto;min-width:0;flex-direction:column;
+  gap:4px;margin-top:0;opacity:0;transform:translateY(7px);
+  transition:opacity 320ms ease,transform 380ms ease;
+}
+#main-dock.has-player .dock-track-meta{
+  opacity:1;transform:translateY(0);
+  transition-delay:130ms,105ms;
+}
+.dock-track-line,.dock-track-subline{
+  display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0;
+}
+.dock-track-line strong{
+  font:650 12px/1.15 var(--page-font);letter-spacing:-.02em;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.dock-track-subline{
+  font:450 10px/1.15 var(--page-font);color:var(--muted);
+}
+#dock-track-artist{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dock-track-time{flex:none;font-variant-numeric:tabular-nums}
+.dock-track-seek{
+  display:block;width:100%;height:4px;min-height:4px;margin:1px 0 0;padding:0;
+  border:0;outline:none;appearance:none;-webkit-appearance:none;
+  border-radius:5px;cursor:pointer;background:
+  linear-gradient(to right,var(--accent-blue) 0%,
+    var(--accent-blue) var(--play-progress,0%),var(--card-rule) var(--play-progress,0%),
+    var(--card-rule) 100%);
+}
+.dock-track-seek::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:7px;height:7px;
+  border:0;border-radius:50%;background:var(--accent-blue);
+  opacity:0;transition:opacity 170ms ease;
+}
+.dock-track-seek:hover::-webkit-slider-thumb,.dock-track-seek:focus-visible::-webkit-slider-thumb{opacity:1}
+.dock-track-seek::-moz-range-thumb{width:7px;height:7px;border:0;border-radius:50%;background:var(--accent-blue)}
+.dock-track-seek:disabled{cursor:default;opacity:.6}
+.dock-transport{
+  display:flex;align-items:center;justify-content:center;
+  gap:5px;flex:0 0 auto;
+  opacity:0;transform:translateX(7px);
+  transition:opacity 300ms ease,transform 400ms ease;
+}
+#main-dock.has-player .dock-transport{
+  opacity:1;transform:translateX(0);transition-delay:200ms,135ms;
+}
+#main-dock .dock-transport button{
+  box-sizing:border-box;display:grid;place-items:center;
+  width:31px;height:32px;min-width:31px;padding:0;margin:0;
+  border-radius:7px;background:transparent;color:var(--ink);
+}
+#main-dock .dock-transport button:hover{background:var(--chip)}
+#main-dock .dock-transport button svg{width:17px;height:17px;display:block}
+#main-dock .dock-transport .dock-play{
+  width:35px;height:34px;min-width:35px;background:var(--ink);color:var(--card);
+  border-radius:9px;
+}
+#main-dock .dock-transport .dock-play:hover{background:var(--muted);color:var(--card)}
+#main-dock .dock-transport .dock-transport-separator{
+  display:block;flex:0 0 1px;height:24px;margin:0 5px;
+  background:var(--card-rule);
+}
+#main-dock .dock-transport .dock-stop{
+  border:1px solid var(--card-rule);border-radius:9px;
+  background:var(--chip);color:var(--ink);
+}
+#main-dock .dock-transport .dock-stop:disabled{opacity:.32;cursor:not-allowed}
+#main-dock .dock-transport .dock-stop:not(:disabled):hover{background:var(--dock-active)}
+
+/* Keep a visible gap above the fixed dock at rest and during expansion. */
+#drag-indicator{
+  bottom:94px;
+  transition:bottom 520ms cubic-bezier(.18,1,.32,1),
+    background-color var(--dur-short) var(--ease-in-out),
+    transform var(--dur-short) var(--ease-out);
+}
+#main-dock .dock-pause-icon{display:none!important}
+#main-dock.is-audio-playing .dock-pause-icon,
+#main-dock.is-preview-playing .dock-pause-icon{display:block!important}
+#main-dock.is-audio-playing .dock-play-icon,
+#main-dock.is-preview-playing .dock-play-icon{display:none!important}
+.dock-equalizer{
+  display:flex;align-items:center;justify-content:center;
+  height:13px;gap:2px;flex:0 0 auto;opacity:.48;
+}
+.dock-equalizer i{display:block;width:2px;height:4px;border-radius:3px;background:var(--accent-blue)}
+.dock-equalizer i:nth-child(2){height:9px}
+.dock-equalizer i:nth-child(3){height:6px}
+.dock-equalizer i:nth-child(4){height:11px}
+#main-dock.is-audio-playing .dock-equalizer{opacity:1}
+#main-dock.is-audio-playing .dock-equalizer i{
+  animation:dock-eq 630ms ease-in-out infinite alternate;
+}
+#main-dock.is-audio-playing .dock-equalizer i:nth-child(2){animation-delay:125ms}
+#main-dock.is-audio-playing .dock-equalizer i:nth-child(3){animation-delay:300ms}
+#main-dock.is-audio-playing .dock-equalizer i:nth-child(4){animation-delay:190ms}
+@keyframes dock-eq{
+  from{transform:scaleY(.4)}
+  to{transform:scaleY(1.4)}
+}
+@media(max-width:799px){
+  #main-dock{
+    left:16px;right:16px;bottom:16px;width:auto;
+    transform:none;gap:6px;padding:6px 7px;border-radius:14px;
+    display:grid;
+    grid-template-columns:auto auto auto minmax(12px,1fr) auto auto;
+    grid-template-rows:40px 0px;
+    column-gap:5px;row-gap:0;
+    justify-items:stretch;align-items:center;
+    transition:grid-template-rows 510ms cubic-bezier(.18,1.1,.36,1),
+      background-color 220ms ease,box-shadow 460ms ease;
+  }
+  #main-dock.has-player{grid-template-rows:40px 55px;row-gap:5px}
+  #main-dock > .dock-link.active:first-child{grid-column:1;grid-row:1}
+  #main-dock > #music-dock{grid-column:2;grid-row:1}
+  #main-dock > #games-dock{grid-column:3;grid-row:1}
+  #main-dock > .dock-divider{grid-column:4;grid-row:1;justify-self:center}
+  #main-dock > #theme-toggle{grid-column:5;grid-row:1}
+  #main-dock > #sound-toggle{grid-column:6;grid-row:1}
+  #main-dock > .dock-player{
+    grid-column:1/-1;grid-row:2;
+    width:100%;height:0;
+    align-self:center;justify-self:stretch;
+    transform:translateY(-7px) scale(.96);
+    transform-origin:center top;
+    transition:height 510ms cubic-bezier(.18,1.1,.36,1),
+      opacity 250ms ease,transform 420ms cubic-bezier(.18,1,.32,1),
+      visibility 0ms linear 510ms;
+  }
+  #main-dock.has-player > .dock-player{
+    width:100%;height:51px;transform:translateY(0) scale(1);
+    transition:height 510ms cubic-bezier(.18,1.1,.36,1),
+      opacity 280ms ease 110ms,transform 420ms cubic-bezier(.18,1,.32,1),
+      visibility 0ms;
+  }
+  .dock-player-inner{
+    width:100%;min-width:0;height:51px;
+    gap:8px;box-sizing:border-box;padding:4px 1px;
+  }
+  .dock-track-art{width:38px;height:38px;flex-basis:38px}
+  .dock-track-meta{gap:4px}
+  #main-dock .dock-transport{gap:3px}
+  #main-dock .dock-transport button{width:26px;height:31px;min-width:26px}
+  #main-dock .dock-transport button svg{width:16px;height:16px}
+  #main-dock .dock-transport .dock-play{width:31px;min-width:31px;height:32px}
+  #main-dock .dock-transport .dock-transport-separator{margin:0 3px;height:21px}
+  #drag-indicator{bottom:84px}
+  body:has(#main-dock.has-player) #drag-indicator{bottom:144px}
+  .dock-track-line strong{font-size:11px}
+  .dock-track-subline{font-size:9px}
+}
+@media(max-width:365px){
+  .dock-player-inner{gap:5px}
+  .dock-track-art{width:34px;height:34px;flex-basis:34px}
+  #main-dock .dock-transport{gap:1px}
+  #main-dock .dock-transport button{width:23px;min-width:23px}
+  #main-dock .dock-transport .dock-transport-separator{margin:0 3px}
+  #main-dock .dock-transport .dock-play{width:28px;min-width:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  #main-dock,.dock-player,.dock-track-art,.dock-track-meta,.dock-transport{transition:none!important}
+  .dock-equalizer i{animation:none!important}
+}

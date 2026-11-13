@@ -1,2 +1,24 @@
-.idea
-.env.database
+# Build products and dependencies
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.vercel/
+.vercel-*/
+coverage/
+*.log
+
+# Credentials & environment-specific settings
+.env
+.env.*
+!.env.example
+
+# Local-only LAN preview infrastructure
+compose.yaml
+nginx.conf
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,169 @@
+/*
+ * LCD desk clock — self-contained visual system inspired by the supplied
+ * physical alarm-clock reference. No photographic crop, remote asset or
+ * proprietary typeface. All numerals are true seven-segment SVG shapes.
+ */
+.clock-tile.lcd-clock {
+  position: absolute;
+  left: calc(50% + 790px);
+  top: calc(50% + 155px);
+  display: block;
+  width: 388px;
+  height: 216px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 19px 17px 21px;
+  border: 1px solid #12131b;
+  border-radius: 43px 43px 38px 38px;
+  background:
+    linear-gradient(180deg, #393947 0%, #20222e 11%, #171a24 62%, #10121c 100%);
+  box-shadow:
+    0 10px 0 #0d0e14,
+    0 19px 22px rgba(7, 13, 24, .29),
+    0 28px 36px rgba(7, 13, 24, .13),
+    inset 0 3px 2px rgba(247, 247, 255, .23),
+    inset 2px 0 3px rgba(255, 255, 255, .075),
+    inset -2px -5px 9px rgba(0, 0, 0, .45);
+  color: #111318;
+  line-height: 1;
+  transform: rotate(4deg);
+  filter: none;
+  isolation: isolate;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  cursor: grab;
+  z-index: 10;
+}
+
+.clock-tile.lcd-clock::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 18%;
+  right: 18%;
+  height: 7px;
+  background: linear-gradient(90deg, #1b1d27, #51515f 40%, #676977 50%, #262936);
+  border-radius: 1px 1px 7px 7px;
+  opacity: .8;
+  pointer-events: none;
+}
+
+.lcd-clock-front {
+  position: relative;
+  height: 100%;
+  display: flex;
+  padding: 12px;
+  border-radius: 35px;
+  border: 6px solid #363b4c;
+  background: linear-gradient(145deg, #1a1e2b, #484d61 54%, #1e222f);
+  box-shadow:
+    inset 0 0 0 2px rgba(132, 139, 157, .3),
+    inset 0 10px 17px rgba(0, 0, 0, .38),
+    0 1px 0 rgba(230, 235, 247, .21);
+}
+
+.lcd-clock-window {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  padding: 3px;
+  border-radius: 19px;
+  background: linear-gradient(160deg, #080b11, #3f4350 48%, #151820);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, .43),
+    inset 0 2px 2px rgba(0, 0, 0, .68);
+}
+
+.lcd-clock-glass {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #747a7c;
+  background: linear-gradient(170deg, #d5dbd4 0%, #ecf0e7 47%, #dfe7df 100%);
+  box-shadow:
+    inset 0 5px 8px rgba(13, 24, 31, .17),
+    inset 0 -2px 3px rgba(255, 255, 255, .8);
+}
+
+.lcd-clock-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(175deg, rgba(255, 255, 255, .22), transparent 26%, transparent 77%, rgba(26, 42, 40, .045));
+}
+
+.lcd-clock-digits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  gap: 2px;
+  height: 110px;
+  padding: 0 3px;
+}
+
+.lcd-digit {
+  display: block;
+  flex: 0 0 auto;
+  width: 51px;
+  height: 100px;
+  overflow: visible;
+  filter: drop-shadow(1px 1px .35px rgba(0, 0, 0, .15));
+}
+
+.lcd-colon {
+  width: 19px;
+  height: 101px;
+  margin: 0 2px;
+  flex: 0 0 auto;
+  fill: #111416;
+}
+
+.lcd-segment-on {
+  fill: #111416;
+}
+
+.lcd-segment-off {
+  fill: rgba(49, 60, 52, .055);
+}
+
+.lcd-meridiem {
+  display: block;
+  flex: 0 0 auto;
+  align-self: flex-start;
+  margin: 19px 0 0 1px;
+  color: #22282a;
+  font: 750 11px/1 var(--page-font);
+  letter-spacing: .015em;
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .clock-tile.lcd-clock {
+    /* The clock is still draggable and part of the larger world canvas. */
+    width: 348px;
+    height: 197px;
+    padding: 16px 14px 19px;
+    border-radius: 37px;
+  }
+  .lcd-clock-front { padding: 10px; border-width: 5px; border-radius: 30px; }
+  .lcd-clock-digits { gap: 1px; }
+  .lcd-digit { width: 43px; height: 91px; }
+  .lcd-colon { width: 16px; height: 91px; margin: 0 1px; }
+  .lcd-meridiem { font-size: 10px; margin-top: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clock-tile.lcd-clock {
+    animation: none !important;
+    transition: none !important;
+  }
+}

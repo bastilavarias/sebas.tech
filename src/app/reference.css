@@ -1,0 +1,679 @@
+/* Hallmark v2.0.0 | scope: private spatial portfolio reference | theme: measured blueprint | light+dark | motion: calm | signature: draggable technical artboard */
+/* Critique: faithful independent reimplementation of a reference composition; no licensed font or downloaded stock artwork. Reference-owned images remain externally linked and temporary. */
+:root {
+  color-scheme: light dark;
+  --body: #fafafa;
+  --ink: #1f2123;
+  --muted: #636569;
+  --card: #ffffff;
+  --photo-paper: #fefdfb;
+  --photo-shade: rgba(0,0,0,.13);
+  --card-rule: #e4e5e7;
+  --chip: #f4f4f5;
+  --chip-ink: #18191b;
+  --chip-border: #e4e5e7;
+  --blueprint-color: #a52e3d;
+  --grid-small: rgba(255, 255, 255, .1);
+  --grid-large: rgba(255,255,255,.25);
+  --grid-large-2: rgba(214,214,214,.25);
+  --grid-diagonal: rgba(255,255,255,.25);
+  --board-text: #f7f8fa;
+  --board-border: #e4a1a8;
+  --panel-shadow: 0 10px 15px -3px rgba(0,0,0,.10), 0 4px 6px -4px rgba(0,0,0,.10);
+  --dock-shadow: 0 5px 20px rgba(0,0,0,.15);
+  --photo-shadow: 0 10px 20px rgba(0,0,0,.22);
+  --muted-border: rgba(244,244,245,.55);
+  --badge-bg: rgba(244,244,245,.4);
+  --pill-hover: #e8e8ea;
+  --dock-active: #f4f4f5;
+  --accent-blue: #1798d5;
+  --accent-emerald: #00a868;
+  --accent-green: #65a300;
+  --accent-orange: #ff530a;
+  --accent-violet: #6247ee;
+  --accent-chip: #046198;
+  --page-font: var(--font-geist-sans), "Helvetica Neue", Arial, sans-serif;
+  --ease-out: cubic-bezier(.2,.8,.2,1);
+  --ease-in-out: cubic-bezier(.4,0,.2,1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --body: #0a0a0a;
+  --ink: #f3f4f5;
+  --muted: #a3a5a9;
+  --card: #19191c;
+  --card-rule: #3a3a3e;
+  --chip: #29292b;
+  --chip-ink: #f4f4f4;
+  --chip-border: #39393d;
+  --pill-hover: #38383b;
+  --dock-active: #303033;
+  --muted-border: #39393d;
+  --badge-bg: #242426;
+  --panel-shadow: 0 10px 15px -3px rgba(0,0,0,.23), 0 4px 6px -4px rgba(0,0,0,.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --body: #0a0a0a;
+    --ink: #f3f4f5;
+    --muted: #a3a5a9;
+    --card: #19191c;
+    --card-rule: #3a3a3e;
+    --chip: #29292b;
+    --chip-ink: #f4f4f4;
+    --chip-border: #39393d;
+    --pill-hover: #38383b;
+    --dock-active: #303033;
+    --muted-border: #39393d;
+    --badge-bg: #242426;
+    --panel-shadow: 0 10px 15px -3px rgba(0,0,0,.23), 0 4px 6px -4px rgba(0,0,0,.18);
+  }
+}
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow-x: clip; }
+html { overflow-y: clip; }
+body {
+  font-family: var(--page-font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--dur-short) var(--ease-in-out), color var(--dur-short) var(--ease-in-out);
+}
+button, a { font: inherit; }
+button { color: inherit; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible,button:focus-visible,.viewport:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+button:focus:not(:focus-visible),.viewport:focus:not(:focus-visible){outline:none}
+[hidden],.card[hidden]{display:none!important}
+.sr-only {position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+.viewport {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.viewport.is-dragging { cursor: grabbing; }
+.viewport,.card,.photo,.book-cover,.movie-poster { touch-action:none; }
+.world {
+  position: absolute;
+  width: 3200px;
+  height: 2760px;
+  left: 50%;
+  top: 50%;
+  --pan-x: 0px;
+  --pan-y: 0px;
+  transform: translate(calc(-50% + var(--pan-x)),calc(-50% + var(--pan-y)));
+  will-change: transform;
+}
+.blueprint {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--blueprint-color);
+  border: 4px solid var(--board-border);
+  border-radius: 8px;
+  isolation: isolate;
+  background-image:
+    linear-gradient(90deg,var(--grid-small) 1px,transparent 0),
+    linear-gradient(var(--grid-small) 1px,transparent 0);
+  background-size: 16px 16px;
+  background-position: 12px 12px;
+}
+/* Match the original reference layer stack: the 60%-opaque clouding texture
+   overlays BOTH grid systems, and all texture layers are clipped to the board. */
+.blueprint-weather,
+.blueprint-grid,
+.blueprint-diagonal { position: absolute; inset:0; pointer-events: none; }
+.blueprint-weather {
+  z-index: 10;
+  background-image: url('https://www.andregs.com/about-me/Layer-window.png');
+  background-size: cover;
+  background-position: 0 0;
+  opacity: .6;
+}
+.blueprint-grid {
+  background-image:
+    linear-gradient(90deg,var(--grid-large) 1px,transparent 1px),
+    linear-gradient(var(--grid-large-2) 1px,transparent 1px);
+  background-size: 80px 80px;
+  background-position: -4px -4px;
+}
+.blueprint-diagonal {
+  background-image:
+    linear-gradient(45deg,transparent 49.5%,var(--grid-diagonal) 0,var(--grid-diagonal) 50.5%,transparent 0),
+    linear-gradient(-45deg,transparent 49.5%,var(--grid-diagonal) 0,var(--grid-diagonal) 50.5%,transparent 0);
+  background-size: 80px 80px;
+  background-position: -2.5px -2.5px;
+}
+.scene {position:absolute;inset:0;pointer-events:none}
+.scene > * { pointer-events: auto }
+[data-drag-asset] {
+  translate:var(--asset-dx,0px) var(--asset-dy,0px);
+  touch-action:none;
+  user-select:none;
+  -webkit-user-drag:none;
+  cursor:grab;
+}
+[data-drag-asset] img {pointer-events:none;user-select:none;-webkit-user-drag:none}
+[data-drag-asset].asset-dragging,
+[data-drag-asset].asset-dragging:hover {
+  cursor:grabbing;
+  transition:none!important;
+}
+.photo {
+  position:absolute;
+  margin:0;
+  box-sizing:border-box;
+  background: var(--photo-paper);
+  /* Classic instant-photo paper: a slim rim on three sides, deep blank bottom. */
+  padding:10px 10px 40px;
+  border-radius:2px;
+  box-shadow: var(--photo-shadow);
+  user-select:none;
+  transition: transform var(--dur-short) var(--ease-out);
+  cursor:grab;
+}
+.photo:hover {transform:rotate(var(--photo-angle)) perspective(750px) rotateY(var(--tilt-y,0deg)) rotateX(var(--tilt-x,0deg)) scale(1.02)}
+.photo img {width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;background:var(--photo-paper)}
+/* Each photo has its own orientation, dimensions, position, and rotation in assets.ts. */
+.world-sticker {position:absolute;display:block;object-fit:contain;pointer-events:auto;filter:drop-shadow(0 4px 4px var(--photo-shade))}
+.luka {left:calc(50% + 350px);top:calc(50% - 117px);width:200px;height:266px;transform:rotate(-12deg);}
+/* Go, Laravel, CPU and Vue use canvas coordinates from the sticker data module. */
+/* Full-size, varied hardback books measured from source: thick covers,
+   a visible page block and a back cover occupy actual 3D depth. */
+.book-cover{
+  position:absolute;
+  margin:0;
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  overflow:visible;
+  transform:rotate(var(--book-angle,0deg));
+  perspective:600px;
+  transform-style:preserve-3d;
+  cursor:grab;
+}
+.book-object{
+  position:relative;
+  width:100%;height:100%;
+  transform:rotateY(0deg);
+  transform-origin:0% 50%;
+  transform-style:preserve-3d;
+  transition:transform 300ms var(--ease-out);
+}
+.book-cover:hover .book-object,
+.book-cover:focus-visible .book-object {
+  transform:rotateY(-20deg) scale(1.03) translateX(-2px);
+}
+.book-cover.asset-dragging .book-object{transform:rotateY(0deg)}
+.book-front,.book-back,.book-pages {position:absolute;display:block;pointer-events:none}
+.book-front {
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  transform:translateZ(22.5px);
+  border-radius:3px 2px 2px 3px;
+  box-shadow:0 1px 1px rgba(0,0,0,.04),0 5px 9px rgba(0,0,0,.12),0 14px 22px rgba(0,0,0,.08);
+}
+.book-back{
+  inset:0;
+  width:100%;height:100%;
+  border-radius:3px 2px 2px 3px;
+  background:var(--book-back,#eee);
+  box-shadow:0 4px 9px rgba(0,0,0,.12);
+  transform:translateZ(-22.5px);
+}
+.book-pages{
+  left:100%;top:5px;
+  width:45px;height:calc(100% - 10px);
+  transform-origin:0% 50%;
+  transform:translateZ(22.5px) rotateY(90deg);
+  background:repeating-linear-gradient(180deg,#fff 0 2px,#f2f0eb 2px 2.8px,#fbfbf8 3px 6px);
+  box-shadow:inset 0 0 7px rgba(0,0,0,.12);
+  border-right:1px solid rgba(0,0,0,.05);
+}
+
+/* Movies are flat printed poster art, separate from the real-depth book covers. */
+.movie-poster {
+  position:absolute;
+  box-sizing:border-box;
+  margin:0;
+  padding:5px;
+  background:#f5f3ec;
+  border:1px solid rgba(52,47,42,.25);
+  border-radius:2px;
+  transform:rotate(var(--poster-angle,0deg));
+  box-shadow:0 3px 6px rgba(0,0,0,.12),0 11px 22px rgba(0,0,0,.24);
+  cursor:grab;
+  user-select:none;
+  transition:transform var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out);
+}
+.movie-poster img {display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.movie-poster:hover {
+  transform:rotate(var(--poster-angle,0deg)) scale(1.035);
+  box-shadow:0 8px 16px rgba(0,0,0,.17),0 18px 30px rgba(0,0,0,.24);
+}
+.movie-poster.asset-dragging:hover {transform:rotate(var(--poster-angle,0deg));}
+
+.reference-badge {
+  position:absolute;
+  left:calc(50% - 265px);
+  top:calc(50% - 347px);
+  color:var(--board-text);
+  background:var(--accent-chip);
+  border-radius:4px;
+  padding:3px 8px;
+  font-size:12px;
+  transform:rotate(-8deg);
+  box-shadow:var(--photo-shadow);
+}
+.card {
+  position:absolute;
+  width:568px;
+  max-width:90vw;
+  padding:24px;
+  border-radius:8px;
+  background:var(--card);
+  color:var(--ink);
+  box-shadow:var(--panel-shadow);
+  cursor:grab;
+  user-select:none;
+  touch-action:none;
+  transition:background-color var(--dur-short) var(--ease-in-out),color var(--dur-short) var(--ease-in-out);
+}
+.profile-card,.other-panel {
+  left:50%;top:50%;
+  transform:translate(calc(-50% - 4px),-50%) translateY(var(--main-stack-shift, -92px));
+  animation: card-enter 600ms var(--ease-out) both;
+}
+.profile-head {display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.avatar {width:56px;height:56px;flex:none;border-radius:50%;object-fit:cover;}
+.profile-identity{display:flex;flex-direction:column;flex:1;min-width:0}
+.profile-identity h1 {font-size:20px;line-height:1.5;font-weight:500;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.profile-identity p {font-size:16px;font-weight:500;line-height:1.5;color:var(--muted);margin:0}
+.bio {display:flex;flex-direction:column;gap:16px;}
+.bio p {font-size:16px;line-height:26px;letter-spacing:-.4px;margin:0;overflow-wrap:anywhere;text-wrap:pretty;}
+.bio em {font-weight:500;font-style:italic;}
+.desktop-story {line-height:24px!important;}
+.timeline {list-style:none;display:flex;flex-direction:column;gap:16px;padding:0;margin:48px 0 0}
+.timeline li{min-height:45px;display:flex;gap:16px;align-items:center;}
+.timeline-square{width:40px;height:40px;flex:0 0 40px;border-radius:4px;}
+.timeline-square.teal{background:var(--accent-blue)}
+.timeline-square.emerald{background:var(--accent-emerald)}
+.timeline-square.green{background:var(--accent-green)}
+.timeline-square.orange{background:var(--accent-orange)}
+.timeline-square.blue{background:var(--accent-violet)}
+.timeline-text{min-width:0;flex:1;display:flex;flex-direction:column}
+.timeline-text strong{font-size:16px;font-weight:500;line-height:24px;letter-spacing:-.015em}
+.timeline-text small{font-size:14px;color:var(--muted);line-height:21px;white-space:nowrap}
+.timeline time{font-size:12.8px;white-space:nowrap;color:var(--muted);background:var(--badge-bg);border:1px solid var(--muted-border);padding:2px 10px;border-radius:8px;line-height:20px;align-self:center;}
+.date-separator::before{content:"–";}
+/* Initial responsive estimates prevent a large layout shift before React hydrates.
+   ResizeObserver measures the exact profile height afterward. */
+.scene{--profile-half-height:317.5px;--main-stack-shift:-92px}
+@media(max-width:639px){.scene{--profile-half-height:250px;--main-stack-shift:-88px}}
+@media(max-width:440px){.scene{--profile-half-height:269px;--main-stack-shift:-84px}}
+@media(max-width:359px){.scene{--profile-half-height:294px;--main-stack-shift:-78px}}
+/* Keep the profile and Projects as one gently top-anchored stack on desktop.
+   At ordinary 900px viewports its position is effectively unchanged, while
+   zoomed-out/tall desktops no longer show an oversized strip above the cards.
+   Both cards use this same offset; ResizeObserver supplies the real card height. */
+@media(min-width:1024px){
+  .scene{
+    --main-stack-shift:calc(
+      var(--profile-half-height, 317.5px) - 50vh
+      + clamp(36px, calc(32vh - 318px), 108px)
+    );
+  }
+}
+/* Keep the lower card close to the profile even as the profile height grows or shrinks. */
+.education-card {
+  left:50%;top:calc(50% + var(--main-stack-shift, -92px) + var(--profile-half-height, 317.5px) + 16px);
+  transform:translateX(calc(-50% - 4px));
+  min-height:0;
+}
+.education-card h2{font-size:19px;font-weight:500;margin:0 0 16px}
+.education-card .timeline{margin:0;gap:12px}
+.education-card .timeline li{min-height:45px}
+.other-panel{min-height:500px;}
+.other-panel-top{display:flex;justify-content:space-between;align-items:center}
+.panel-number{font-size:13px;color:var(--muted)}
+.small-action{background:var(--chip);border:1px solid var(--chip-border);padding:8px 12px;border-radius:6px;cursor:pointer;transition:background var(--dur-short) var(--ease-in-out)}
+.small-action:hover{background:var(--pill-hover)}
+.other-panel h2{font-size:32px;letter-spacing:-.04em;margin:32px 0 10px;}
+.panel-intro{color:var(--muted);margin:0 0 28px;line-height:1.5;}
+.panel-items{display:flex;flex-direction:column;gap:14px}
+.panel-item{padding:13px 0;border-top:1px solid var(--card-rule);display:flex;gap:8px;flex-direction:column}
+.panel-item strong{font-size:17px;font-weight:600}
+.panel-item span{font-size:14px;color:var(--muted)}
+/* The draggable physical clock now lives in the standalone lcd-clock.css module. */
+/* Three prominent, independently draggable record sleeves frame the profile.
+   Opening the sleeve exposes a full-size vinyl; playback mechanics unchanged. */
+.album-record{
+  position:absolute;
+  display:block;
+  margin:0;
+  padding:0;
+  width:208px;
+  height:208px;
+  border:0;
+  transform:rotate(var(--record-angle,8deg));
+  overflow:visible;
+  cursor:pointer;
+  isolation:isolate;
+  user-select:none;
+  perspective:750px;
+}
+.record-vinyl{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:radial-gradient(circle at 48% 44%,#222 0 8%,#08080a 25%,#2c2e33 42%,#09090a 56%,#26282d 73%,#050505 100%);
+  box-shadow:0 6px 18px rgba(0,0,0,.26),inset 0 0 0 2px rgba(255,255,255,.035);
+  display:grid;
+  place-items:center;
+  transform:rotate(0deg);
+}
+.record-grooves {
+  position:absolute;
+  inset:5px;
+  border-radius:50%;
+  background:repeating-radial-gradient(circle at center,transparent 0 2px,rgba(255,255,255,.095) 2.5px 2.7px,transparent 3px 6px);
+  opacity:.6;
+}
+.record-center{
+  position:relative;
+  z-index:2;
+  width:80px;height:80px;
+  border:3px solid #84231c;
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow:0 1px 6px rgba(0,0,0,.18);
+}
+.record-center img {width:100%;height:100%;object-fit:cover;display:block}
+.record-center::after{
+  content:"";
+  position:absolute;
+  width:8px;height:8px;
+  border-radius:50%;
+  left:calc(50% - 4px);top:calc(50% - 4px);
+  background:#111;
+  box-shadow:0 0 0 1px rgba(255,255,255,.2);
+}
+.record-sleeve{
+  position:absolute;inset:0;
+  z-index:3;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 6px 13px rgba(0,0,0,.22),0 18px 26px rgba(0,0,0,.12);
+  transition:transform 530ms var(--ease-out);
+  transform:translateX(0);
+}
+.record-sleeve img {width:100%;height:100%;object-fit:cover;display:block}
+.record-sleeve-shade {
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.22);
+  opacity:0;
+  transition:opacity 350ms var(--ease-in-out);
+}
+/* Sleeve opening is not dependent on sound files or playback state. */
+.album-record.is-open .record-sleeve{
+  transform:translateX(45%);
+}
+.album-record.is-open .record-sleeve-shade{
+  opacity:1;
+}
+/* A visual-only preview spins without pretending that music is playing.
+   Paused real audio leaves the sleeve open but stops the vinyl rotation. */
+.album-record.is-playing .record-vinyl,
+.album-record.is-previewing .record-vinyl{
+  animation:album-vinyl-spin 2800ms linear infinite;
+}
+.album-record.asset-dragging .record-sleeve{
+  transition:none;
+}
+.record-tooltip{
+  position:absolute;
+  z-index:10;
+  left:50%;top:calc(100% + 12px);
+  transform:translate(-50%,-4px);
+  display:flex;flex-direction:column;gap:3px;
+  align-items:center;
+  min-width:max-content;
+  max-width:225px;
+  background:var(--card);
+  color:var(--ink);
+  padding:9px 13px;
+  border:1px solid var(--card-rule);
+  border-radius:6px;
+  box-shadow:var(--panel-shadow);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 180ms var(--ease-out),transform 180ms var(--ease-out);
+}
+.record-tooltip strong{font-size:13px;font-weight:600}
+.record-tooltip small{font-size:12px;color:var(--muted);white-space:nowrap}
+.album-record:hover .record-tooltip,
+.album-record:focus-visible .record-tooltip {
+  opacity:1;
+  transform:translate(-50%,0);
+}
+@keyframes album-vinyl-spin {
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+.chess-art-tile,.design-art-tile{
+  position:absolute;
+  display:block;
+  margin:0;padding:0;
+  border-radius:16px;
+  box-shadow:var(--photo-shadow);
+  overflow:hidden;
+  cursor:grab;
+}
+.chess-art-tile{
+  width:360px;height:360px;
+  background:#050609;
+}
+.chess-art-tile img{position:absolute;display:block;object-fit:contain;pointer-events:none}
+.chess-backdrop{inset:0;width:100%;height:100%}
+.chess-poster{left:0;top:0;width:49%;height:49%}
+.chess-king{right:0;bottom:0;width:62%;height:65%}
+.chess-title{
+  position:absolute;left:14px;bottom:14px;
+  color:#fff;
+  font:600 16px/1.2 var(--page-font);
+  letter-spacing:.1em;
+  text-shadow:0 1px 5px #000;
+}
+.chess-art-tile:hover .chess-king{transform:translateY(-5px);transition:transform 300ms var(--ease-out)}
+.design-art-tile{
+  width:360px;height:360px;
+  background:#050a10;
+  border:1px solid rgba(255,255,255,.2);
+  transform:rotate(-2deg);
+}
+.design-art-tile canvas{width:100%;height:100%;display:block;touch-action:none}
+
+
+.drag-indicator{
+  position:fixed;z-index:900;
+  left:50%;bottom:80px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:6px;
+  height:32px;padding:0 12px;border-radius:999px;
+  background:var(--card);color:var(--ink);
+  font-size:13px;font-weight:600;
+  box-shadow:var(--panel-shadow);
+  pointer-events:auto;
+  border:1px solid var(--card-rule);
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background-color var(--dur-short) var(--ease-in-out),transform var(--dur-short) var(--ease-out);
+}
+.drag-indicator:hover,.drag-indicator:focus-visible { background:var(--chip); }
+.drag-indicator.grab-enabled { background:var(--ink);color:var(--card); }
+.drag-indicator svg{width:16px;height:16px}
+.drag-indicator.is-dragging{transform:translateX(-50%) scale(.96)}
+.dock{
+  position:fixed;z-index:1000;bottom:24px;left:50%;
+  transform:translateX(-50%);
+  display:flex;align-items:center;gap:8px;
+  padding:8px;
+  border-radius:14px;
+  background:var(--card);color:var(--ink);
+  border:1px solid var(--card-rule);
+  box-shadow:var(--dock-shadow);
+  transition:background-color var(--dur-short) var(--ease-in-out),border-color var(--dur-short) var(--ease-in-out);
+}
+.dock button{
+  position:relative;display:flex;justify-content:center;align-items:center;gap:8px;
+  width:40px;height:40px;padding:0 10px;
+  border:0;border-radius:10px;background:transparent;
+  font-size:14px;font-weight:500;
+  cursor:pointer;
+  flex:none;
+  transition:background-color var(--dur-short) var(--ease-in-out),transform var(--dur-micro) var(--ease-out);
+}
+.dock button:hover{background:var(--chip)}
+.dock button:active{transform:translateY(1px)}
+.dock button.active{width:auto;padding:0 12px;background:var(--dock-active)}
+.dock-link:not(.active) .dock-label{display:none}
+.dock button svg{width:20px;height:20px;flex:none}
+.dock-divider{height:26px;width:1px;background:var(--card-rule);margin:0 4px}
+.dock-action.enabled{background:var(--dock-active)}
+.dock .sun-icon{display:none}
+[data-theme="dark"] .dock .sun-icon{display:block}
+[data-theme="dark"] .dock .moon-icon{display:none}
+@media (prefers-color-scheme:dark){
+ :root:not([data-theme]) .dock .sun-icon{display:block}
+ :root:not([data-theme]) .dock .moon-icon{display:none}
+}
+/* Reference audit (andregs.com): opacity-only 0→1 entrance, 600ms ease,
+   with 120ms per-item orchestration. Preserve the object's own rotation,
+   3D transforms, drags and hit targets; no scale, bounce or sliding. */
+@keyframes card-enter { from{opacity:0} to{opacity:1} }
+@keyframes object-enter { from{opacity:0} to{opacity:1} }
+.scene > :is(.photo,.world-sticker,.book-cover,.movie-poster,.album-record,.reference-badge,.clock-tile,#mini-chess){
+  animation:object-enter 600ms ease var(--entry-delay,0ms) both;
+}
+.scene > .profile-card{animation:card-enter 600ms ease 0ms both}
+.scene > .education-card{animation:card-enter 600ms ease 120ms both}
+.scene > #mini-chess{--entry-delay:480ms}
+.scene > .reference-badge{--entry-delay:600ms}
+.scene > .clock-tile{--entry-delay:840ms}
+/* A user interaction takes priority over an unfinished initial fade. */
+.scene > [data-drag-asset].asset-dragging{animation:none!important;opacity:1}
+html.route-active {overflow-y:auto}
+html.route-active body {overflow-y:auto;height:auto;min-height:100vh}
+.route-view {min-height:100vh;background:var(--body);color:var(--ink);padding:0 0 128px}
+.route-inner {max-width:768px;margin:0 auto;padding:64px 32px 0}
+.route-heading {font-size:20px;font-weight:600;line-height:30px;margin:0 0 24px;letter-spacing:-.02em}
+.route-content {display:flex;flex-direction:column;gap:40px}
+.route-project {display:flex;flex-direction:column;gap:8px;min-width:0}
+.route-project-cover {
+  margin:0 -16px 4px;
+  overflow:hidden;
+  border-radius:12px;
+  background:#e4e5e7;
+  aspect-ratio:1.26;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:var(--panel-shadow);
+}
+.route-project-cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform var(--dur-long) var(--ease-out)}
+.route-project:hover img{transform:scale(1.015)}
+.route-project h2{margin:0;font-size:18px;font-weight:600;line-height:26px}
+.route-project p{margin:0;font-size:14px;line-height:22px;color:var(--muted)}
+.route-craft-card{display:flex;flex-direction:column;gap:20px;margin:0 0 56px}
+.route-craft-detail{display:flex;flex-direction:column;gap:6px}
+.route-craft-detail h2{font-size:19px;margin:0}
+.route-craft-detail p{font-size:14px;margin:0;color:var(--muted)}
+.route-craft-detail small{font-size:12px;letter-spacing:.03em;color:var(--muted)}
+.route-craft-display{height:440px;background:var(--card);border:1px solid var(--card-rule);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:18px;overflow:hidden}
+.clock-demo span{font:600 56px/1 ui-monospace,monospace;background:var(--chip);padding:20px 14px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.route-book-demo {width:144px;height:215px;transform:perspective(700px) rotateY(-20deg);transform-origin:left center;transition:transform var(--dur-long) var(--ease-out)}
+.route-book-demo:hover{transform:perspective(700px) rotateY(-45deg)}
+.route-book-demo img,.album-demo img{width:100%;height:100%;object-fit:cover}
+.album-demo img{width:190px;height:190px;border-radius:9px;box-shadow:var(--panel-shadow)}
+.lines-demo i{display:block;width:42px;height:98px;border-radius:8px;background:var(--accent-blue);transform:skewY(-5deg)}
+.lines-demo i:nth-child(2){background:var(--accent-green)}
+.lines-demo i:nth-child(3){background:var(--accent-orange)}
+.lines-demo i:nth-child(4){background:var(--accent-violet)}
+.route-notes{gap:0}
+.route-year{font-size:22px;margin:24px 0 12px}
+.route-note{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--card-rule)}
+.route-note strong{font-size:16px;font-weight:500}
+.route-note span{font-size:13px;white-space:nowrap;color:var(--muted)}
+.route-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.route-photos .route-photo{min-width:0;aspect-ratio:2/3;margin:0;background:var(--chip);overflow:hidden}
+.route-photos .route-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--dur-long) var(--ease-out)}
+.route-photos .route-photo:hover img{transform:scale(1.018)}
+.route-photos.route-content{width:min(1376px,calc(100vw - 64px));position:relative;left:50%;transform:translateX(-50%)}
+.route-view:has(.route-photos) .route-inner{max-width:100%;padding-left:32px;padding-right:32px}
+@media (max-width:639px){
+  .route-inner{padding:36px 20px 0}
+  .route-heading{margin-bottom:20px}
+  .route-project-cover{margin:0 0 4px;aspect-ratio:1.25}
+  .route-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .route-photos.route-content{width:100%}
+  .route-view:has(.route-photos) .route-inner{padding-left:20px;padding-right:20px}
+  .route-craft-display{height:300px}
+  .clock-demo span{font-size:30px;padding:14px 8px}
+}
+
+@media (max-width:639px){
+  .profile-card,.other-panel{width:90vw;transform:translate(-50%,-50%) translateY(var(--main-stack-shift, -88px))}
+  .education-card{transform:translateX(-50%)}
+  .profile-card{padding-bottom:26px}
+  .profile-head{margin-bottom:8px}
+  .bio{gap:12px}
+  .avatar{width:48px;height:48px}
+  .profile-identity h1{font-size:16px;line-height:24px}
+  .bio p{font-size:14px;line-height:1.625;letter-spacing:normal}
+  .desktop-story{display:none}
+  .timeline{margin-top:18px;gap:12px}
+  .timeline li{min-height:44px;gap:10px}
+  .timeline-square{display:none}
+  .timeline-text strong{font-size:14px;line-height:23px}
+  .timeline-text small{font-size:14px;line-height:21px}
+  .timeline time{font-size:12.8px;padding:2px 10px}
+  .dock{bottom:16px;left:16px;right:16px;width:auto;transform:none;gap:6px;justify-content:space-between;padding:6px 7px;border-radius:14px}
+  .dock button{width:36px;height:40px;padding:0 6px}
+  .dock button.active{padding:0 10px;gap:6px}
+  .dock button svg{width:18px;height:18px}
+  .dock-divider{margin:0 1px}
+  .drag-indicator{bottom:80px;height:32px;font-size:12px}
+  .other-panel{min-height:425px}
+  .other-panel h2{font-size:28px}
+}
+@media (max-width:365px){
+ .card{padding:18px}
+ .timeline{gap:10px}
+ .timeline li{gap:8px}
+ .timeline-text strong,.timeline-text small{font-size:13px}
+ .timeline time{font-size:11.5px;padding:2px 6px}
+ .dock{gap:2px}
+ .dock button{width:33px}
+ .dock button.active{padding:0 7px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

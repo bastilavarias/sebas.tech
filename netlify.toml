@@ -1,0 +1,14 @@
+# Static Next.js export: output: "export" produces ./out.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# Next.js emits an extensionless Open Graph PNG.
+[[headers]]
+  for = "/opengraph-image"
+  [headers.values]
+    Content-Type = "image/png"
+    Cache-Control = "public, max-age=3600"

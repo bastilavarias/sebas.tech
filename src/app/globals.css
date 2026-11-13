@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import "@fontsource-variable/newsreader/wght-italic.css";
+@import "./reference.css";
+@import "./music-dock.css";
+@import "./chess-game.css";
+@import "./lcd-clock.css";
+@import "./profile-links.css";
+@import "./mobile-layout.css";
+
+@theme inline {
+ --color-background: var(--body);
+ --color-foreground: var(--ink);
+ --color-card: var(--card);
+ --color-card-foreground: var(--ink);
+ --color-primary: var(--accent-blue);
+ --color-primary-foreground: #fff;
+ --color-secondary: var(--chip);
+ --color-secondary-foreground: var(--ink);
+ --color-muted: var(--chip);
+ --color-muted-foreground: var(--muted);
+ --color-accent: var(--chip);
+ --color-accent-foreground: var(--ink);
+ --color-border: var(--card-rule);
+ --color-input: var(--card-rule);
+ --color-ring: var(--accent-blue);
+ --radius-lg: .75rem;
+ --radius-md: .5rem;
+ --radius-sm: .375rem;
+}
+@layer base { body { font-family: var(--page-font) } }
+:root { --radius: .65rem; --editorial-italic: "Newsreader Variable", Georgia, serif; }
+.bio em { font-family: var(--editorial-italic); font-style: italic; font-weight: 400; font-optical-sizing: auto; letter-spacing: 0; }
+.record-staging-note { position:absolute; left:calc(50% + 410px); top:calc(50% + 780px); color:var(--board-text); font-size:12px; }
+#main-dock .dock-player [data-slot="slider"]{touch-action:none;cursor:pointer}
+#main-dock .dock-player [data-slot="slider-track"]{background:var(--card-rule);height:3px;border-radius:8px}
+#main-dock .dock-player [data-slot="slider-range"]{background:var(--accent-blue);height:100%;border-radius:8px}
+#main-dock .dock-player [data-slot="slider-thumb"]{background:var(--accent-blue);border:0;width:8px;height:8px;box-shadow:none}
