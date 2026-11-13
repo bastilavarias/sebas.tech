@@ -578,8 +578,10 @@ button:focus:not(:focus-visible),.viewport:focus:not(:focus-visible){outline:non
 .scene > #mini-chess{--entry-delay:480ms}
 .scene > .reference-badge{--entry-delay:600ms}
 .scene > .clock-tile{--entry-delay:840ms}
-/* A user interaction takes priority over an unfinished initial fade. */
-.scene > [data-drag-asset].asset-dragging{animation:none!important;opacity:1}
+/* Interaction permanently retires the initial fade. React changes the vinyl
+   className when playback starts, but does not replace data-asset-interacted;
+   using a class here caused object-enter to restart and hide the record. */
+.scene > [data-drag-asset]:is(.asset-dragging,[data-asset-interacted="true"]){animation:none!important;opacity:1}
 html.route-active {overflow-y:auto}
 html.route-active body {overflow-y:auto;height:auto;min-height:100vh}
 .route-view {min-height:100vh;background:var(--body);color:var(--ink);padding:0 0 128px}

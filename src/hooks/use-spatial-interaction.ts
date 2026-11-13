@@ -165,6 +165,10 @@ export function useSpatialInteraction(
     if(grab)stopGrab();
     const prior=assetOffsets.get(element)||{x:0,y:0};
     assetDrag={element,kind,id,x,y,ox:prior.x,oy:prior.y,moved:false};
+    // React updates its className when the vinyl enters playback mode. Store
+    // interaction outside React-controlled className so it persists across renders;
+    // otherwise object-enter restarts and hides the clicked album momentarily.
+    element.dataset.assetInteracted="true";
     element.classList.add("asset-dragging");
     element.style.zIndex=String(++layer);
     if(kind==="pointer"){try{element.setPointerCapture(id)}catch{}}
