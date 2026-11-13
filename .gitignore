@@ -8,6 +8,9 @@ out/
 coverage/
 *.log
 
+# Generated at build time from files found in public/music
+/public/music/library.json
+
 # Credentials & environment-specific settings
 .env
 .env.*

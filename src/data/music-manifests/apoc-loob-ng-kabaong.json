@@ -1,0 +1,91 @@
+{
+  "id": "apoc-loob-ng-kabaong",
+  "title": "Loob ng Kabaong",
+  "artist": "Apoc",
+  "tracks": [
+    {
+      "number": 1,
+      "title": "Loob ng Kabaong",
+      "duration": "03:29",
+      "filename": "Loob Ng Kabaong.mp3"
+    },
+    {
+      "number": 2,
+      "title": "Piyesa ng Makina",
+      "duration": "03:32",
+      "filename": "Piyesa Ng Makina.mp3"
+    },
+    {
+      "number": 3,
+      "title": "Rapper Ka",
+      "duration": "04:03",
+      "filename": null
+    },
+    {
+      "number": 4,
+      "title": "Wala Akong Pake",
+      "duration": "03:16",
+      "filename": "Wala Akong Pake.mp3"
+    },
+    {
+      "number": 5,
+      "title": "Husgado",
+      "duration": "03:34",
+      "filename": "Husgado.mp3"
+    },
+    {
+      "number": 6,
+      "title": "Sensitibo (feat. DJ Nicko)",
+      "duration": "03:48",
+      "filename": "Sensitibo (feat. DJ Nicko).mp3"
+    },
+    {
+      "number": 7,
+      "title": "Idolo (feat. Supreme Fist)",
+      "duration": "04:39",
+      "filename": "Idolo (feat. Supreme Fist).mp3"
+    },
+    {
+      "number": 8,
+      "title": "Mundo Mo, Mundo Ko",
+      "duration": "04:28",
+      "filename": "Mundo Mo, Mundo Ko.mp3"
+    },
+    {
+      "number": 9,
+      "title": "Balik Alapaap",
+      "duration": "04:40",
+      "filename": "Balik Alapaap.mp3"
+    },
+    {
+      "number": 10,
+      "title": "Taong Mesiyas",
+      "duration": "03:54",
+      "filename": "Taong Mesiyas.mp3"
+    },
+    {
+      "number": 11,
+      "title": "Sa Pagdanak ng Dugo",
+      "duration": "03:53",
+      "filename": "Sa Pagdanak Ng Dugo.mp3"
+    },
+    {
+      "number": 12,
+      "title": "Bara Imortal (feat. Kemikal Ali & Denmark)",
+      "duration": "04:00",
+      "filename": "Bara Imortal (feat. Kemikal Ali & Denmark).mp3"
+    },
+    {
+      "number": 13,
+      "title": "Mula sa Kailaliman",
+      "duration": "03:07",
+      "filename": "Mula Sa Kailaliman.mp3"
+    },
+    {
+      "number": 14,
+      "title": "Guhit ng Palad",
+      "duration": "04:59",
+      "filename": "Guhit Ng Palad.mp3"
+    }
+  ]
+}

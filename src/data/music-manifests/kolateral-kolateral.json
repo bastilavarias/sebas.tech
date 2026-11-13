@@ -1,0 +1,79 @@
+{
+  "id": "kolateral-kolateral",
+  "title": "Kolateral",
+  "artist": "Kolateral",
+  "tracks": [
+    {
+      "number": 1,
+      "title": "Makinarya",
+      "duration": "04:36",
+      "filename": "Makinarya (feat. BLKD, Calix).mp3"
+    },
+    {
+      "number": 2,
+      "title": "Boy",
+      "duration": "05:52",
+      "filename": "Boy (feat. Kartell'em, BLKD).mp3"
+    },
+    {
+      "number": 3,
+      "title": "Distansya",
+      "duration": "03:55",
+      "filename": "Distansya (feat. Muro Ami, 霏).mp3"
+    },
+    {
+      "number": 4,
+      "title": "Papag",
+      "duration": "03:51",
+      "filename": "Papag (feat. Calix).mp3"
+    },
+    {
+      "number": 5,
+      "title": "Giyera Na Bulag",
+      "duration": "03:42",
+      "filename": "Giyera Na Bulag (feat. Calix, Tatz Maven).mp3"
+    },
+    {
+      "number": 6,
+      "title": "Hawak",
+      "duration": "05:39",
+      "filename": "Hawak (feat. Tao).mp3"
+    },
+    {
+      "number": 7,
+      "title": "Pagsusuma",
+      "duration": "03:13",
+      "filename": "Pagsusuma (feat. BLKD).mp3"
+    },
+    {
+      "number": 8,
+      "title": "Neo-Manila",
+      "duration": "02:24",
+      "filename": "Neo-Manila (feat. BLKD).mp3"
+    },
+    {
+      "number": 9,
+      "title": "Parasitikong Abusado",
+      "duration": "05:37",
+      "filename": "Parasitikong Abusado (feat. 1Kiao, Wyp).mp3"
+    },
+    {
+      "number": 10,
+      "title": "Walang Maiiwan",
+      "duration": "03:58",
+      "filename": "Walang Maiiwan (feat. Calix).mp3"
+    },
+    {
+      "number": 11,
+      "title": "Stand By",
+      "duration": "04:13",
+      "filename": "Stand By (feat. BLKD, Calix, Wyp).mp3"
+    },
+    {
+      "number": 12,
+      "title": "Sandata",
+      "duration": "05:23",
+      "filename": "Sandata (feat. Calix, Lanzeta, Because, Pure Mind Quiet Heart, Muro Ami, KIYO, Bang Boss,.mp3"
+    }
+  ]
+}

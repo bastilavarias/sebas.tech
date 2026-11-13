@@ -1,0 +1,55 @@
+{
+  "id": "mhot-panalo-kasa",
+  "title": "Panalo Kasa",
+  "artist": "Mhot",
+  "tracks": [
+    {
+      "number": 1,
+      "title": "Kasa",
+      "duration": "03:35",
+      "filename": "Kasa.mp3"
+    },
+    {
+      "number": 2,
+      "title": "Salang",
+      "duration": "03:41",
+      "filename": "Salang.mp3"
+    },
+    {
+      "number": 3,
+      "title": "Baka",
+      "duration": "04:01",
+      "filename": "Baka.mp3"
+    },
+    {
+      "number": 4,
+      "title": "Imik",
+      "duration": "03:23",
+      "filename": "Imik.mp3"
+    },
+    {
+      "number": 5,
+      "title": "Dama",
+      "duration": "03:52",
+      "filename": "Dama.mp3"
+    },
+    {
+      "number": 6,
+      "title": "Kapos",
+      "duration": "02:43",
+      "filename": "Kapos.mp3"
+    },
+    {
+      "number": 7,
+      "title": "Yaman",
+      "duration": "03:56",
+      "filename": "Yaman.mp3"
+    },
+    {
+      "number": 8,
+      "title": "Siklo",
+      "duration": "04:35",
+      "filename": "Siklo.mp3"
+    }
+  ]
+}

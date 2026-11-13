@@ -21,6 +21,7 @@ export function useMusic(){
 }
 type AlbumMap=Record<string,LoadedAlbum>;
 const publicMusicPreview=process.env.NEXT_PUBLIC_MUSIC_MODE==="preview";
+const staticMusicLibrary=process.env.NEXT_PUBLIC_MUSIC_MODE==="static";
 const coverOnlyLibrary=():AlbumMap=>Object.fromEntries(albums.map(a=>[
  a.id,{id:a.id,title:a.title,artist:a.artist,cover:a.cover,tracks:[]}
 ]));
@@ -47,6 +48,39 @@ export function MusicProvider({children}:{children:ReactNode}){
 
  const readLibrary=useCallback(async()=>{
    const id=++generation.current;
+   if(staticMusicLibrary){
+     // The Netlify build generates this JSON from files present in public/music.
+     // No Nginx directory listing is needed, and absent files never become URLs.
+     if(Object.keys(libraryRef.current).length)return libraryRef.current;
+     try{
+       const response=await fetch("/music/library.json",{cache:"no-store"});
+       if(!response.ok)throw new Error("Static music index is unavailable");
+       const catalog=await response.json() as {albums:LoadedAlbum[]};
+       const next:AlbumMap={};
+       for(const entry of catalog.albums||[]){
+         const base=albums.find(a=>a.id===entry.id);
+         if(!base)continue;
+         next[entry.id]={id:entry.id,title:base.title,artist:base.artist,cover:base.cover,
+           tracks:(entry.tracks||[]).map(track=>({...track,
+             url:track.url?.startsWith("/music/"+encodeURIComponent(entry.id)+"/")?track.url:null}))};
+       }
+       for(const album of albums){
+         next[album.id]??={id:album.id,title:album.title,artist:album.artist,cover:album.cover,tracks:[]};
+       }
+       if(id===generation.current){
+         libraryRef.current=next;setLibrary(next);
+         setStatus("Choose a record to listen.");
+       }
+       return next;
+     }catch{
+       const fallback=coverOnlyLibrary();
+       if(id===generation.current){
+         libraryRef.current=fallback;setLibrary(fallback);
+         setStatus("No public music library found. Add authorized audio files and redeploy.");
+       }
+       return fallback;
+     }
+   }
    if(publicMusicPreview){
      // Static public hosting intentionally contains no private licensed MP3 library.
      const fallback=coverOnlyLibrary();

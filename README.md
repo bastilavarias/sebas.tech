@@ -37,7 +37,7 @@ Netlify configuration also serves the extensionless `/opengraph-image` with the 
 
 ## Music and artwork
 
-The three records remain selectable, but **full MP3 tracks are deliberately excluded from GitHub and public Netlify hosting**. The private LAN demo uses a server-mounted, read-only audio library. On Netlify the music player gracefully becomes a visual preview until licensed audio is provided. The production build sets `NEXT_PUBLIC_MUSIC_MODE=preview` so browsers do not fetch the nonexistent `/music/catalog.json` endpoint and log a 404; the LAN build without that flag still uses its real music library. The Mhot cover itself is bundled with the site.
+The player now supports **real static audio playback on Netlify** when authorized files are added to `public/music/<album-id>/`. The Netlify build uses `NEXT_PUBLIC_MUSIC_MODE=static`, automatically detects audio files with `scripts/build-public-music.mjs`, and creates a Git-ignored `public/music/library.json`. Tracks not yet uploaded remain silent previews, with no broken audio requests. No MP3s are committed in this version. Follow **[MUSIC_UPLOAD.md](MUSIC_UPLOAD.md)** to add authorized recordings; no manual JSON editing is necessary. The separate SEBASTECH LAN preview still uses the private read-only Nginx music library and does not require the static mode. The Mhot cover is bundled with the site.
 
 Some book, manga, film, and album art is third-party media. The grid texture currently loads from the reference site. Review media rights and replace third-party dependencies when appropriate.
 

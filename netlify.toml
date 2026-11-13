@@ -5,9 +5,9 @@
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  # The server-mounted private MP3 library does not exist on public hosting.
-  # Build a self-contained visual vinyl preview instead of fetching a 404 catalog.
-  NEXT_PUBLIC_MUSIC_MODE = "preview"
+  # Static library.json is generated from authorized audio placed in public/music.
+  # No Nginx directory-listing API or private server is needed.
+  NEXT_PUBLIC_MUSIC_MODE = "static"
 
 # Next.js emits an extensionless Open Graph PNG.
 [[headers]]

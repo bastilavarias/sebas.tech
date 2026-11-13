@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0",
-    "build": "next build",
+    "dev": "node scripts/build-public-music.mjs && next dev -H 0.0.0.0",
+    "build": "node scripts/build-public-music.mjs && next build",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
