@@ -8,10 +8,3 @@
   # Static library.json is generated from authorized audio placed in public/music.
   # No Nginx directory-listing API or private server is needed.
   NEXT_PUBLIC_MUSIC_MODE = "static"
-
-# Next.js emits an extensionless Open Graph PNG.
-[[headers]]
-  for = "/opengraph-image"
-  [headers.values]
-    Content-Type = "image/png"
-    Cache-Control = "public, max-age=3600"

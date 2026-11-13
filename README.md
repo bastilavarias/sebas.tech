@@ -33,11 +33,9 @@ Open `http://localhost:3000`. Run `npm run typecheck` and `npm run build` to tes
 5. Under **Project configuration → General → Powered by Netlify badge**, disable the optional overlay. Netlify currently injects a bottom-right badge that can cover mobile dock buttons. The site also automatically raises the dock above the badge while it remains enabled. Disabling it does not require redeploying.
 6. Verify the deployed site's desktop/mobile layouts, profile favicon, social preview, project links, theme, chess, and album artwork. Verify the hostname in Search Console and submit `/sitemap.xml` only after enabling indexing.
 
-Netlify configuration also serves the extensionless `/opengraph-image` with the correct `image/png` MIME type.
+### Original OG screenshot (Discord / Facebook / Twitter)
 
-### Custom OG screenshot (Discord / Facebook / Twitter)
-
-Place the **original, unmodified** screenshot at `public/og-workspace.png` (2048×1048 PNG). When that file exists during `npm run build`, the site's Open Graph and Twitter metadata automatically reference `/og-workspace.png` with its exact dimensions; no crop, resize, or image regeneration takes place. If the file has not been uploaded yet, the previous generated `/opengraph-image` remains the fallback so previews do not break. GitHub upload to `public/og-workspace.png` on `master` triggers Netlify to rebuild. Some chat services cache previews; sharing a URL with a new harmless query parameter can request a fresh card.
+The owner-supplied, **unmodified** screenshot is committed at `public/og-workspace.png` (2048×1048 PNG). Both Open Graph and Twitter metadata link directly to `/og-workspace.png`, and the Next.js file-based `app/opengraph-image.tsx` generator was removed because its metadata overrode `layout.tsx`. No image regeneration, crop, or resize occurs. After deploying, verify the live `og:image` and `twitter:image` tags both point to `/og-workspace.png`. Some chat services cache previews; sharing the URL with a harmless new query parameter can help refresh the preview.
 
 ## Music and artwork
 
