@@ -20,6 +20,10 @@ export function useMusic(){
  return value;
 }
 type AlbumMap=Record<string,LoadedAlbum>;
+const publicMusicPreview=process.env.NEXT_PUBLIC_MUSIC_MODE==="preview";
+const coverOnlyLibrary=():AlbumMap=>Object.fromEntries(albums.map(a=>[
+ a.id,{id:a.id,title:a.title,artist:a.artist,cover:a.cover,tracks:[]}
+]));
 const initialId=albums[0].id;
 export function MusicProvider({children}:{children:ReactNode}){
  const audio=useRef<HTMLAudioElement|null>(null);
@@ -43,6 +47,14 @@ export function MusicProvider({children}:{children:ReactNode}){
 
  const readLibrary=useCallback(async()=>{
    const id=++generation.current;
+   if(publicMusicPreview){
+     // Static public hosting intentionally contains no private licensed MP3 library.
+     const fallback=coverOnlyLibrary();
+     libraryRef.current=fallback;
+     setLibrary(fallback);
+     setStatus("Vinyl preview — audio is not hosted publicly.");
+     return fallback;
+   }
    try{
      const catalogResponse=await fetch("/music/catalog.json",{cache:"no-store"});
      if(!catalogResponse.ok)throw new Error("Album catalog is unavailable");
@@ -77,11 +89,10 @@ export function MusicProvider({children}:{children:ReactNode}){
      libraryRef.current=next;setLibrary(next);
      return next;
    }catch{
-     // Vercel's static export has no server-mounted music library or Nginx
+     // A static host has no server-mounted music library or Nginx
      // directory-index API. Keep the album artwork and controls usable as
      // visual previews without shipping full third-party MP3 recordings.
-     const fallback:AlbumMap={};
-     for(const a of albums)fallback[a.id]={id:a.id,title:a.title,artist:a.artist,cover:a.cover,tracks:[]};
+     const fallback=coverOnlyLibrary();
      if(id===generation.current){
        libraryRef.current=fallback;
        setLibrary(fallback);

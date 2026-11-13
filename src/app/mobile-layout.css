@@ -153,6 +153,16 @@
   #main-dock button{touch-action:manipulation}
 }
 
+/* Netlify may inject an optional 64px-high badge over the lower-right
+   controls. When present, keep the complete dock tappable above it. The
+   normal dock position automatically returns if the owner disables the
+   badge under Netlify project settings. */
+@media (max-width:799px){
+  body:has(> iframe#nl-badge-frame) #main-dock{
+    bottom:calc(80px + env(safe-area-inset-bottom,0px));
+  }
+}
+
 @media (max-width:359px){
   .scene{padding-inline:12px;gap:12px}
   .scene > :is(.profile-card,.education-card){padding:15px!important}
