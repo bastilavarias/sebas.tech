@@ -3,6 +3,9 @@
 @import "./reference.css";
 @import "./music-dock.css";
 @import "./chess-game.css";
+@import "./picture-puzzle.css";
+@import "./retro-pong.css";
+@import "./tile-2048.css";
 @import "./lcd-clock.css";
 @import "./profile-links.css";
 @import "./mobile-layout.css";

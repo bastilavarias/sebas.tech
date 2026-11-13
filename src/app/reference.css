@@ -570,12 +570,15 @@ button:focus:not(:focus-visible),.viewport:focus:not(:focus-visible){outline:non
    3D transforms, drags and hit targets; no scale, bounce or sliding. */
 @keyframes card-enter { from{opacity:0} to{opacity:1} }
 @keyframes object-enter { from{opacity:0} to{opacity:1} }
-.scene > :is(.photo,.world-sticker,.book-cover,.movie-poster,.album-record,.reference-badge,.clock-tile,#mini-chess){
+.scene > :is(.photo,.world-sticker,.book-cover,.movie-poster,.album-record,.reference-badge,.clock-tile,#mini-chess,#picture-puzzle,#retro-pong,#tile-2048){
   animation:object-enter 600ms ease var(--entry-delay,0ms) both;
 }
 .scene > .profile-card{animation:card-enter 600ms ease 0ms both}
 .scene > .education-card{animation:card-enter 600ms ease 120ms both}
 .scene > #mini-chess{--entry-delay:480ms}
+.scene > #picture-puzzle{--entry-delay:600ms}
+.scene > #retro-pong{--entry-delay:720ms}
+.scene > #tile-2048{--entry-delay:840ms}
 .scene > .reference-badge{--entry-delay:600ms}
 .scene > .clock-tile{--entry-delay:840ms}
 /* Interaction permanently retires the initial fade. React changes the vinyl

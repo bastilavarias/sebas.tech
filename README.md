@@ -2,7 +2,7 @@
 
 Personal digital workspace for **Sebastian Curtis Lavarias (Baste)** — software developer and tech creator.
 
-The site is an interactive crimson blueprint collage with profile, social links, featured projects, Polaroids, stickers, books, films, three records, clock, and playable chess. Phones display a simpler, vertically scrollable version.
+The site is an interactive crimson blueprint collage with profile, social links, featured projects, Polaroids, stickers, books, films, three records, clock, playable chess, a sliding picture puzzle using an existing personal Polaroid (3×3 and 4×4, with local best times), retro Pong against a beatable CPU (first to seven, keyboard/touch), and 2048 inside a draggable pocket-calculator shell (keyboard, swipe, undo, locally saved score and game). Phones display a simpler, vertically scrollable version.
 
 ## Technology
 
@@ -16,6 +16,7 @@ npm run dev
 ```
 
 Open `http://localhost:3000`. Run `npm run typecheck` and `npm run build` to test. Next.js outputs a static site into `out/`.
+
 
 ## Deploy on Netlify
 

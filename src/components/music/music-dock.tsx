@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import {useEffect,useState}from "react";
-import {House,MusicNotes,Moon,Sun,SpeakerHigh,SpeakerSlash,SkipBack,SkipForward,Play,Pause,Stop,GameController} from "@phosphor-icons/react/ssr";
+import {House,MusicNotes,Moon,Sun,SpeakerHigh,SpeakerSlash,SkipBack,SkipForward,Play,Pause,Stop,GameController, SquaresFour, MonitorPlay, Calculator} from "@phosphor-icons/react/ssr";
 import {Button}from "@/components/ui/button";
 import {Separator}from "@/components/ui/separator";
 import {Slider}from "@/components/ui/slider";
@@ -25,6 +25,9 @@ export function MusicDock(){
   }else window.dispatchEvent(new CustomEvent("baste:focus-asset",{detail:{id}}));
  };
  const jumpToChess=()=>focusSection("mini-chess");
+ const jumpToPuzzle=()=>focusSection("picture-puzzle");
+ const jumpToPong=()=>focusSection("retro-pong");
+ const jumpTo2048=()=>focusSection("tile-2048");
  useEffect(()=>{
   let selected:"light"|"dark"="light";
   try{
@@ -61,6 +64,15 @@ export function MusicDock(){
    </TooltipTrigger><TooltipContent>Music player</TooltipContent></Tooltip>
    <DockAction id="games-dock" label="Go to Chess mini game" onClick={jumpToChess}>
     <GameController size={20} weight="regular"/><span className="gamepad-ping" aria-hidden="true"/>
+   </DockAction>
+   <DockAction id="puzzle-dock" label="Go to picture puzzle" onClick={jumpToPuzzle}>
+    <SquaresFour size={20} weight="regular"/>
+   </DockAction>
+   <DockAction id="pong-dock" label="Go to Pong arcade" onClick={jumpToPong}>
+    <MonitorPlay size={20} weight="regular"/>
+   </DockAction>
+   <DockAction id="tile-2048-dock" label="Go to 2048" onClick={jumpTo2048}>
+    <Calculator size={20} weight="regular"/>
    </DockAction>
    <div className="dock-player" id="dock-player" role="group" aria-label="Music player" inert={!music.expanded}>
     <div className="dock-player-inner">

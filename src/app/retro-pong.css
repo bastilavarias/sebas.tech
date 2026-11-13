@@ -1,0 +1,179 @@
+/* Hallmark v2.0.0 | scope: component | theme: existing crimson workspace | signature: a physically draggable phosphor-green CRT Pong console */
+/* Critique: the arcade is an object in the collage, not another web app card; no novelty textures without purpose. */
+:root{
+  --pong-shell:#282d32;
+  --pong-shell-edge:#101316;
+  --pong-shell-highlight:#4b5559;
+  --pong-face:#151b1e;
+  --pong-display:#071c1b;
+  --pong-ink:#e7f6e8;
+  --pong-muted:#a1b5a9;
+  --pong-phosphor:#a6f5c4;
+  --pong-tint:#426f5e;
+  --pong-glass:rgba(182,255,199,.075);
+  --pong-scanline:rgba(1,10,8,.17);
+  --pong-button:#284a3c;
+  --pong-button-hover:#35604e;
+  --pong-button-ink:#d7fbe4;
+  --pong-shadow:0 9px 0 rgba(6,8,9,.65),0 24px 38px rgba(16,9,12,.35);
+}
+.retro-pong{
+  position:absolute;
+  width:404px;
+  max-width:none;
+  margin:0;
+  padding:16px;
+  border:5px solid var(--pong-shell-edge);
+  border-bottom-width:10px;
+  border-radius:23px 23px 13px 13px;
+  background:var(--pong-shell);
+  color:var(--pong-ink);
+  box-shadow:var(--pong-shadow),inset 0 2px 0 var(--pong-shell-highlight);
+  transform:rotate(4deg);
+  transform-origin:center;
+  isolation:isolate;
+  z-index:11;
+  touch-action:none;
+}
+.pong-marquee{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  height:33px;
+  padding:0 4px 8px;
+  cursor:grab;
+}
+.pong-brand{display:flex;align-items:center;gap:8px;min-width:0}
+.pong-brand svg{color:var(--pong-phosphor)}
+.pong-brand strong{
+  font:800 18px/1 var(--page-font);
+  letter-spacing:.045em;
+}
+.pong-brand span{
+  align-self:flex-end;
+  margin-bottom:2px;
+  font:650 11px/1 var(--page-font);
+  color:var(--pong-muted);
+}
+.pong-machine-number{
+  font:600 11px/1 var(--page-font);
+  color:var(--pong-muted);
+}
+.pong-bezel{
+  padding:8px 8px 4px;
+  border:2px solid var(--pong-shell-edge);
+  border-radius:19px;
+  background:var(--pong-face);
+  box-shadow:inset 0 3px 7px var(--pong-shell-edge),0 2px 1px var(--pong-shell-highlight);
+}
+.pong-screen-wrap{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border:3px solid var(--pong-shell-edge);
+  border-radius:13px;
+  aspect-ratio:3/2;
+  background:var(--pong-display);
+  box-shadow:inset 0 0 20px var(--pong-shell-edge),0 0 0 1px var(--pong-shell-highlight);
+}
+.pong-screen{
+  display:block;
+  width:100%;
+  height:100%;
+  background:var(--pong-display);
+  cursor:crosshair;
+  outline:none;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+.pong-screen:focus-visible{
+  outline:3px solid var(--pong-phosphor);
+  outline-offset:-4px;
+}
+.pong-scanlines{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:repeating-linear-gradient(to bottom,transparent 0 3px,var(--pong-scanline) 3px 4px);
+  box-shadow:inset 0 0 26px var(--pong-shell-edge),inset 0 0 8px var(--pong-glass);
+}
+.pong-screen-bottom{
+  min-height:21px;
+  padding:4px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  color:var(--pong-muted);
+  font:600 10px/1 var(--page-font);
+}
+.pong-power{display:flex;align-items:center;gap:4px;color:var(--pong-phosphor);font-size:10px}
+.pong-power span{color:var(--pong-muted);font-size:10px}
+.pong-control-panel{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:12px;
+}
+.pong-buttons{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.retro-pong .pong-buttons button{
+  border:1px solid var(--pong-tint);
+  color:var(--pong-button-ink);
+  border-radius:9px;
+  font:650 11px/1 var(--page-font);
+  cursor:pointer;
+}
+.retro-pong .pong-buttons button:hover{background:var(--pong-button-hover)}
+.retro-pong .pong-buttons button:active{transform:translateY(1px)}
+.retro-pong .pong-buttons button:focus-visible{
+  outline:3px solid var(--pong-phosphor);
+  outline-offset:3px;
+}
+.retro-pong .pong-play{
+  background:var(--pong-button);
+  min-height:36px;
+  padding:0 12px;
+}
+.retro-pong .pong-restart{
+  background:transparent;
+  min-height:36px;
+  min-width:36px;
+}
+.pong-instructions{
+  text-align:right;
+  color:var(--pong-muted);
+  font:500 10px/1.6 var(--page-font);
+}
+.pong-instructions kbd{
+  display:inline-grid;
+  place-items:center;
+  min-width:16px;
+  height:17px;
+  margin-inline:2px;
+  padding:1px;
+  background:var(--pong-face);
+  border:1px solid var(--pong-shell-highlight);
+  border-radius:3px;
+  color:var(--pong-ink);
+  font:700 10px/1 var(--page-font);
+}
+.pong-status{
+  margin:8px 4px 0;
+  min-height:16px;
+  text-align:center;
+  font:550 11px/1.4 var(--page-font);
+  color:var(--pong-muted);
+}
+@media(max-width:380px){
+  .retro-pong{padding:12px}
+  .pong-control-panel{gap:8px}
+  .pong-instructions{font-size:9px}
+  .pong-instructions kbd{min-width:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .retro-pong, .retro-pong *{transition:none!important;animation:none!important}
+}

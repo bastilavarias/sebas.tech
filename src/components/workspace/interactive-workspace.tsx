@@ -14,6 +14,9 @@ import {Book3D} from "@/components/decorative/book-3d";
 import {MoviePoster} from "@/components/decorative/movie-poster";
 import {LcdClock} from "@/components/decorative/lcd-clock";
 import {MiniChess} from "@/components/games/chess/mini-chess";
+import {PicturePuzzle} from "@/components/games/puzzle/picture-puzzle";
+import {RetroPong} from "@/components/games/pong/retro-pong";
+import {Tile2048} from "@/components/games/tile-2048/tile-2048";
 import {VinylRecord} from "@/components/music/vinyl-record";
 import {albums,books,posters,photos,stickers} from "@/data/assets";
 import {useSpatialInteraction} from "@/hooks/use-spatial-interaction";
@@ -53,6 +56,9 @@ function Stage(){
      {posters.map((poster,i)=><MoviePoster key={poster.id} poster={poster} entryDelay={720+i*120}/>)}
      {albums.map((album,i)=><VinylRecord key={album.id} album={album} entryDelay={240+i*120}/>)}
      <MiniChess/>
+     <PicturePuzzle/>
+     <RetroPong/>
+     <Tile2048/>
      <div data-drag-asset className="reference-badge" aria-label="Baste badge">BASTE</div>
      <ProfileCard/>
      <FocusCard/>
