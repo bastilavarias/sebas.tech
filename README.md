@@ -35,6 +35,10 @@ Open `http://localhost:3000`. Run `npm run typecheck` and `npm run build` to tes
 
 Netlify configuration also serves the extensionless `/opengraph-image` with the correct `image/png` MIME type.
 
+### Custom OG screenshot (Discord / Facebook / Twitter)
+
+Place the **original, unmodified** screenshot at `public/og-workspace.png` (2048×1048 PNG). When that file exists during `npm run build`, the site's Open Graph and Twitter metadata automatically reference `/og-workspace.png` with its exact dimensions; no crop, resize, or image regeneration takes place. If the file has not been uploaded yet, the previous generated `/opengraph-image` remains the fallback so previews do not break. GitHub upload to `public/og-workspace.png` on `master` triggers Netlify to rebuild. Some chat services cache previews; sharing a URL with a new harmless query parameter can request a fresh card.
+
 ## Music and artwork
 
 The player now supports **real static audio playback on Netlify** when authorized files are added to `public/music/<album-id>/`. The Netlify build uses `NEXT_PUBLIC_MUSIC_MODE=static`, automatically detects audio files with `scripts/build-public-music.mjs`, and creates a Git-ignored `public/music/library.json`. Tracks not yet uploaded remain silent previews, with no broken audio requests. No MP3s are committed in this version. Follow **[MUSIC_UPLOAD.md](MUSIC_UPLOAD.md)** to add authorized recordings; no manual JSON editing is necessary. The separate SEBASTECH LAN preview still uses the private read-only Nginx music library and does not require the static mode. The Mhot cover is bundled with the site.
